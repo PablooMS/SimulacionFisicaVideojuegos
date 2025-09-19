@@ -7,6 +7,7 @@
 #include "core.hpp"
 #include "RenderUtils.hpp"
 #include "callbacks.hpp"
+#include "Vector3D.h"
 
 #include <iostream>
 
@@ -54,7 +55,33 @@ void initPhysics(bool interactive)
 	sceneDesc.filterShader = contactReportFilterShader;
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
-	}
+
+	PxShape* cheto = gPhysics->createShape(PxSphereGeometry(3), *gMaterial);
+	Vector3D pos(10, 0, 0);
+	PxTransform* sphTrans = new PxTransform(PxVec3(pos.getX(), pos.getY(), pos.getZ()));
+	Vector4 color(1.0, 0.6, 0.1, 1.0);
+
+	RenderItem* rend = new RenderItem(cheto, sphTrans, color);
+	RegisterRenderItem(rend);
+
+
+	PxShape* cheto2 = gPhysics->createShape(PxSphereGeometry(3), *gMaterial);
+	Vector3D pos2(0, 10, 0);
+	PxTransform* sphTrans1 =  new PxTransform(PxVec3(pos2.getX(), pos2.getY(), pos2.getZ()));
+	Vector4 color2(0.6, 0.1, 1.0, 1.0);
+
+	RenderItem* rend2 = new RenderItem(cheto2, sphTrans1, color2);
+	RegisterRenderItem(rend2);
+
+
+	PxShape* cheto3 = gPhysics->createShape(PxSphereGeometry(3), *gMaterial);
+	Vector3D pos3(0, 0, 10);
+	PxTransform* sphTrans2 =  new PxTransform(PxVec3(pos3.getX(), pos3.getY(), pos3.getZ()));
+	Vector4 color3(0.1, 1.0, 0.6, 1.0);
+
+	RenderItem* rend3 = new RenderItem(cheto3, sphTrans2, color3);
+	RegisterRenderItem(rend3);
+}
 
 
 // Function to configure what happens in each step of physics
@@ -84,7 +111,7 @@ void cleanupPhysics(bool interactive)
 	transport->release();
 	
 	gFoundation->release();
-	}
+}
 
 // Function called when a key is pressed
 void keyPress(unsigned char key, const PxTransform& camera)
