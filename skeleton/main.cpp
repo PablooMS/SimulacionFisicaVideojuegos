@@ -8,8 +8,11 @@
 #include "RenderUtils.hpp"
 #include "callbacks.hpp"
 #include "Vector3D.h"
+#include "Particle.h"
+#include "EntityManager.h";
 
 #include <iostream>
+
 
 std::string display_text = "This is a test";
 
@@ -30,6 +33,8 @@ PxPvd*                  gPvd        = NULL;
 PxDefaultCpuDispatcher*	gDispatcher = NULL;
 PxScene*				gScene      = NULL;
 ContactReportCallback gContactReportCallback;
+
+EntityManager* entMan;
 
 
 // Initialize physics engine
@@ -56,7 +61,7 @@ void initPhysics(bool interactive)
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
 
-	PxShape* cheto = gPhysics->createShape(PxSphereGeometry(3), *gMaterial);
+	/* PxShape* cheto = gPhysics->createShape(PxSphereGeometry(3), *gMaterial);
 	Vector3D pos(10, 0, 0);
 	PxTransform* sphTrans = new PxTransform(PxVec3(pos.getX(), pos.getY(), pos.getZ()));
 	Vector4 color(1.0, 0.6, 0.1, 1.0);
@@ -80,7 +85,11 @@ void initPhysics(bool interactive)
 	Vector4 color3(0.1, 1.0, 0.6, 1.0);
 
 	RenderItem* rend3 = new RenderItem(cheto3, sphTrans2, color3);
-	RegisterRenderItem(rend3);
+	RegisterRenderItem(rend3); */
+
+	entMan = new EntityManager(gPhysics);
+	//entMan->createParticle(Vector3D(), Vector3D(10, 10, 10), Vector3D());
+	entMan->createParticle(Vector3D(), Vector3D(0, 0, 0), Vector3D(0,1,0));
 }
 
 
@@ -93,6 +102,8 @@ void stepPhysics(bool interactive, double t)
 
 	gScene->simulate(t);
 	gScene->fetchResults(true);
+
+	entMan->update(t);
 }
 
 // Function to clean data

@@ -2,6 +2,7 @@
 class Vector3D
 {
 public:
+	Vector3D() : x(0), y(0), z(0) {}
 	Vector3D(float x, float y, float z) : x(x), y(y), z(z) {}
 
 	float magnitude();
