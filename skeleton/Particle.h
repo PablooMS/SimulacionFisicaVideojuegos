@@ -13,12 +13,19 @@ public:
 	void update(double t) override;
 
 private:
-	void integrate(double t);
+	//Integrates via implicit Euler
+	void integrateE(double t);
+	//Integrates via semi-implicit Euler
+	void integrateSE(double t);
+	//Integrates via Verlet
+	void integrateV(double t);
 
 	Vector3D vel;
 	Vector3D acc;
 	physx::PxTransform* trans;
 	float damp;
+
+	Vector3D pastPos;
 
 	RenderItem* render;
 	physx::PxPhysics* gPhysx;

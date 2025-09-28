@@ -9,7 +9,9 @@ Particle::Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, PxPhys
 {
 	vel = velo;
 	acc = acce;
+	damp = dam;
 	trans = new physx::PxTransform(physx::PxVec3(pos.getX(), pos.getY(), pos.getZ()));
+	pastPos = { trans->p.x - vel.getX(), trans->p.y - vel.getY(), trans->p.z - vel.getZ()};
 
 	gPhysx = physx;
 	PxMaterial* gMaterial = gPhysx->createMaterial(0.5f, 0.5f, 0.6f);
@@ -29,16 +31,38 @@ Particle::~Particle()
 
 void Particle::update(double t) 
 {
-	integrate(t);
+	integrateV(t);
 }
 
-void Particle::integrate(double t)
+void Particle::integrateE(double t)
 {
 	//std::cout << "posx: " << trans->p.x << "\n";
 	trans->p.x += vel.getX() * t;
 	trans->p.y += vel.getY() * t;
 	trans->p.z += vel.getZ() * t;
 
-	vel = Vector3D(vel.getX() + acc.getX() * t, vel.getY() + acc.getY() * t, 
+	vel = Vector3D(vel.getX() + acc.getX() * t, vel.getY() + acc.getY() * t,
 		vel.getZ() + acc.getZ() * t).scalar(pow(damp, t));
+}
+
+void Particle::integrateSE(double t)
+{
+	vel = Vector3D(vel.getX() + acc.getX() * t, vel.getY() + acc.getY() * t,
+		vel.getZ() + acc.getZ() * t).scalar(pow(damp, t));
+
+	trans->p.x += vel.getX() * t;
+	trans->p.y += vel.getY() * t;
+	trans->p.z += vel.getZ() * t;
+}
+
+void Particle::integrateV(double t)
+{
+	Vector3D aid({ trans->p.x, trans->p.y, trans->p.z });
+
+	trans->p.x = 2 * trans->p.x - pastPos.getX() + t * t * acc.getX();
+	trans->p.y = 2 * trans->p.y - pastPos.getY() + t * t * acc.getY();
+	trans->p.z = 2 * trans->p.z - pastPos.getZ() + t * t * acc.getZ();
+
+	pastPos = aid;
+	std::cout << pastPos.getY() << "\n";
 }
