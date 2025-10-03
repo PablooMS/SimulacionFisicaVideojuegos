@@ -16,7 +16,7 @@ Particle::Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, PxPhys
 	gPhysx = physx;
 	PxMaterial* gMaterial = gPhysx->createMaterial(0.5f, 0.5f, 0.6f);
 
-	PxShape* cheto = gPhysx->createShape(PxSphereGeometry(3), *gMaterial);
+	PxShape* cheto = gPhysx->createShape(PxSphereGeometry(1), *gMaterial);
 	Vector4 color(1.0, 0.6, 0.1, 1.0);
 
 	render = new RenderItem(cheto, trans, color);
@@ -31,7 +31,7 @@ Particle::~Particle()
 
 void Particle::update(double t) 
 {
-	integrateV(t);
+	integrateE(t);
 }
 
 void Particle::integrateE(double t)

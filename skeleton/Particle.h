@@ -10,9 +10,9 @@ public:
 	Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, physx::PxPhysics* physx);
 	~Particle();
 
-	void update(double t) override;
+	virtual void update(double t) override;
 
-private:
+protected:
 	//Integrates via implicit Euler
 	void integrateE(double t);
 	//Integrates via semi-implicit Euler

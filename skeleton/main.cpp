@@ -10,6 +10,7 @@
 #include "Vector3D.h"
 #include "Particle.h"
 #include "EntityManager.h";
+#include "Projectile.h";
 
 #include <iostream>
 
@@ -61,6 +62,10 @@ void initPhysics(bool interactive)
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
 
+	//MODIFICAR LA CAMARA
+	Camera* cam = GetCamera();
+
+	//PRACTICA 0
 	/* PxShape* cheto = gPhysics->createShape(PxSphereGeometry(3), *gMaterial);
 	Vector3D pos(10, 0, 0);
 	PxTransform* sphTrans = new PxTransform(PxVec3(pos.getX(), pos.getY(), pos.getZ()));
@@ -87,9 +92,18 @@ void initPhysics(bool interactive)
 	RenderItem* rend3 = new RenderItem(cheto3, sphTrans2, color3);
 	RegisterRenderItem(rend3); */
 
+	//ENTITY MANAGER
 	entMan = new EntityManager(gPhysics);
-	//entMan->createParticle(Vector3D(), Vector3D(10, 10, 10), Vector3D());
-	entMan->createParticle(Vector3D(), Vector3D(0, 0, 0), Vector3D(0,1,0));
+
+	//PRACTICA 1.1
+	/*entMan->createParticle(Vector3D(), Vector3D(10, 10, 10), Vector3D());
+	entMan->createParticle(Vector3D(), Vector3D(0, 0, 0), Vector3D(0,1,0));*/
+
+	//PRACTICA 1.2
+	//Flecha Real
+	entMan->createProjectile(Vector3D(-2,5,0), Vector3D(60, 20, 0), Vector3D(0, -9.8, 0), 0.025, 10);
+	//Flecha adaptada
+	entMan->createProjectile(Vector3D(-2,5,0), Vector3D(20, 20, 0), Vector3D(0, -4.9, 0), 0.25, 10);
 }
 
 
@@ -135,6 +149,18 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	//case ' ':	break;
 	case ' ':
 	{
+		break;
+	}
+	case 'B':
+	{
+		//Flecha Real
+		entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(60, 20, 0), Vector3D(0, -9.8, 0), 0.025, 10);
+		break;
+	}
+	case 'V':
+	{
+		//Flecha adaptada
+		entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(20, 20, 0), Vector3D(0, -4.9, 0), 0.25, 10);
 		break;
 	}
 	default:
