@@ -24,5 +24,5 @@ void Projectile::update(double t)
 	if (life > lifetime)
 		_toDestroy = true;
 
-	std::cout << life << " death? " << _toDestroy << "\n";
+	//std::cout << life << " death? " << _toDestroy << "\n";
 }

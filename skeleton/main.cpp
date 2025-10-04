@@ -99,11 +99,40 @@ void initPhysics(bool interactive)
 	/*entMan->createParticle(Vector3D(), Vector3D(10, 10, 10), Vector3D());
 	entMan->createParticle(Vector3D(), Vector3D(0, 0, 0), Vector3D(0,1,0));*/
 
-	//PRACTICA 1.2
+#pragma region PRACTICA 1.2
 	//Flecha Real
-	entMan->createProjectile(Vector3D(-2,5,0), Vector3D(60, 20, 0), Vector3D(0, -9.8, 0), 0.025, 10);
+	entMan->createProjectile(Vector3D(-2,5,0), Vector3D(80, 20, 0), Vector3D(0, -9.8, 0), 0.025, 10);
 	//Flecha adaptada
-	entMan->createProjectile(Vector3D(-2,5,0), Vector3D(20, 20, 0), Vector3D(0, -4.9, 0), 0.25, 10);
+	entMan->createProjectile(Vector3D(-2,5,0), Vector3D(40, 30, 0), Vector3D(0, -20, 0), 0.25, 10);
+	//Suelo y mapa
+	PxShape* suelo = gPhysics->createShape(PxBoxGeometry(50, 1, 150), *gMaterial);
+	Vector3D pos(50, -5, -75);
+	PxTransform* floTrans = new PxTransform(PxVec3(pos.getX(), pos.getY(), pos.getZ()));
+	Vector4 color(0.5, 1.0, 0.0, 1.0);
+	RenderItem* rend = new RenderItem(suelo, floTrans, color);
+	RegisterRenderItem(rend);
+
+	PxShape* diana = gPhysics->createShape(PxSphereGeometry(5), *gMaterial);
+	Vector3D pos2(20, 3, -10);
+	PxTransform* diaTrans = new PxTransform(PxVec3(pos2.getX(), pos2.getY(), pos2.getZ()));
+	Vector4 color2(0.8, 0.3, 1.0, 1.0);
+	RenderItem* rend2 = new RenderItem(diana, diaTrans, color2);
+	RegisterRenderItem(rend2);
+
+	PxShape* diana2 = gPhysics->createShape(PxSphereGeometry(5), *gMaterial);
+	Vector3D pos3(80, 5, -50);
+	PxTransform* diaTrans2 = new PxTransform(PxVec3(pos3.getX(), pos3.getY(), pos3.getZ()));
+	RenderItem* rend3 = new RenderItem(diana2, diaTrans2, color2);
+	RegisterRenderItem(rend3);
+
+	PxShape* diana3 = gPhysics->createShape(PxSphereGeometry(5), *gMaterial);
+	Vector3D pos4(50, 5, -120);
+	PxTransform* diaTrans3 = new PxTransform(PxVec3(pos4.getX(), pos4.getY(), pos4.getZ()));
+	RenderItem* rend4 = new RenderItem(diana3, diaTrans3, color2);
+	RegisterRenderItem(rend4);
+#pragma endregion
+
+	
 }
 
 
@@ -139,7 +168,7 @@ void cleanupPhysics(bool interactive)
 }
 
 // Function called when a key is pressed
-void keyPress(unsigned char key, const PxTransform& camera)
+void keyPress(unsigned char key, const Camera& camera)
 {
 	PX_UNUSED(camera);
 
@@ -154,13 +183,28 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case 'B':
 	{
 		//Flecha Real
-		entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(60, 20, 0), Vector3D(0, -9.8, 0), 0.025, 10);
+		PxVec3 cameraPos = camera.getTransform().p;
+		Vector3D camPos(cameraPos.x, cameraPos.y, cameraPos.z);
+		Vector3D dir(camera.getDir().x * 80, camera.getDir().y * 80, camera.getDir().z * 80);
+		
+		entMan->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 0.025, 10);
+
+		/* //Versión simple
+		entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(80, 10, 0), Vector3D(0, -9.8, 0), 0.025, 10); */
 		break;
 	}
 	case 'V':
 	{
 		//Flecha adaptada
-		entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(20, 20, 0), Vector3D(0, -4.9, 0), 0.25, 10);
+		PxVec3 cameraPos = camera.getTransform().p;
+		Vector3D camPos(cameraPos.x, cameraPos.y, cameraPos.z);
+		Vector3D dir(camera.getDir().x * 40, camera.getDir().y * 40, camera.getDir().z * 40);
+
+		entMan->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 0.05, 10);
+
+		/* 
+		entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(40, 30, 0), Vector3D(0, -30, 0), 0.25, 10); 
+		*/
 		break;
 	}
 	default:
