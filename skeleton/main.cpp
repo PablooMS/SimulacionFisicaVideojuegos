@@ -66,7 +66,7 @@ void initPhysics(bool interactive)
 	Camera* cam = GetCamera();
 
 	//PRACTICA 0
-	/* PxShape* cheto = gPhysics->createShape(PxSphereGeometry(3), *gMaterial);
+	/*PxShape* cheto = gPhysics->createShape(PxSphereGeometry(3), *gMaterial);
 	Vector3D pos(10, 0, 0);
 	PxTransform* sphTrans = new PxTransform(PxVec3(pos.getX(), pos.getY(), pos.getZ()));
 	Vector4 color(1.0, 0.6, 0.1, 1.0);
@@ -96,10 +96,11 @@ void initPhysics(bool interactive)
 	entMan = new EntityManager(gPhysics);
 
 	//PRACTICA 1.1
-	/*entMan->createParticle(Vector3D(), Vector3D(10, 10, 10), Vector3D());
-	entMan->createParticle(Vector3D(), Vector3D(0, 0, 0), Vector3D(0,1,0));*/
+	//entMan->createParticle(Vector3D(), Vector3D(10, 10, 10), Vector3D());
+	//entMan->createParticle(Vector3D(), Vector3D(0, 0, 0), Vector3D(0,1,0), 3);
 
 #pragma region PRACTICA 1.2
+	/*
 	//Flecha Real
 	entMan->createProjectile(Vector3D(-2,5,0), Vector3D(80, 20, 0), Vector3D(0, -9.8, 0), 0.025, 10);
 	//Flecha adaptada
@@ -129,9 +130,18 @@ void initPhysics(bool interactive)
 	Vector3D pos4(50, 5, -120);
 	PxTransform* diaTrans3 = new PxTransform(PxVec3(pos4.getX(), pos4.getY(), pos4.getZ()));
 	RenderItem* rend4 = new RenderItem(diana3, diaTrans3, color2);
-	RegisterRenderItem(rend4);
+	RegisterRenderItem(rend4);*/
 #pragma endregion
 
+#pragma region PRACTICA 2
+
+	Particle* p = new Particle({ 0,0,0 }, {0,0,0}, {0,0,0}, 0.95, gPhysics, 10, 1);
+	Initialization st = { {0,0,0}, {0,10,0}, 5 };
+	Initialization v = { {0,0,0}, {5,1,5}, 1 };
+	entMan->createGenerator(p, st, v, 1, true);
+
+
+#pragma endregion
 	
 }
 
@@ -180,7 +190,7 @@ void keyPress(unsigned char key, const Camera& camera)
 	{
 		break;
 	}
-	case 'B':
+	/*case 'B':
 	{
 		//Flecha Real
 		PxVec3 cameraPos = camera.getTransform().p;
@@ -189,11 +199,11 @@ void keyPress(unsigned char key, const Camera& camera)
 		
 		entMan->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 0.025, 10);
 
-		/* //Versión simple
-		entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(80, 10, 0), Vector3D(0, -9.8, 0), 0.025, 10); */
+		//Versión simple
+		//entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(80, 10, 0), Vector3D(0, -9.8, 0), 0.025, 10);
 		break;
-	}
-	case 'V':
+	}*/
+	/*case 'V':
 	{
 		//Flecha adaptada
 		PxVec3 cameraPos = camera.getTransform().p;
@@ -202,11 +212,10 @@ void keyPress(unsigned char key, const Camera& camera)
 
 		entMan->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 0.05, 10);
 
-		/* 
-		entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(40, 30, 0), Vector3D(0, -30, 0), 0.25, 10); 
-		*/
+		// Versión simple
+		//entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(40, 30, 0), Vector3D(0, -30, 0), 0.25, 10); 
 		break;
-	}
+	}*/
 	default:
 		break;
 	}

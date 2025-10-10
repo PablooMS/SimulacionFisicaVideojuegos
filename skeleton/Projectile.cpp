@@ -4,8 +4,8 @@
 
 using namespace physx;
 
-Projectile::Projectile(Vector3D pos, Vector3D velo, Vector3D acce, float dam, physx::PxPhysics* physx, double mass, double lifetime) : 
-	Particle(pos, velo, acce, dam, physx), mass(mass), lifetime(lifetime)
+Projectile::Projectile(Vector3D pos, Vector3D velo, Vector3D acce, float dam, physx::PxPhysics* physx, double mass, double lifetime, float size) : 
+	Particle(pos, velo, acce, dam, physx, lifetime, size), mass(mass)
 {
 	
 }
@@ -19,10 +19,10 @@ void Projectile::update(double t)
 {
 	Particle::update(t);
 
-	life += t;
+	/*life += t;
 
 	if (life > lifetime)
-		_toDestroy = true;
+		_toDestroy = true;*/
 
 	//std::cout << life << " death? " << _toDestroy << "\n";
 }

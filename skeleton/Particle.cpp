@@ -5,7 +5,7 @@
 
 using namespace physx;
 
-Particle::Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, PxPhysics* physx)
+Particle::Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, PxPhysics* physx, double lifetim, float siz)
 {
 	vel = velo;
 	acc = acce;
@@ -13,14 +13,26 @@ Particle::Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, PxPhys
 	trans = new physx::PxTransform(physx::PxVec3(pos.getX(), pos.getY(), pos.getZ()));
 	pastPos = { trans->p.x - vel.getX(), trans->p.y - vel.getY(), trans->p.z - vel.getZ()};
 
+	lifetime = lifetim;
+
 	gPhysx = physx;
-	PxMaterial* gMaterial = gPhysx->createMaterial(0.5f, 0.5f, 0.6f);
+	
+	size = siz;
 
-	PxShape* cheto = gPhysx->createShape(PxSphereGeometry(0.3), *gMaterial);
-	Vector4 color(1.0, 0.6, 0.1, 1.0);
+	registerRender();
+}
 
-	render = new RenderItem(cheto, trans, color);
-	RegisterRenderItem(render);
+Particle::Particle(Particle* p)
+{
+	vel = p->vel;
+	acc = p->acc;
+	trans = p->trans;
+	pastPos = p->pastPos;
+	lifetime = p->lifetime;
+	gPhysx = p->gPhysx;
+	size = p->size;
+
+	registerRender();
 }
 
 Particle::~Particle()
@@ -31,7 +43,38 @@ Particle::~Particle()
 
 void Particle::update(double t) 
 {
-	integrateE(t);
+	integrateSE(t);
+
+	life += t;
+
+	if (life > lifetime)
+		_toDestroy = true;
+}
+
+void Particle::setPos(Vector3 p)
+{
+	trans->p = p;
+}
+
+void Particle::setSpeed(Vector3 v)
+{
+	vel = { v.x, v.y, v.z };
+}
+
+void Particle::setLifetime(double t)
+{
+	lifetime = t;
+}
+
+void Particle::registerRender()
+{
+	PxMaterial* gMaterial = gPhysx->createMaterial(0.5f, 0.5f, 0.6f);
+
+	PxShape* cheto = gPhysx->createShape(PxSphereGeometry(size), *gMaterial);
+	Vector4 color(1.0, 0.6, 0.1, 1.0);
+
+	render = new RenderItem(cheto, trans, color);
+	RegisterRenderItem(render);
 }
 
 void Particle::integrateE(double t)

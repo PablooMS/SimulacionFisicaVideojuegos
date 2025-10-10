@@ -15,6 +15,9 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Generator.cpp" />
+    <ClCompile Include="Gaussian.cpp" />
+    <ClCompile Include="Uniform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -31,6 +34,9 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Generator.h" />
+    <ClInclude Include="Gaussian.h" />
+    <ClInclude Include="Uniform.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

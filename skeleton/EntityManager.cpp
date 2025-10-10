@@ -1,6 +1,8 @@
 #include "EntityManager.h"
 #include "Particle.h"
 #include "Projectile.h"
+#include "Gaussian.h"
+#include "Uniform.h"
 
 EntityManager::EntityManager(physx::PxPhysics* physx) : gPhysx(physx)
 {
@@ -34,16 +36,30 @@ void EntityManager::update(double t)
 	toDelete.clear();
 }
 
-void EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce)
+void EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, float size)
 {
-	Particle* part = new Particle(pos, velo, acce, 0.95, gPhysx);
+	Particle* part = new Particle(pos, velo, acce, 0.95, gPhysx, 10, size);
 	tiddies.push_back(part);
 }
 
-void EntityManager::createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime)
+void EntityManager::createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size)
 {
-	Projectile* projectile = new Projectile(pos, velo, acce, 0.95, gPhysx, mass, lifetime);
+	Projectile* projectile = new Projectile(pos, velo, acce, 0.95, gPhysx, mass, lifetime, size);
 	tiddies.push_back(projectile);
+}
+
+void EntityManager::createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, bool gaus)
+{
+	if (gaus) 
+	{ 
+		Gaussian* gGen = new Gaussian(gPhysx, mod, startval, varval, am);
+		tiddies.push_back(gGen);
+	}
+	else
+	{
+		Uniform* uGen = new Uniform(gPhysx, mod, startval, varval, am);
+		tiddies.push_back(uGen);
+	}
 }
 
 
