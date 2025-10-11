@@ -36,16 +36,16 @@ void EntityManager::update(double t)
 	toDelete.clear();
 }
 
-void EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, float size)
+void EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, float size, Vector4 color)
 {
-	Particle* part = new Particle(pos, velo, acce, 0.95, gPhysx, 10, size);
+	Particle* part = new Particle(pos, velo, acce, 0.95, gPhysx, 10, size, color);
 	tiddies.push_back(part);
 	part->setRender(true);
 }
 
-void EntityManager::createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size)
+void EntityManager::createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size, Vector4 color)
 {
-	Projectile* projectile = new Projectile(pos, velo, acce, 0.95, gPhysx, mass, lifetime, size);
+	Projectile* projectile = new Projectile(pos, velo, acce, 0.95, gPhysx, mass, lifetime, size, color);
 	tiddies.push_back(projectile);
 	projectile->setRender(true);
 }

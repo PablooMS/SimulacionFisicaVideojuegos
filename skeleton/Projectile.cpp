@@ -4,8 +4,8 @@
 
 using namespace physx;
 
-Projectile::Projectile(Vector3D pos, Vector3D velo, Vector3D acce, float dam, physx::PxPhysics* physx, double mass, double lifetime, float size) : 
-	Particle(pos, velo, acce, dam, physx, lifetime, size), mass(mass)
+Projectile::Projectile(Vector3D pos, Vector3D velo, Vector3D acce, float dam, physx::PxPhysics* physx, double mass, double lifetime, float size, Vector4 col) : 
+	Particle(pos, velo, acce, dam, physx, lifetime, size, col), mass(mass)
 {
 	
 }

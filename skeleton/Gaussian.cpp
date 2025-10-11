@@ -34,5 +34,5 @@ void Gaussian::spawnTime()
 	std::mt19937 _mtseed(rd());
 
 	toNext = time * _u(_mtseed);
-	std::cout << toNext << "\n";
+	//std::cout << toNext << "\n";
 }

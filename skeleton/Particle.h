@@ -7,7 +7,7 @@
 class Particle : public Entity
 {
 public:
-	Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, physx::PxPhysics* physx, double lifetime, float size);
+	Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, physx::PxPhysics* physx, double lifetime, float size, Vector4 color);
 	Particle(Particle* p);
 	~Particle();
 
@@ -36,12 +36,12 @@ protected:
 
 	Vector3D pastPos;
 
+	float size;
+	Vector4 color;
 	RenderItem* render;
 	physx::PxPhysics* gPhysx;
 
 	double lifetime;
 	double life = 0;
-
-	float size;
 };
 

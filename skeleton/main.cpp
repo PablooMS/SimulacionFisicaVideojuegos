@@ -136,14 +136,22 @@ void initPhysics(bool interactive)
 #pragma region PRACTICA 2
 
 	//WaterHose
-	Particle* p = new Particle({ 0,0,0 }, {0,0,0}, {0,-10,0}, 0.95, gPhysics, 10, 1);
+	/*Particle* p = new Particle({0,0,0}, {0,0,0}, {0,-10,0}, 0.95, gPhysics, 10, 1, {0.1, 0.1, 1.0, 1.0});
 	Initialization st = { {0,0,-10}, {50,10,0}, 10 };
 	Initialization v = { {1,0,1}, {5,2,2}, 1 };
-	entMan->createGenerator(p, st, v, 5, 0.1, true);
+	entMan->createGenerator(p, st, v, 5, 0.1, true);*/
 
 	//Rain
+	/*Particle* r = new Particle({0,0,0}, {0,0,0}, {0,-10,0}, 0.95, gPhysics, 10, 1, {0.1, 0.1, 0.6, 1.0});
+	Initialization str = { {0,300,0}, {5,-100,0}, 10 };
+	Initialization vr = { {100,0,100}, {1,0,1}, 0 };
+	entMan->createGenerator(r, str, vr, 5, 0.1, true);*/
 
-	//
+	//Fog
+	/*Particle* f = new Particle({0,0,0}, {0,0,0}, {0,0,0}, 0.95, gPhysics, 10, 5, {0.3, 0.3, 0.3, 1.0});
+	Initialization stf = { {0,50,-100}, {0,0,0}, 20 };
+	Initialization vf = { {50,50,50}, {0.5,0.5,0.5}, 5 };
+	entMan->createGenerator(f, stf, vf, 5, 0.1, true);*/
 
 
 #pragma endregion

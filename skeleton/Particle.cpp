@@ -5,7 +5,7 @@
 
 using namespace physx;
 
-Particle::Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, PxPhysics* physx, double lifetim, float siz)
+Particle::Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, PxPhysics* physx, double lifetim, float siz, Vector4 col)
 {
 	vel = velo;
 	acc = acce;
@@ -18,6 +18,7 @@ Particle::Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, PxPhys
 	gPhysx = physx;
 	
 	size = siz;
+	color = col;
 
 	registerRender();
 }
@@ -32,6 +33,7 @@ Particle::Particle(Particle* p)
 	lifetime = p->lifetime;
 	gPhysx = p->gPhysx;
 	size = p->size;
+	color = p->color;
 
 	registerRender();
 }
@@ -89,7 +91,6 @@ void Particle::registerRender()
 	PxMaterial* gMaterial = gPhysx->createMaterial(0.5f, 0.5f, 0.6f);
 
 	PxShape* cheto = gPhysx->createShape(PxSphereGeometry(size), *gMaterial);
-	Vector4 color(1.0, 0.6, 0.1, 1.0);
 
 	render = new RenderItem(cheto, trans, color);
 	//setRender(true);
