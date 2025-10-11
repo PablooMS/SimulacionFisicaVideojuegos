@@ -15,7 +15,7 @@ public:
 
 	void createParticle(Vector3D pos, Vector3D velo, Vector3D acce, float size);
 	void createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size);
-	void createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, bool gaussian);
+	void createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaussian);
 
 	void update(double t);
 

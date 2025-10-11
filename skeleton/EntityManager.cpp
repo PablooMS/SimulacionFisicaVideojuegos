@@ -40,24 +40,26 @@ void EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, f
 {
 	Particle* part = new Particle(pos, velo, acce, 0.95, gPhysx, 10, size);
 	tiddies.push_back(part);
+	part->setRender(true);
 }
 
 void EntityManager::createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size)
 {
 	Projectile* projectile = new Projectile(pos, velo, acce, 0.95, gPhysx, mass, lifetime, size);
 	tiddies.push_back(projectile);
+	projectile->setRender(true);
 }
 
-void EntityManager::createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, bool gaus)
+void EntityManager::createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaus)
 {
 	if (gaus) 
 	{ 
-		Gaussian* gGen = new Gaussian(gPhysx, mod, startval, varval, am);
+		Gaussian* gGen = new Gaussian(gPhysx, mod, startval, varval, am, t);
 		tiddies.push_back(gGen);
 	}
 	else
 	{
-		Uniform* uGen = new Uniform(gPhysx, mod, startval, varval, am);
+		Uniform* uGen = new Uniform(gPhysx, mod, startval, varval, am, t);
 		tiddies.push_back(uGen);
 	}
 }

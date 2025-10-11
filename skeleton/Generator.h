@@ -31,8 +31,13 @@ protected:
 
 	virtual Initialization randomize();
 
+	double time;
+	double toNext;
+
+	virtual void spawnTime();
+
 public:
-	Generator(physx::PxPhysics* physx, Particle* mod, Initialization startval, Initialization varval, int amount);
+	Generator(physx::PxPhysics* physx, Particle* mod, Initialization startval, Initialization varval, int amount, double time);
 	~Generator();
 
 	virtual void generateParticle();

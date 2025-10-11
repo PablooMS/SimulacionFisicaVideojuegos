@@ -1,5 +1,6 @@
 #include "Gaussian.h"
 #include <random>
+#include <iostream>
 
 Gaussian::~Gaussian()
 {
@@ -9,12 +10,29 @@ Initialization Gaussian::randomize()
 {
 	Initialization result;
 
-	std::normal_distribution<double> _u{ -1,1 };
-	std::mt19937 _mtseed;
+	std::random_device rd{};
+	std::normal_distribution<double> _u{ 0,1 };
+	std::mt19937 _mtseed(rd());
 
-	result.P = start.P + _u(_mtseed) * var.P;
-	result.S = start.S + _u(_mtseed) * var.S;
+	result.P = start.P + Vector3(_u(_mtseed) * var.P.x, _u(_mtseed) * var.P.y, _u(_mtseed) * var.P.z);
+	result.S = start.S + Vector3(_u(_mtseed) * var.S.x, _u(_mtseed) * var.S.y, _u(_mtseed) * var.S.z);
 	result.T = start.T + _u(_mtseed) * var.T;
 
+	/*
+	std::cout << result.P.x << " " << result.P.y << " " << result.P.z << "\n";
+	std::cout << result.S.x << " " << result.S.y << " " << result.S.z << "\n";
+	std::cout << result.T << "\n";
+	*/
+
 	return result;
+}
+
+void Gaussian::spawnTime()
+{
+	std::random_device rd{};
+	std::normal_distribution<double> _u{ 1, 0.3 };
+	std::mt19937 _mtseed(rd());
+
+	toNext = time * _u(_mtseed);
+	std::cout << toNext << "\n";
 }

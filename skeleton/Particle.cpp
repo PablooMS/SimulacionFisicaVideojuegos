@@ -26,7 +26,8 @@ Particle::Particle(Particle* p)
 {
 	vel = p->vel;
 	acc = p->acc;
-	trans = p->trans;
+	trans = new physx::PxTransform(*p->trans);
+	damp = p->damp;
 	pastPos = p->pastPos;
 	lifetime = p->lifetime;
 	gPhysx = p->gPhysx;
@@ -54,16 +55,33 @@ void Particle::update(double t)
 void Particle::setPos(Vector3 p)
 {
 	trans->p = p;
+	//std::cout << trans->p.x << " " << trans->p.y << " " << trans->p.z << "\n";
 }
 
 void Particle::setSpeed(Vector3 v)
 {
-	vel = { v.x, v.y, v.z };
+	vel = Vector3D(v.x, v.y, v.z);
+	//std::cout << vel.getX() << " " << vel.getY() << " " << vel.getZ() << "\n";
 }
 
 void Particle::setLifetime(double t)
 {
 	lifetime = t;
+	//std::cout << lifetime << "\n";
+}
+
+void Particle::setRender(bool r)
+{
+	if (r) 
+	{
+		RegisterRenderItem(render);
+		//std::cout << "registering\n";
+	}
+	else 
+	{
+		DeregisterRenderItem(render);
+		//std::cout << "de-registering\n";
+	}
 }
 
 void Particle::registerRender()
@@ -74,7 +92,7 @@ void Particle::registerRender()
 	Vector4 color(1.0, 0.6, 0.1, 1.0);
 
 	render = new RenderItem(cheto, trans, color);
-	RegisterRenderItem(render);
+	//setRender(true);
 }
 
 void Particle::integrateE(double t)
@@ -90,12 +108,16 @@ void Particle::integrateE(double t)
 
 void Particle::integrateSE(double t)
 {
+	//std::cout << "before update:" << vel.getX() << " " << vel.getY() << " " << vel.getZ() << "\n";
 	vel = Vector3D(vel.getX() + acc.getX() * t, vel.getY() + acc.getY() * t,
 		vel.getZ() + acc.getZ() * t).scalar(pow(damp, t));
+	//std::cout << "after update:" << vel.getX() << " " << vel.getY() << " " << vel.getZ() << "\n";
 
 	trans->p.x += vel.getX() * t;
 	trans->p.y += vel.getY() * t;
 	trans->p.z += vel.getZ() * t;
+
+	//std::cout << trans->p.y << "\n";
 }
 
 void Particle::integrateV(double t)

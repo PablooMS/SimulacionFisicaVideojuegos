@@ -17,6 +17,8 @@ public:
 	void setSpeed(Vector3 v);
 	void setLifetime(double t);
 
+	void setRender(bool r);
+
 protected:
 	void registerRender();
 

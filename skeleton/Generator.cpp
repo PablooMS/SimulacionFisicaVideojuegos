@@ -1,8 +1,8 @@
 #include "Generator.h"
 #include <iostream>
 
-Generator::Generator(physx::PxPhysics* physx, Particle* mod, Initialization startval, Initialization varval, int amoun) 
-	: gPhysx(physx), model(mod), start(startval), var(varval), ammount(amoun)
+Generator::Generator(physx::PxPhysics* physx, Particle* mod, Initialization startval, Initialization varval, int amoun, double t) 
+	: gPhysx(physx), model(mod), start(startval), var(varval), ammount(amoun), time(t), toNext(t)
 {
 }
 
@@ -10,6 +10,7 @@ Generator::~Generator()
 {
 	while (ticles.size() > 0)
 	{
+		ticles.front()->setRender(false);
 		delete ticles.front();
 		ticles.pop_front();
 	}
@@ -26,6 +27,11 @@ Initialization Generator::randomize()
 	return result;
 }
 
+void Generator::spawnTime()
+{
+	
+}
+
 void Generator::generateParticle()
 {
 	Particle* aux = new Particle(model);
@@ -37,6 +43,7 @@ void Generator::generateParticle()
 	aux->setLifetime(values.T);
 
 	ticles.push_back(aux);
+	aux->setRender(true);
 }
 
 void Generator::update(double t)
@@ -44,6 +51,7 @@ void Generator::update(double t)
 	for (particleIterator a = ticles.begin(); a != ticles.end(); ++a)
 	{
 		(*a)->update(t);
+		//std::cout << "mama mia\n";
 
 		if ((*a)->toDestroy())
 			toDelete.push_back(a);
@@ -51,14 +59,22 @@ void Generator::update(double t)
 
 	for (auto a : toDelete)
 	{
+		(*a)->setRender(false);
 		ticles.erase(a);
 	}
 
-	for (int i = 0; i < ammount; i++) 
+	toNext -= t;
+	if (toNext < 0) 
 	{
-		std::cout << "segs";
-		generateParticle();
+		for (int i = 0; i < ammount; i++)
+		{
+			//std::cout << "segs\n";
+			generateParticle();
+		}
+
+		spawnTime();
 	}
+	
 
 	toDelete.clear();
 }
