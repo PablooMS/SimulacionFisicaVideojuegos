@@ -142,10 +142,10 @@ void initPhysics(bool interactive)
 	entMan->createGenerator(p, st, v, 5, 0.1, true);*/
 
 	//Rain
-	/*Particle* r = new Particle({0,0,0}, {0,0,0}, {0,-10,0}, 0.95, gPhysics, 10, 1, {0.1, 0.1, 0.6, 1.0});
+	/**Particle* r = new Particle({0,0,0}, {0,0,0}, {0,-10,0}, 0.95, gPhysics, 10, 1, {0.1, 0.1, 0.6, 1.0});
 	Initialization str = { {0,300,0}, {5,-100,0}, 10 };
 	Initialization vr = { {100,0,100}, {1,0,1}, 0 };
-	entMan->createGenerator(r, str, vr, 5, 0.1, true);*/
+	entMan->createGenerator(r, str, vr, 5, 0.1, false);*/
 
 	//Fog
 	/*Particle* f = new Particle({0,0,0}, {0,0,0}, {0,0,0}, 0.95, gPhysics, 10, 5, {0.3, 0.3, 0.3, 1.0});
@@ -153,7 +153,13 @@ void initPhysics(bool interactive)
 	Initialization vf = { {50,50,50}, {0.5,0.5,0.5}, 5 };
 	entMan->createGenerator(f, stf, vf, 5, 0.1, true);*/
 
-
+	//Fireworks
+	Particle* fw = new Particle({ 0,0,0 }, { 0,0,0 }, { 0,0,0 }, 0.95, gPhysics, 10, 1, { 1.0, 0.6, 0.1, 1.0 });
+	Initialization stfw = { {0,0,0}, {0,0,0}, 2 };
+	Initialization vfw = { {0,0,0}, {10,10,10}, 0.5 };
+	Initialization ist = { {50,0,-150}, {0,100,0}, 3 };
+	Initialization iv = { {0,0,0}, {10,5,10}, 1 };
+	entMan->createFireworks(fw, stfw, vfw, 3, 5, true, ist, iv, 3);
 #pragma endregion
 	
 }

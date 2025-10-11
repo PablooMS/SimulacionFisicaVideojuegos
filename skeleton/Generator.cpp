@@ -19,7 +19,7 @@ Generator::~Generator()
 	model = nullptr;
 }
 
-Initialization Generator::randomize()
+Initialization Generator::randomize(Initialization v, Initialization s)
 {
 	Initialization result;
 
@@ -36,7 +36,7 @@ void Generator::generateParticle()
 {
 	Particle* aux = new Particle(model);
 
-	Initialization values = randomize();
+	Initialization values = randomize(start, var);
 
 	aux->setPos(values.P);
 	aux->setSpeed(values.S);

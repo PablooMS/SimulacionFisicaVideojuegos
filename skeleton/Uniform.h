@@ -5,7 +5,7 @@ class Uniform : public Generator
 {
 protected:
 
-	virtual Initialization randomize() override;
+	virtual Initialization randomize(Initialization s, Initialization v) override;
 
 	virtual void spawnTime() override;
 

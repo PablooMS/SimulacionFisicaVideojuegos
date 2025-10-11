@@ -18,6 +18,8 @@
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="Gaussian.cpp" />
     <ClCompile Include="Uniform.cpp" />
+    <ClCompile Include="Firework.cpp" />
+    <ClCompile Include="FireworkLauncher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -37,6 +39,8 @@
     <ClInclude Include="Generator.h" />
     <ClInclude Include="Gaussian.h" />
     <ClInclude Include="Uniform.h" />
+    <ClInclude Include="Firework.h" />
+    <ClInclude Include="FireworkLauncher.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

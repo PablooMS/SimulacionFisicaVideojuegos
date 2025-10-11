@@ -6,7 +6,7 @@ Gaussian::~Gaussian()
 {
 }
 
-Initialization Gaussian::randomize()
+Initialization Gaussian::randomize(Initialization s, Initialization v)
 {
 	Initialization result;
 
@@ -14,9 +14,9 @@ Initialization Gaussian::randomize()
 	std::normal_distribution<double> _u{ 0,1 };
 	std::mt19937 _mtseed(rd());
 
-	result.P = start.P + Vector3(_u(_mtseed) * var.P.x, _u(_mtseed) * var.P.y, _u(_mtseed) * var.P.z);
-	result.S = start.S + Vector3(_u(_mtseed) * var.S.x, _u(_mtseed) * var.S.y, _u(_mtseed) * var.S.z);
-	result.T = start.T + _u(_mtseed) * var.T;
+	result.P = s.P + Vector3(_u(_mtseed) * v.P.x, _u(_mtseed) * v.P.y, _u(_mtseed) * v.P.z);
+	result.S = s.S + Vector3(_u(_mtseed) * v.S.x, _u(_mtseed) * v.S.y, _u(_mtseed) * v.S.z);
+	result.T = s.T + _u(_mtseed) * v.T;
 
 	/*
 	std::cout << result.P.x << " " << result.P.y << " " << result.P.z << "\n";

@@ -3,6 +3,7 @@
 #include "Projectile.h"
 #include "Gaussian.h"
 #include "Uniform.h"
+#include "FireworkLauncher.h"
 
 EntityManager::EntityManager(physx::PxPhysics* physx) : gPhysx(physx)
 {
@@ -62,6 +63,12 @@ void EntityManager::createGenerator(Particle* mod, Initialization startval, Init
 		Uniform* uGen = new Uniform(gPhysx, mod, startval, varval, am, t);
 		tiddies.push_back(uGen);
 	}
+}
+
+void EntityManager::createFireworks(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaussian, Initialization is, Initialization iv, int ttl)
+{
+	FireworkLauncher* fGen = new FireworkLauncher(gPhysx, mod, startval, varval, am, t, is, iv, ttl);
+	tiddies.push_back(fGen);
 }
 
 

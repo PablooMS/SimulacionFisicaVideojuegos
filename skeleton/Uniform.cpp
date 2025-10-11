@@ -1,17 +1,17 @@
 #include "Uniform.h"
 #include <random>
 
-Initialization Uniform::randomize()
+Initialization Uniform::randomize(Initialization s, Initialization v)
 {
 	Initialization result;
 
 	std::random_device rd{};
-	std::uniform_real_distribution<double> _u{ 0,1 };
+	std::uniform_real_distribution<double> _u{ -1, 1 };
 	std::mt19937 _mtseed(rd());
 
-	result.P = start.P + Vector3(_u(_mtseed) * var.P.x, _u(_mtseed) * var.P.y, _u(_mtseed) * var.P.z);
-	result.S = start.S + Vector3(_u(_mtseed) * var.S.x, _u(_mtseed) * var.S.y, _u(_mtseed) * var.S.z);
-	result.T = start.T + _u(_mtseed) * var.T;
+	result.P = s.P + Vector3(_u(_mtseed) * v.P.x, _u(_mtseed) * v.P.y, _u(_mtseed) * v.P.z);
+	result.S = s.S + Vector3(_u(_mtseed) * v.S.x, _u(_mtseed) * v.S.y, _u(_mtseed) * v.S.z);
+	result.T = s.T + _u(_mtseed) * v.T;
 
 	return result;
 }
@@ -19,7 +19,7 @@ Initialization Uniform::randomize()
 void Uniform::spawnTime()
 {
 	std::random_device rd{};
-	std::uniform_real_distribution<double> _u{ 1, 0.3 };
+	std::uniform_real_distribution<double> _u{ 0.7, 1.3 };
 	std::mt19937 _mtseed(rd());
 
 	toNext = time * _u(_mtseed);

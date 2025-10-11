@@ -260,6 +260,8 @@
     <ClCompile Include="callbacks.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
+    <ClCompile Include="Firework.cpp" />
+    <ClCompile Include="FireworkLauncher.cpp" />
     <ClCompile Include="Gaussian.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="main.cpp" />
@@ -276,6 +278,8 @@
     <ClInclude Include="core.hpp" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
+    <ClInclude Include="Firework.h" />
+    <ClInclude Include="FireworkLauncher.h" />
     <ClInclude Include="Gaussian.h" />
     <ClInclude Include="Generator.h" />
     <ClInclude Include="Particle.h" />

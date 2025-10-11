@@ -18,18 +18,19 @@ class Generator : public Entity
 {
 private:
 	physx::PxPhysics* gPhysx;
+
+protected:
+	Particle* model;
 	std::list<Particle*> ticles;
 	std::list<particleIterator> toDelete;
 
-	Particle* model;
 	int ammount;
 
-protected:
 	Initialization start;
 
 	Initialization var;
 
-	virtual Initialization randomize();
+	virtual Initialization randomize(Initialization s, Initialization v);
 
 	double time;
 	double toNext;
