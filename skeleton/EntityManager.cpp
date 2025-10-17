@@ -12,11 +12,7 @@ EntityManager::EntityManager(physx::PxPhysics* physx) : gPhysx(physx)
 
 EntityManager::~EntityManager()
 {
-	while (tiddies.size() > 0) 
-	{
-		delete tiddies.front();
-		tiddies.pop_front();
-	}
+	clearEnts();
 }
 
 void EntityManager::update(double t) 
@@ -35,6 +31,15 @@ void EntityManager::update(double t)
 	}
 
 	toDelete.clear();
+}
+
+void EntityManager::clearEnts()
+{
+	while (tiddies.size() > 0)
+	{
+		delete tiddies.front();
+		tiddies.pop_front();
+	}
 }
 
 void EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, float size, Vector4 color)

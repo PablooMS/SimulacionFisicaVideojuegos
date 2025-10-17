@@ -10,7 +10,9 @@
 #include "Vector3D.h"
 #include "Particle.h"
 #include "EntityManager.h";
+#include "SceneManager.h";
 #include "Projectile.h";
+#include "P2Scene.h";
 
 #include <iostream>
 
@@ -36,6 +38,7 @@ PxScene*				gScene      = NULL;
 ContactReportCallback gContactReportCallback;
 
 EntityManager* entMan;
+SceneManager* _scenes;
 
 
 // Initialize physics engine
@@ -157,15 +160,22 @@ void initPhysics(bool interactive)
 	entMan->createGenerator(f, stf, vf, 5, 0.1, true);*/
 
 	//Fireworks
-	Particle* fw = new Particle({0,0,0}, {0,0,0}, {0,0,0}, 0.95, gPhysics, 10, 1, {1.0, 0.6, 0.1, 1.0});
+	/*Particle* fw = new Particle({0,0,0}, {0,0,0}, {0,0,0}, 0.95, gPhysics, 10, 1, {1.0, 0.6, 0.1, 1.0});
 	fw->setRender(false);
 	Initialization stfw = { {0,0,0}, {0,0,0}, 2 };
 	Initialization vfw = { {0,0,0}, {10,10,10}, 0.5 };
 	Initialization ist = { {50,0,-150}, {0,100,0}, 3 };
 	Initialization iv = { {0,0,0}, {10,5,10}, 1 };
-	entMan->createFireworks(fw, stfw, vfw, 3, 5, true, ist, iv, 3);
+	entMan->createFireworks(fw, stfw, vfw, 3, 5, true, ist, iv, 3);*/
 #pragma endregion
 	
+	//SCENE MANAGER
+	_scenes = new SceneManager();
+
+	P2Scene* es = new P2Scene(gPhysics);
+	_scenes->registerScene(es, "P2");
+	_scenes->changeScene("P2");
+
 }
 
 
@@ -180,6 +190,7 @@ void stepPhysics(bool interactive, double t)
 	gScene->fetchResults(true);
 
 	entMan->update(t);
+	_scenes->update(t);
 }
 
 // Function to clean data

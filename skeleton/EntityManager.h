@@ -21,6 +21,8 @@ public:
 
 	void update(double t);
 
+	void clearEnts();
+
 private:
 	
 	physx::PxPhysics* gPhysx;

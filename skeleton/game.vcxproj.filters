@@ -20,6 +20,9 @@
     <ClCompile Include="Uniform.cpp" />
     <ClCompile Include="Firework.cpp" />
     <ClCompile Include="FireworkLauncher.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="P2Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -41,6 +44,9 @@
     <ClInclude Include="Uniform.h" />
     <ClInclude Include="Firework.h" />
     <ClInclude Include="FireworkLauncher.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="P2Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

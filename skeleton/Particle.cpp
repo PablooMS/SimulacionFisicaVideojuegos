@@ -40,6 +40,7 @@ Particle::Particle(Particle* p)
 
 Particle::~Particle()
 {
+	setRender(false);
 	render->release();
 	render = nullptr;
 }
