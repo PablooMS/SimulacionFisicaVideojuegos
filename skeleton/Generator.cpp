@@ -43,7 +43,7 @@ void Generator::generateParticle()
 	aux->setLifetime(values.T);
 
 	ticles.push_back(aux);
-	aux->setRender(true);
+	//aux->setRender(true);
 }
 
 void Generator::update(double t)

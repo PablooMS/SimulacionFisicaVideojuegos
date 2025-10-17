@@ -22,7 +22,7 @@ void FireworkLauncher::generateInitParticle()
 	aux->setLifetime(values.T);
 
 	firs.push_back(aux);
-	aux->setRender(true);
+	//aux->setRender(true);
 }
 
 void FireworkLauncher::generateParticle(Vector3 startPos, int tt)
@@ -39,7 +39,7 @@ void FireworkLauncher::generateParticle(Vector3 startPos, int tt)
 	aux->setLifetime(values.T);
 
 	firs.push_back(aux);
-	aux->setRender(true);
+	//aux->setRender(true);
 }
 
 void FireworkLauncher::update(double t)
