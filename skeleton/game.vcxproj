@@ -262,8 +262,10 @@
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="Firework.cpp" />
     <ClCompile Include="FireworkLauncher.cpp" />
+    <ClCompile Include="ForceGen.cpp" />
     <ClCompile Include="Gaussian.cpp" />
     <ClCompile Include="Generator.cpp" />
+    <ClCompile Include="GScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="P2Scene.cpp" />
     <ClCompile Include="P3Scene.cpp" />
@@ -284,8 +286,10 @@
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="Firework.h" />
     <ClInclude Include="FireworkLauncher.h" />
+    <ClInclude Include="ForceGen.h" />
     <ClInclude Include="Gaussian.h" />
     <ClInclude Include="Generator.h" />
+    <ClInclude Include="GScene.h" />
     <ClInclude Include="P2Scene.h" />
     <ClInclude Include="P3Scene.h" />
     <ClInclude Include="Particle.h" />
@@ -295,6 +299,7 @@
     <ClInclude Include="Render\Render.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SceneResource.h" />
     <ClInclude Include="Uniform.h" />
     <ClInclude Include="Vector3D.h" />
   </ItemGroup>

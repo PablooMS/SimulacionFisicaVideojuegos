@@ -1,6 +1,9 @@
 #pragma once
 #include <PxPhysicsAPI.h>
 #include "EntityManager.h"
+#include "ForceGen.h"
+
+using forceIterator = std::list<ForceGen*>::iterator;
 
 class Scene
 {
@@ -18,10 +21,14 @@ public:
 
 protected:
 
+	void updateForces();
+
 	bool change;
 	std::string next;
 
 	physx::PxPhysics* gPhysx;
 	EntityManager* _entMan;
+
+	std::list<ForceGen*> _forces;
 };
 

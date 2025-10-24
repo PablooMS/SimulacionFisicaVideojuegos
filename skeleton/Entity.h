@@ -1,4 +1,5 @@
 #pragma once
+#include "core.hpp"
 
 class Entity
 {
@@ -10,7 +11,17 @@ public:
 
 	bool toDestroy() { return _toDestroy; }
 
+	Vector3 getPos() { return trans->p; }
+
+	void applyForce(Vector3 f);
+	bool staticEnt() { return statc; }
+
 protected:
 	bool _toDestroy = false;
+
+	physx::PxTransform* trans;
+
+	Vector3 forces;
+	bool statc;
 };
 

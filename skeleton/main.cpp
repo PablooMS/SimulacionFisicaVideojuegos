@@ -12,8 +12,7 @@
 #include "EntityManager.h";
 #include "SceneManager.h";
 #include "Projectile.h";
-#include "P2Scene.h";
-#include "P3Scene.h";
+#include "SceneResource.h"
 
 #include <iostream>
 
@@ -176,8 +175,11 @@ void initPhysics(bool interactive)
 	P2Scene* es = new P2Scene(gPhysics);
 	_scenes->registerScene(es, "P2");		// Escena practica 2
 
+	GScene* g = new GScene(gPhysics);
+	_scenes->registerScene(g, "Grav");		// Escena practica 3 pt 1 (gravedad)
+
 	P3Scene* sc = new P3Scene(gPhysics);
-	_scenes->registerScene(sc, "P3");		// Escena práctica 3
+	_scenes->registerScene(sc, "P3");		// Escena práctica 3 pt 2
 
 	_scenes->changeScene("P2");
 
@@ -268,9 +270,9 @@ void keyPress(unsigned char key, const Camera& camera)
 		_scenes->changeScene("P3");
 		break;
 	}
-	case '·':
+	case '4':
 	{
-
+		_scenes->changeScene("Grav");
 		break;
 	}
 	default:

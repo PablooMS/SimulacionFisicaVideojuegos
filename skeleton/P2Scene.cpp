@@ -10,7 +10,7 @@ void P2Scene::loadScene()
 	_entMan->createGenerator(p, st, v, 5, 0.1, true);*/
 
 	//Rain
-	Particle* r = new Particle({0,0,0}, {0,0,0}, {0,-10,0}, 0.95, gPhysx, 10, 1, {0.1, 0.1, 0.6, 1.0});
+	Particle* r = new Particle({0,0,0}, {0,0,0}, {0,-10,0}, 0.95, gPhysx, 0, 10, 1, {0.1, 0.1, 0.6, 1.0});
 	r->setRender(false);
 	Initialization str = { {0,300,0}, {5,-100,0}, 10 };
 	Initialization vr = { {100,0,100}, {1,0,1}, 0 };

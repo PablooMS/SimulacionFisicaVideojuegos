@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "Vector3D.h"
 #include "Generator.h"
+#include "ForceGen.h"
 
 using entityIterator = std::list<Entity*>::iterator;
 
@@ -20,6 +21,8 @@ public:
 		Initialization is, Initialization iv, int ttl);
 
 	void update(double t);
+
+	void applyForce(ForceGen* fgen);
 
 	void clearEnts();
 

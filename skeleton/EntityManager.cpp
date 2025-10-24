@@ -34,6 +34,16 @@ void EntityManager::update(double t)
 	toDelete.clear();
 }
 
+void EntityManager::applyForce(ForceGen* fgen)
+{
+	for (entityIterator a = tiddies.begin(); a != tiddies.end(); ++a)
+	{
+		std::cout << "hi boss\n";
+		if(!(*a)->staticEnt())
+			fgen->process((*a));
+	}
+}
+
 void EntityManager::clearEnts()
 {
 	while (tiddies.size() > 0)
@@ -45,7 +55,7 @@ void EntityManager::clearEnts()
 
 void EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, float size, Vector4 color)
 {
-	Particle* part = new Particle(pos, velo, acce, 0.95, gPhysx, 10, size, color);
+	Particle* part = new Particle(pos, velo, acce, 0.95, gPhysx, 0, 10, size, color);
 	tiddies.push_back(part);
 	part->setRender(true);
 }

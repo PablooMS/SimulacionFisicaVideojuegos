@@ -5,13 +5,17 @@
 
 using namespace physx;
 
-Particle::Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, PxPhysics* physx, double lifetim, float siz, Vector4 col)
+Particle::Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, PxPhysics* physx, double mas, double lifetim, float siz, Vector4 col)
 {
 	vel = velo;
 	acc = acce;
 	damp = dam;
 	trans = new physx::PxTransform(physx::PxVec3(pos.getX(), pos.getY(), pos.getZ()));
 	pastPos = { trans->p.x - vel.getX(), trans->p.y - vel.getY(), trans->p.z - vel.getZ()};
+
+	mass = mas;
+	forces = { 0, 0, 0 };
+	statc = false;
 
 	lifetime = lifetim;
 
@@ -40,14 +44,24 @@ Particle::Particle(Particle* p)
 
 Particle::~Particle()
 {
-	if(rendered)
+	if (rendered)
+	{
+		setRender(false);
 		render->release();
+	}
 	render = nullptr;
 }
 
 void Particle::update(double t) 
 {
+	if (mass > 0.001)
+		forces = forces / mass;
+	else
+		forces *= 1000;
+
 	integrateSE(t);
+
+	forces = { 0, 0, 0 };
 
 	life += t;
 
@@ -105,15 +119,15 @@ void Particle::integrateE(double t)
 	trans->p.y += vel.getY() * t;
 	trans->p.z += vel.getZ() * t;
 
-	vel = Vector3D(vel.getX() + acc.getX() * t, vel.getY() + acc.getY() * t,
-		vel.getZ() + acc.getZ() * t).scalar(pow(damp, t));
+	vel = Vector3D(vel.getX() + acc.getX() * t + forces.x * t, vel.getY() + acc.getY() * t + forces.y * t,
+		vel.getZ() + acc.getZ() * t + forces.z * t).scalar(pow(damp, t));
 }
 
 void Particle::integrateSE(double t)
 {
 	//std::cout << "before update:" << vel.getX() << " " << vel.getY() << " " << vel.getZ() << "\n";
-	vel = Vector3D(vel.getX() + acc.getX() * t, vel.getY() + acc.getY() * t,
-		vel.getZ() + acc.getZ() * t).scalar(pow(damp, t));
+	vel = Vector3D(vel.getX() + acc.getX() * t + forces.x * t, vel.getY() + acc.getY() * t + forces.y * t,
+		vel.getZ() + acc.getZ() * t + forces.z * t).scalar(pow(damp, t));
 	//std::cout << "after update:" << vel.getX() << " " << vel.getY() << " " << vel.getZ() << "\n";
 
 	trans->p.x += vel.getX() * t;

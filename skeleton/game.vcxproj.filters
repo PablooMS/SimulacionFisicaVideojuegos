@@ -24,6 +24,8 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="P2Scene.cpp" />
     <ClCompile Include="P3Scene.cpp" />
+    <ClCompile Include="GScene.cpp" />
+    <ClCompile Include="ForceGen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -49,6 +51,9 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="P2Scene.h" />
     <ClInclude Include="P3Scene.h" />
+    <ClInclude Include="GScene.h" />
+    <ClInclude Include="ForceGen.h" />
+    <ClInclude Include="SceneResource.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
