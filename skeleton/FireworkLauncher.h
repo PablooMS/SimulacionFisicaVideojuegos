@@ -23,7 +23,7 @@ public:
 	FireworkLauncher(physx::PxPhysics* physx, Particle* mod, Initialization startval, Initialization varval, int am, double t, 
 		Initialization is, Initialization iv, int ttl)
 		: Gaussian(physx, mod, startval, varval, am, t), istart(is), ivar(iv), ilives(ttl) {}
-	~FireworkLauncher();
+	virtual ~FireworkLauncher();
 
 	virtual void update(double t) override;
 };

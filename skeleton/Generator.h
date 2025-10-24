@@ -39,7 +39,7 @@ protected:
 
 public:
 	Generator(physx::PxPhysics* physx, Particle* mod, Initialization startval, Initialization varval, int amount, double time);
-	~Generator();
+	virtual ~Generator();
 
 	virtual void generateParticle();
 

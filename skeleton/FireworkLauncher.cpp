@@ -1,13 +1,13 @@
 #include "FireworkLauncher.h"
+#include <iostream>
 
 FireworkLauncher::~FireworkLauncher()
 {
-
-	while (ticles.size() > 0)
+	std::cout << firs.size() << "\n";
+	while (firs.size() > 0)
 	{
-		firs.front()->setRender(false);
-		delete firs.front();
-		firs.pop_front();
+		std::cout << firs.size() << "\n";
+		firs.erase(firs.begin());
 	}
 }
 

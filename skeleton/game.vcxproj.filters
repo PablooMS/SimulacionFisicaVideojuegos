@@ -23,6 +23,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="P2Scene.cpp" />
+    <ClCompile Include="P3Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="P2Scene.h" />
+    <ClInclude Include="P3Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

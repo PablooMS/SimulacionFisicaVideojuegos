@@ -1,6 +1,10 @@
 #include "Uniform.h"
 #include <random>
 
+Uniform::~Uniform()
+{
+}
+
 Initialization Uniform::randomize(Initialization s, Initialization v)
 {
 	Initialization result;
@@ -24,3 +28,4 @@ void Uniform::spawnTime()
 
 	toNext = time * _u(_mtseed);
 }
+

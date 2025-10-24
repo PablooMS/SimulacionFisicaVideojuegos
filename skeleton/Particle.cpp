@@ -40,8 +40,8 @@ Particle::Particle(Particle* p)
 
 Particle::~Particle()
 {
-	setRender(false);
-	render->release();
+	if(rendered)
+		render->release();
 	render = nullptr;
 }
 
@@ -75,6 +75,7 @@ void Particle::setLifetime(double t)
 
 void Particle::setRender(bool r)
 {
+	rendered = r;
 	if (r) 
 	{
 		RegisterRenderItem(render);

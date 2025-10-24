@@ -13,6 +13,7 @@
 #include "SceneManager.h";
 #include "Projectile.h";
 #include "P2Scene.h";
+#include "P3Scene.h";
 
 #include <iostream>
 
@@ -173,7 +174,11 @@ void initPhysics(bool interactive)
 	_scenes = new SceneManager();
 
 	P2Scene* es = new P2Scene(gPhysics);
-	_scenes->registerScene(es, "P2");
+	_scenes->registerScene(es, "P2");		// Escena practica 2
+
+	P3Scene* sc = new P3Scene(gPhysics);
+	_scenes->registerScene(sc, "P3");		// Escena práctica 3
+
 	_scenes->changeScene("P2");
 
 }
@@ -237,19 +242,37 @@ void keyPress(unsigned char key, const Camera& camera)
 		//entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(80, 10, 0), Vector3D(0, -9.8, 0), 0.025, 10);
 		break;
 	}*/
-	/*case 'V':
+	case 'V':
 	{
+		if (_scenes->currentScene() != "P3")
+			break;
+
 		//Flecha adaptada
 		PxVec3 cameraPos = camera.getTransform().p;
 		Vector3D camPos(cameraPos.x, cameraPos.y, cameraPos.z);
 		Vector3D dir(camera.getDir().x * 40, camera.getDir().y * 40, camera.getDir().z * 40);
 
-		entMan->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 0.05, 10);
+		entMan->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 0.05, 10, 1, {1.0, 1.0, 1.0, 1.0});
 
 		// Versión simple
 		//entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(40, 30, 0), Vector3D(0, -30, 0), 0.25, 10); 
 		break;
-	}*/
+	}
+	case '2':
+	{
+		_scenes->changeScene("P2");
+		break;
+	}
+	case '3':
+	{
+		_scenes->changeScene("P3");
+		break;
+	}
+	case '·':
+	{
+
+		break;
+	}
 	default:
 		break;
 	}

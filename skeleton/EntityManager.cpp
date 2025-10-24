@@ -4,6 +4,7 @@
 #include "Gaussian.h"
 #include "Uniform.h"
 #include "FireworkLauncher.h"
+#include <iostream>
 
 EntityManager::EntityManager(physx::PxPhysics* physx) : gPhysx(physx)
 {

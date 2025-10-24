@@ -15,8 +15,11 @@ public:
 
 	void update(double t);
 
+	std::string currentScene();
+
 private:
 
+	std::string curry;
 	Scene* current = nullptr;
 
 	std::unordered_map<std::string, Scene*> sceneMap;
