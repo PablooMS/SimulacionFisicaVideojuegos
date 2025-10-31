@@ -14,10 +14,16 @@ void P3Scene::loadScene()
 	RenderItem* rend = new RenderItem(suelo, floTrans, color);
 	RegisterRenderItem(rend);
 
+	Vector4 color2(0.8, 0.3, 1.0, 1.0);
+	_entMan->createParticle({ 20, 3, -10 }, { 0, 0, 0 }, { 0, 0, 0 }, 5, color2);
+	_entMan->createParticle({ 80, 5, -50 }, { 0, 0, 0 }, { 0, 0, 0 }, 5, color2);
+	_entMan->createParticle({ 50, 5, -120 }, { 0, 0, 0 }, { 0, 0, 0 }, 5, color2);
+
+	/*
 	physx::PxShape* diana = gPhysx->createShape(physx::PxSphereGeometry(5), *gMaterial);
 	Vector3D pos2(20, 3, -10);
 	physx::PxTransform* diaTrans = new physx::PxTransform(physx::PxVec3(pos2.getX(), pos2.getY(), pos2.getZ()));
-	Vector4 color2(0.8, 0.3, 1.0, 1.0);
+	
 	RenderItem* rend2 = new RenderItem(diana, diaTrans, color2);
 	RegisterRenderItem(rend2);
 
@@ -31,5 +37,5 @@ void P3Scene::loadScene()
 	Vector3D pos4(50, 5, -120);
 	physx::PxTransform* diaTrans3 = new physx::PxTransform(physx::PxVec3(pos4.getX(), pos4.getY(), pos4.getZ()));
 	RenderItem* rend4 = new RenderItem(diana3, diaTrans3, color2);
-	RegisterRenderItem(rend4);
+	RegisterRenderItem(rend4);*/
 }

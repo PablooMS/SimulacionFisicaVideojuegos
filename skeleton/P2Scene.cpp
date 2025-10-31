@@ -17,7 +17,7 @@ void P2Scene::loadScene()
 	_entMan->createGenerator(r, str, vr, 5, 0.1, false);
 
 	//Fog
-	/*Particle* f = new Particle({0,0,0}, {0,0,0}, {0,0,0}, 0.95, gPhysx, 10, 5, {0.3, 0.3, 0.3, 1.0});
+	/*Particle* f = new Particle({0,0,0}, {0,0,0}, {0,0,0}, 0.95, gPhysx, 0, 10, 5, {0.3, 0.3, 0.3, 1.0});
 	f->setRender(false);
 	Initialization stf = { {0,50,-100}, {0,0,0}, 20 };
 	Initialization vf = { {50,50,50}, {0.5,0.5,0.5}, 5 };

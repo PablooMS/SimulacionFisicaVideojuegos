@@ -54,14 +54,23 @@ Particle::~Particle()
 
 void Particle::update(double t) 
 {
+
+	//std::cout << "Forces:\nBefore:" << forces.x << " " << forces.y << " " << forces.z << "\n";
+
 	if (mass > 0.001)
 		forces = forces / mass;
 	else
 		forces *= 1000;
 
+	//std::cout << "During:" << forces.x << " " << forces.y << " " << forces.z << "\n";
+
 	integrateSE(t);
 
+	//std::cout << "After During:" << forces.x << " " << forces.y << " " << forces.z << "\n";
+
 	forces = { 0, 0, 0 };
+
+	//std::cout << "After:" << forces.x << " " << forces.y << " " << forces.z << "\n";
 
 	life += t;
 

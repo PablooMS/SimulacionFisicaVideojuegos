@@ -21,7 +21,7 @@ protected:
 
 	physx::PxTransform* trans;
 
-	Vector3 forces;
+	Vector3 forces = { 0, 0, 0 };
 	bool statc;
 };
 

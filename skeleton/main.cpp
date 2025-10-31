@@ -260,19 +260,22 @@ void keyPress(unsigned char key, const Camera& camera)
 		//entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(40, 30, 0), Vector3D(0, -30, 0), 0.25, 10); 
 		break;
 	}
-	case '2':
+	case '1':
 	{
 		_scenes->changeScene("P2");
+		GetCamera()->setPos(PxVec3(50.0f, 20.0f, 200.0f), PxVec3(0.0f, 0.0f, -0.7f));
+		break;
+	}
+	case '2':
+	{
+		_scenes->changeScene("Grav");
+		GetCamera()->setPos(PxVec3(50.0f, 20.0f, 100.0f), PxVec3(0.0f, 0.0f, -0.7f));
 		break;
 	}
 	case '3':
 	{
 		_scenes->changeScene("P3");
-		break;
-	}
-	case '4':
-	{
-		_scenes->changeScene("Grav");
+		GetCamera()->setPos(PxVec3(50.0f, 20.0f, 50.0f), PxVec3(0.0f, 0.0f, -0.7f));
 		break;
 	}
 	default:
