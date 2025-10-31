@@ -8,7 +8,7 @@ ForceGen::~ForceGen()
 
 void ForceGen::process(Entity* p)
 {
-	std::cout << "am procesin'ere\n";
+	//std::cout << "am procesin'ere\n";
 	if (global || checkInside(p->getPos()))
 		applyForce(p);
 }
@@ -32,6 +32,6 @@ bool ForceGen::checkInside(Vector3 o)
 
 void ForceGen::applyForce(Entity* p)
 {
-	std::cout << "am applyin'ere\n";
+	//std::cout << "am applyin'ere\n";
 	p->applyForce(force);
 }

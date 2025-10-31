@@ -26,6 +26,7 @@
     <ClCompile Include="P3Scene.cpp" />
     <ClCompile Include="GScene.cpp" />
     <ClCompile Include="ForceGen.cpp" />
+    <ClCompile Include="Wind.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -54,6 +55,7 @@
     <ClInclude Include="GScene.h" />
     <ClInclude Include="ForceGen.h" />
     <ClInclude Include="SceneResource.h" />
+    <ClInclude Include="Wind.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

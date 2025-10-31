@@ -6,12 +6,11 @@
 using namespace physx;
 
 Particle::Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, PxPhysics* physx, double mas, double lifetim, float siz, Vector4 col)
+	: Entity({ pos.getX(), pos.getY(), pos.getZ() }, { velo.getX(), velo.getY(), velo.getZ() })
 {
-	vel = velo;
 	acc = acce;
 	damp = dam;
-	trans = new physx::PxTransform(physx::PxVec3(pos.getX(), pos.getY(), pos.getZ()));
-	pastPos = { trans->p.x - vel.getX(), trans->p.y - vel.getY(), trans->p.z - vel.getZ()};
+	pastPos = { trans->p.x - vel.x, trans->p.y - vel.y, trans->p.z - vel.z};
 
 	mass = mas;
 	forces = { 0, 0, 0 };
@@ -44,9 +43,10 @@ Particle::Particle(Particle* p)
 
 Particle::~Particle()
 {
+	std::cout << "r: " << rendered << "\n";
 	if (rendered)
 	{
-		setRender(false);
+		//setRender(false);
 		render->release();
 	}
 	render = nullptr;
@@ -86,7 +86,7 @@ void Particle::setPos(Vector3 p)
 
 void Particle::setSpeed(Vector3 v)
 {
-	vel = Vector3D(v.x, v.y, v.z);
+	vel = v;
 	//std::cout << vel.getX() << " " << vel.getY() << " " << vel.getZ() << "\n";
 }
 
@@ -96,21 +96,6 @@ void Particle::setLifetime(double t)
 	//std::cout << lifetime << "\n";
 }
 
-void Particle::setRender(bool r)
-{
-	rendered = r;
-	if (r) 
-	{
-		RegisterRenderItem(render);
-		//std::cout << "registering\n";
-	}
-	else 
-	{
-		DeregisterRenderItem(render);
-		//std::cout << "de-registering\n";
-	}
-}
-
 void Particle::registerRender()
 {
 	PxMaterial* gMaterial = gPhysx->createMaterial(0.5f, 0.5f, 0.6f);
@@ -118,30 +103,31 @@ void Particle::registerRender()
 	PxShape* cheto = gPhysx->createShape(PxSphereGeometry(size), *gMaterial);
 
 	render = new RenderItem(cheto, trans, color);
+	rendered = true;
 	//setRender(true);
 }
 
 void Particle::integrateE(double t)
 {
 	//std::cout << "posx: " << trans->p.x << "\n";
-	trans->p.x += vel.getX() * t;
-	trans->p.y += vel.getY() * t;
-	trans->p.z += vel.getZ() * t;
+	trans->p.x += vel.x * t;
+	trans->p.y += vel.y * t;
+	trans->p.z += vel.z * t;
 
-	vel = Vector3D(vel.getX() + acc.getX() * t + forces.x * t, vel.getY() + acc.getY() * t + forces.y * t,
-		vel.getZ() + acc.getZ() * t + forces.z * t).scalar(pow(damp, t));
+	vel = Vector3(vel.x + acc.getX() * t + forces.x * t, vel.y + acc.getY() * t + forces.y * t,
+		vel.z + acc.getZ() * t + forces.z * t) * pow(damp, t);
 }
 
 void Particle::integrateSE(double t)
 {
 	//std::cout << "before update:" << vel.getX() << " " << vel.getY() << " " << vel.getZ() << "\n";
-	vel = Vector3D(vel.getX() + acc.getX() * t + forces.x * t, vel.getY() + acc.getY() * t + forces.y * t,
-		vel.getZ() + acc.getZ() * t + forces.z * t).scalar(pow(damp, t));
+	vel = Vector3(vel.x + acc.getX() * t + forces.x * t, vel.y + acc.getY() * t + forces.y * t,
+		vel.z + acc.getZ() * t + forces.z * t) * pow(damp, t);
 	//std::cout << "after update:" << vel.getX() << " " << vel.getY() << " " << vel.getZ() << "\n";
 
-	trans->p.x += vel.getX() * t;
-	trans->p.y += vel.getY() * t;
-	trans->p.z += vel.getZ() * t;
+	trans->p.x += vel.x * t;
+	trans->p.y += vel.y * t;
+	trans->p.z += vel.z * t;
 
 	//std::cout << trans->p.y << "\n";
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include <PxPhysicsAPI.h>
 #include "Vector3D.h"
-#include "RenderUtils.hpp"
 #include "Entity.h"
 
 class Particle : public Entity
@@ -17,8 +16,6 @@ public:
 	void setSpeed(Vector3 v);
 	void setLifetime(double t);
 
-	void setRender(bool r);
-
 protected:
 	void registerRender();
 
@@ -29,7 +26,6 @@ protected:
 	//Integrates via Verlet
 	void integrateV(double t);
 
-	Vector3D vel;
 	Vector3D acc;
 	float damp;
 
@@ -39,8 +35,6 @@ protected:
 
 	float size;
 	Vector4 color;
-	RenderItem* render;
-	bool rendered;
 	physx::PxPhysics* gPhysx;
 
 	double lifetime;

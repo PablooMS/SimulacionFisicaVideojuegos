@@ -278,6 +278,7 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Uniform.cpp" />
     <ClCompile Include="Vector3D.cpp" />
+    <ClCompile Include="Wind.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="callbacks.hpp" />
@@ -302,6 +303,7 @@
     <ClInclude Include="SceneResource.h" />
     <ClInclude Include="Uniform.h" />
     <ClInclude Include="Vector3D.h" />
+    <ClInclude Include="Wind.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

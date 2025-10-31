@@ -19,7 +19,7 @@ public:
 protected:
 
 	bool checkInside(Vector3 o);
-	void applyForce(Entity* p);
+	virtual void applyForce(Entity* p);
 
 	Vector3 force;
 

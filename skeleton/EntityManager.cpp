@@ -28,6 +28,7 @@ void EntityManager::update(double t)
 
 	for (auto a : toDelete) 
 	{
+		(*a)->setRender(false);
 		tiddies.erase(a);
 	}
 
@@ -57,14 +58,14 @@ void EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, f
 {
 	Particle* part = new Particle(pos, velo, acce, 0.95, gPhysx, 0, 10, size, color);
 	tiddies.push_back(part);
-	part->setRender(true);
+	//part->setRender(true);
 }
 
 void EntityManager::createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size, Vector4 color)
 {
 	Projectile* projectile = new Projectile(pos, velo, acce, 0.95, gPhysx, mass, lifetime, size, color);
 	tiddies.push_back(projectile);
-	projectile->setRender(true);
+	//projectile->setRender(true);
 }
 
 void EntityManager::createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaus)
