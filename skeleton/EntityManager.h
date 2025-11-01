@@ -22,7 +22,7 @@ public:
 
 	void update(double t);
 
-	void applyForce(ForceGen* fgen);
+	void applyForce(ForceGen* fgen, double t);
 
 	void clearEnts();
 

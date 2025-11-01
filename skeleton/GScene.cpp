@@ -1,6 +1,7 @@
 #include "GScene.h"
 #include "Wind.h"
 #include "Torbellino.h"
+#include "Explosive.h"
 
 void GScene::loadScene()
 {
@@ -29,9 +30,26 @@ void GScene::loadScene()
 	//_forces.push_back(new Wind({ -50, 0, 0 }, gPhysx, 0.5, 0, {100, 30, 0}, SPHERE, 50, 100, true));
 
 	//Torbellino global
-	_forces.push_back(new Torbellino(gPhysx, 1, 0.5, 0));
+	/*_forces.push_back(new Torbellino(gPhysx, 2, 0.5, 0));
 	Particle* f = new Particle({ 0,0,0 }, { 0,0,0 }, { 0,0,0 }, 0.95, gPhysx, 10, 5, 1, { 0.3, 0.3, 0.3, 1.0 });
-	Initialization str = { {0,0,0}, {0,0,0}, 10 };
-	Initialization vr = { {20,150,20}, {0,0,0}, 1 };
-	_entMan->createGenerator(f, str, vr, 10, 0.2, false);
+	f->setRender(false);
+	Initialization str = { {0,0,0}, {0,0,0}, 8 };
+	Initialization vr = { {20,100,20}, {0,0,0}, 1 };
+	_entMan->createGenerator(f, str, vr, 20, 0.15, false);*/
+
+	//Torbellino localizado
+	/*_forces.push_back(new Torbellino(gPhysx, 2, 0.5, 0, {80, 100, -80}, SPHERE, 100, 100, true));
+	Particle* f = new Particle({ 0,0,0 }, { 0,0,0 }, { 0,0,0 }, 0.95, gPhysx, 10, 5, 1, { 0.3, 0.3, 0.3, 1.0 });
+	f->setRender(false);
+	Initialization str = { {80,100,-80}, {0,0,0}, 8 };
+	Initialization vr = { {20,95,20}, {0,0,0}, 1 };
+	_entMan->createGenerator(f, str, vr, 20, 0.15, false);*/
+
+	//Explosion
+	_forces.push_back(new Explosive(gPhysx, { 50, 0, -30 }, 200, 0.25, 100));
+	Particle* f = new Particle({ 0,0,0 }, { 0,0,0 }, { 0,0,0 }, 0.95, gPhysx, 100, 5, 1, { 1, 0.3, 0.3, 1.0 });
+	f->setRender(false);
+	Initialization str = { {50,10,-30}, {0,-1,0}, 8 };
+	Initialization vr = { {20,0,20}, {0,0,0}, 1 };
+	_entMan->createGenerator(f, str, vr, 150, 1, true);
 }

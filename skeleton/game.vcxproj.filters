@@ -28,6 +28,7 @@
     <ClCompile Include="ForceGen.cpp" />
     <ClCompile Include="Wind.cpp" />
     <ClCompile Include="Torbellino.cpp" />
+    <ClCompile Include="Explosive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -58,6 +59,7 @@
     <ClInclude Include="SceneResource.h" />
     <ClInclude Include="Wind.h" />
     <ClInclude Include="Torbellino.h" />
+    <ClInclude Include="Explosive.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

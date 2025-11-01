@@ -5,6 +5,8 @@
 
 using forceIterator = std::list<ForceGen*>::iterator;
 
+enum SceneEvents { Explode };
+
 class Scene
 {
 public:
@@ -19,9 +21,13 @@ public:
 	std::string nextScene() { return next; }
 	void unloadScene();
 
+	EntityManager* sceneEntManager() { return _entMan; }
+
+	void handleEvent(SceneEvents evt);
+
 protected:
 
-	void updateForces();
+	void updateForces(double t);
 
 	bool change;
 	std::string next;

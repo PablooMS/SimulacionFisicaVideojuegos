@@ -7,6 +7,8 @@
 
 enum shape {SPHERE, CYLINDER, CUBE};
 
+enum ForceEvents { Explosion };
+
 class ForceGen
 {
 public:
@@ -22,7 +24,10 @@ public:
 	};
 	virtual ~ForceGen();
 
+	void updateTime(double t);
 	void process(Entity* p);
+
+	virtual void handleEvent(ForceEvents evt);
 
 protected:
 
@@ -42,5 +47,7 @@ protected:
 	float radius;
 	//Media altura en cilindro
 	float height;
+
+	double time = 0;
 };
 

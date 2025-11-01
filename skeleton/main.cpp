@@ -231,19 +231,22 @@ void keyPress(unsigned char key, const Camera& camera)
 	{
 		break;
 	}
-	/*case 'B':
+	case 'B':
 	{
+		if (_scenes->currentScene() != "P3")
+			break;
+
 		//Flecha Real
 		PxVec3 cameraPos = camera.getTransform().p;
 		Vector3D camPos(cameraPos.x, cameraPos.y, cameraPos.z);
 		Vector3D dir(camera.getDir().x * 80, camera.getDir().y * 80, camera.getDir().z * 80);
 		
-		entMan->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 0.025, 10);
+		_scenes->requestEntMan()->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 10, 10, 1, { 1.0, 1.0, 1.0, 1.0 });
 
 		//Versión simple
 		//entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(80, 10, 0), Vector3D(0, -9.8, 0), 0.025, 10);
 		break;
-	}*/
+	}
 	case 'V':
 	{
 		if (_scenes->currentScene() != "P3")
@@ -254,12 +257,15 @@ void keyPress(unsigned char key, const Camera& camera)
 		Vector3D camPos(cameraPos.x, cameraPos.y, cameraPos.z);
 		Vector3D dir(camera.getDir().x * 40, camera.getDir().y * 40, camera.getDir().z * 40);
 
-		entMan->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 0.05, 10, 1, {1.0, 1.0, 1.0, 1.0});
+		_scenes->requestEntMan()->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 5, 10, 1, {1.0, 1.0, 1.0, 1.0});
 
 		// Versión simple
 		//entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(40, 30, 0), Vector3D(0, -30, 0), 0.25, 10); 
 		break;
 	}
+	case 'M':
+		_scenes->handleEvent(SceneEvents::Explode);
+		break;
 	case '1':
 	{
 		_scenes->changeScene("P2");

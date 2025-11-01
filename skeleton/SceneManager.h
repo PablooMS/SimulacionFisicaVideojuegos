@@ -14,8 +14,11 @@ public:
 	void changeScene(std::string next);
 
 	void update(double t);
+	void handleEvent(SceneEvents evt);
 
 	std::string currentScene();
+
+	EntityManager* requestEntMan() { return current->sceneEntManager(); }
 
 private:
 

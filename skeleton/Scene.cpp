@@ -14,7 +14,7 @@ Scene::~Scene()
 
 void Scene::update(double t)
 {
-	updateForces();
+	updateForces(t);
 	_entMan->update(t);
 }
 
@@ -34,10 +34,27 @@ void Scene::unloadScene()
 
 }
 
-void Scene::updateForces()
+void Scene::handleEvent(SceneEvents evt)
 {
+	//std::cout << "handling event ";
+	switch (evt)
+	{
+	case Explode:
+		//std::cout << "exploding\n";
+		for (forceIterator a = _forces.begin(); a != _forces.end(); ++a)
+			(*a)->handleEvent(ForceEvents::Explosion);
+		break;
+	default:
+		break;
+	}
+}
+
+void Scene::updateForces(double t)
+{
+	//std::cout << "forces: " << _forces.size() << std::endl;
 	for (forceIterator a = _forces.begin(); a != _forces.end(); ++a)
 	{
-		_entMan->applyForce((*a));
+		(*a)->updateTime(t);
+		_entMan->applyForce((*a), t);
 	}
 }

@@ -18,12 +18,17 @@ EntityManager::~EntityManager()
 
 void EntityManager::update(double t) 
 {
+	//std::cout << "entities: " << tiddies.size() << std::endl;
+	int n = 0;
 	for (entityIterator a = tiddies.begin(); a != tiddies.end(); ++a) 
 	{
 		(*a)->update(t);
+		//std::cout << n << std::endl;
 
 		if ((*a)->toDestroy())
 			toDelete.push_back(a);
+
+		n++;
 	}
 
 	for (auto a : toDelete) 
@@ -35,15 +40,16 @@ void EntityManager::update(double t)
 	toDelete.clear();
 }
 
-void EntityManager::applyForce(ForceGen* fgen)
+void EntityManager::applyForce(ForceGen* fgen, double t)
 {
+	//std::cout << "entitiesToForce: " << tiddies.size() << std::endl;
+	int n = 0;
 	for (entityIterator a = tiddies.begin(); a != tiddies.end(); ++a)
 	{
+		//std::cout << n << ": static: " << (*a)->staticEnt() << std::endl;
 		if (!(*a)->staticEnt())
 			fgen->process((*a));
-		//else if ((*a)->generatorEnt())
-			//(*a)->applyForce(fgen);
-
+		n++;
 	}
 }
 

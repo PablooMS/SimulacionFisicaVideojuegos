@@ -31,6 +31,11 @@ void SceneManager::update(double t)
 	current->update(t);
 }
 
+void SceneManager::handleEvent(SceneEvents evt)
+{
+	current->handleEvent(evt);
+}
+
 std::string SceneManager::currentScene()
 {
 	return curry;

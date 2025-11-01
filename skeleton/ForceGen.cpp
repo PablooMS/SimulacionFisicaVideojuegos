@@ -7,6 +7,11 @@ ForceGen::~ForceGen()
 	delete trans;
 }
 
+void ForceGen::updateTime(double t)
+{
+	time += t;
+}
+
 void ForceGen::process(Entity* p)
 {
 	//std::cout << "am procesin'ere\n";
@@ -24,6 +29,10 @@ void ForceGen::process(Entity* p)
 			process(e);
 		}
 	}
+}
+
+void ForceGen::handleEvent(ForceEvents evt)
+{
 }
 
 bool ForceGen::checkInside(Vector3 o)
