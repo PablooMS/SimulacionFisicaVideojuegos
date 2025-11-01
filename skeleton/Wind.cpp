@@ -4,7 +4,7 @@
 #include "core.hpp"
 
 Wind::Wind(Vector3 spee, physx::PxPhysics* phsx, float roza, float turbo, Vector3 po, shape s, float r, float h, bool rendr)
-	: speed(spee), roz(roza), turb(turbo), rendering(rendr), ForceGen({ 0,0,0 }, phsx, po, s, r, h)
+	: speed(spee), roz(roza), turb(turbo), rendering(rendr), ForceGen({ 0, 0, 0 }, phsx, po, s, r, h)
 {
 	if (rendering)
 		startUpRender();

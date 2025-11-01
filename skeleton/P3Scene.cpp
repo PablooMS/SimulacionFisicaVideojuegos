@@ -15,9 +15,9 @@ void P3Scene::loadScene()
 	RegisterRenderItem(rend);
 
 	Vector4 color2(0.8, 0.3, 1.0, 1.0);
-	_entMan->createParticle({ 20, 3, -10 }, { 0, 0, 0 }, { 0, 0, 0 }, 5, color2);
-	_entMan->createParticle({ 80, 5, -50 }, { 0, 0, 0 }, { 0, 0, 0 }, 5, color2);
-	_entMan->createParticle({ 50, 5, -120 }, { 0, 0, 0 }, { 0, 0, 0 }, 5, color2);
+	_entMan->createParticle({ 20, 3, -10 }, { 0, 0, 0 }, { 0, 0, 0 }, -1, 5, color2);
+	_entMan->createParticle({ 80, 5, -50 }, { 0, 0, 0 }, { 0, 0, 0 }, -1, 5, color2);
+	_entMan->createParticle({ 50, 5, -120 }, { 0, 0, 0 }, { 0, 0, 0 }, -1, 5, color2);
 
 	/*
 	physx::PxShape* diana = gPhysx->createShape(physx::PxSphereGeometry(5), *gMaterial);

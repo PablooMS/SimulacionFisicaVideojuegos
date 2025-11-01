@@ -10,8 +10,20 @@ ForceGen::~ForceGen()
 void ForceGen::process(Entity* p)
 {
 	//std::cout << "am procesin'ere\n";
-	if (global || checkInside(p->getPos()))
-		applyForce(p);
+	if (!p->generatorEnt())
+	{
+		if (global || checkInside(p->getPos()))
+			applyForce(p);
+	}
+	else
+	{
+		std::list<Entity*> ref = p->generatorEntities();
+
+		for (auto e : ref)
+		{
+			process(e);
+		}
+	}
 }
 
 bool ForceGen::checkInside(Vector3 o)

@@ -37,13 +37,18 @@ Particle::Particle(Particle* p)
 	gPhysx = p->gPhysx;
 	size = p->size;
 	color = p->color;
+	statc = p->statc;
+
+	mass = p->mass;
+	forces = { 0, 0, 0 };
+
 
 	registerRender();
 }
 
 Particle::~Particle()
 {
-	std::cout << "r: " << rendered << "\n";
+	//std::cout << "r: " << rendered << "\n";
 	if (rendered)
 	{
 		//setRender(false);
@@ -56,6 +61,7 @@ void Particle::update(double t)
 {
 
 	//std::cout << "Forces:\nBefore:" << forces.x << " " << forces.y << " " << forces.z << "\n";
+	//std::cout << "inverse mass: " << mass << std::endl;
 
 	if (mass < 1000)
 		forces = forces * mass;
@@ -72,10 +78,13 @@ void Particle::update(double t)
 
 	//std::cout << "After:" << forces.x << " " << forces.y << " " << forces.z << "\n";
 
-	life += t;
+	if (lifetime != -1)
+	{
+		life += t;
 
-	if (life > lifetime)
-		_toDestroy = true;
+		if (life > lifetime)
+			_toDestroy = true;
+	}
 }
 
 void Particle::setPos(Vector3 p)

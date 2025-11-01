@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include <iostream>
 
 Scene::Scene(physx::PxPhysics* physx) : gPhysx(physx)
 {

@@ -4,8 +4,9 @@
 #include "Entity.h"
 #include "Vector3D.h"
 #include "Particle.h"
+#include "ForceGen.h"
 
-using particleIterator = std::list<Particle*>::iterator;
+using particleIterator = std::list<Entity*>::iterator;
 
 struct Initialization 
 {
@@ -21,7 +22,7 @@ private:
 
 protected:
 	Particle* model;
-	std::list<Particle*> ticles;
+	std::list<Entity*> ticles;
 	std::list<particleIterator> toDelete;
 
 	int ammount;
@@ -44,5 +45,7 @@ public:
 	virtual void generateParticle();
 
 	virtual void update(double t) override;
+	
+	virtual std::list<Entity*>& generatorEntities() override { return ticles; }
 };
 

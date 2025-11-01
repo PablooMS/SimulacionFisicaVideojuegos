@@ -1,6 +1,8 @@
 #pragma once
 #include "core.hpp"
 #include "RenderUtils.hpp"
+#include <list>
+
 
 class Entity
 {
@@ -25,10 +27,16 @@ public:
 
 	// -- SETTERS --
 
-	void applyForce(Vector3 f);
-	bool staticEnt() { return statc; }
+	void setRender(bool r); 
 
-	void setRender(bool r);
+
+	// -- FORCE --
+
+	bool staticEnt() { return statc; }
+	virtual void applyForce(Vector3 f);
+
+	bool generatorEnt() { return gen; }
+	virtual std::list<Entity*>& generatorEntities() { return std::list<Entity*>(1); }
 
 protected:
 	bool _toDestroy = false;
@@ -38,6 +46,7 @@ protected:
 
 	Vector3 forces = { 0, 0, 0 };
 	bool statc;
+	bool gen = false;
 
 	RenderItem* render;
 	bool rendered = false;
