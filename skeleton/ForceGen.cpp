@@ -4,6 +4,7 @@
 
 ForceGen::~ForceGen()
 {
+	delete trans;
 }
 
 void ForceGen::process(Entity* p)
@@ -16,17 +17,17 @@ void ForceGen::process(Entity* p)
 bool ForceGen::checkInside(Vector3 o)
 {
 	if (volume == SPHERE)
-		return (o - pos).magnitude() < radius;
+		return (o - trans->p).magnitude() < radius;
 	else if (volume == CYLINDER)
 	{
-		return sqrt(pow(o.x - pos.x, 2) + pow(o.z - pos.z, 2)) < radius && 
-			(o.y < pos.y + height && o.y < pos.y - height);
+		return sqrt(pow(o.x - trans->p.x, 2) + pow(o.z - trans->p.z, 2)) < radius &&
+			(o.y < trans->p.y + height && o.y < trans->p.y - height);
 	}
 	else
 	{
-		return (o.x < pos.x + radius && o.x > pos.x - radius) && 
-			(o.y < pos.y + radius && o.y < pos.y - radius) &&
-			(o.z < pos.z + radius && o.z > pos.z - radius);
+		return (o.x < trans->p.x + radius && o.x > trans->p.x - radius) &&
+			(o.y < trans->p.y + radius && o.y < trans->p.y - radius) &&
+			(o.z < trans->p.z + radius && o.z > trans->p.z - radius);
 	}
 }
 

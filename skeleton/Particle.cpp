@@ -57,8 +57,8 @@ void Particle::update(double t)
 
 	//std::cout << "Forces:\nBefore:" << forces.x << " " << forces.y << " " << forces.z << "\n";
 
-	if (mass > 0.001)
-		forces = forces / mass;
+	if (mass < 1000)
+		forces = forces * mass;
 	else
 		forces *= 1000;
 
