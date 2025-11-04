@@ -264,9 +264,11 @@
     <ClCompile Include="Firework.cpp" />
     <ClCompile Include="FireworkLauncher.cpp" />
     <ClCompile Include="ForceGen.cpp" />
+    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Gaussian.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="GScene.cpp" />
+    <ClCompile Include="LobbyScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="P2Scene.cpp" />
     <ClCompile Include="P3Scene.cpp" />
@@ -284,6 +286,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="callbacks.hpp" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="core.hpp" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
@@ -291,9 +294,11 @@
     <ClInclude Include="Firework.h" />
     <ClInclude Include="FireworkLauncher.h" />
     <ClInclude Include="ForceGen.h" />
+    <ClInclude Include="GameScene.h" />
     <ClInclude Include="Gaussian.h" />
     <ClInclude Include="Generator.h" />
     <ClInclude Include="GScene.h" />
+    <ClInclude Include="LobbyScene.h" />
     <ClInclude Include="P2Scene.h" />
     <ClInclude Include="P3Scene.h" />
     <ClInclude Include="Particle.h" />

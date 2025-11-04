@@ -29,6 +29,8 @@
     <ClCompile Include="Wind.cpp" />
     <ClCompile Include="Torbellino.cpp" />
     <ClCompile Include="Explosive.cpp" />
+    <ClCompile Include="LobbyScene.cpp" />
+    <ClCompile Include="GameScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -60,6 +62,9 @@
     <ClInclude Include="Wind.h" />
     <ClInclude Include="Torbellino.h" />
     <ClInclude Include="Explosive.h" />
+    <ClInclude Include="LobbyScene.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="GameScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

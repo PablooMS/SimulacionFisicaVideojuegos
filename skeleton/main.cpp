@@ -40,6 +40,8 @@ ContactReportCallback gContactReportCallback;
 EntityManager* entMan;
 SceneManager* _scenes;
 
+int shots = 0;
+
 
 // Initialize physics engine
 void initPhysics(bool interactive)
@@ -181,7 +183,13 @@ void initPhysics(bool interactive)
 	P3Scene* sc = new P3Scene(gPhysics);
 	_scenes->registerScene(sc, "P3");		// Escena práctica 3 pt 2
 
-	_scenes->changeScene("P2");
+	LobbyScene* l = new LobbyScene(gPhysics);
+	_scenes->registerScene(l, "Lobby");
+
+	GameScene* game = new GameScene(gPhysics);
+	_scenes->registerScene(game, "Game");
+
+	_scenes->changeScene("Lobby");
 
 }
 
@@ -233,7 +241,7 @@ void keyPress(unsigned char key, const Camera& camera)
 	}
 	case 'B':
 	{
-		if (_scenes->currentScene() != "P3")
+		if (_scenes->currentScene() != "P3" && _scenes->currentScene() != "Game")
 			break;
 
 		//Flecha Real
@@ -241,15 +249,22 @@ void keyPress(unsigned char key, const Camera& camera)
 		Vector3D camPos(cameraPos.x, cameraPos.y, cameraPos.z);
 		Vector3D dir(camera.getDir().x * 80, camera.getDir().y * 80, camera.getDir().z * 80);
 		
-		_scenes->requestEntMan()->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 10, 10, 1, { 1.0, 1.0, 1.0, 1.0 });
+		_scenes->requestEntMan()->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 5, 10, 1, { 1.0, 1.0, 1.0, 1.0 });
 
 		//Versión simple
 		//entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(80, 10, 0), Vector3D(0, -9.8, 0), 0.025, 10);
+
+		shots++;
+		if (shots > 10)
+		{
+			shots = 0;
+			_scenes->handleEvent(SceneEvents::Explode);
+		}
 		break;
 	}
 	case 'V':
 	{
-		if (_scenes->currentScene() != "P3")
+		if (_scenes->currentScene() != "P3" && _scenes->currentScene() != "Game")
 			break;
 
 		//Flecha adaptada
@@ -257,15 +272,44 @@ void keyPress(unsigned char key, const Camera& camera)
 		Vector3D camPos(cameraPos.x, cameraPos.y, cameraPos.z);
 		Vector3D dir(camera.getDir().x * 40, camera.getDir().y * 40, camera.getDir().z * 40);
 
-		_scenes->requestEntMan()->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 5, 10, 1, {1.0, 1.0, 1.0, 1.0});
+		_scenes->requestEntMan()->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 10, 10, 1, {1.0, 1.0, 1.0, 1.0});
 
 		// Versión simple
 		//entMan->createProjectile(Vector3D(-2, 5, 0), Vector3D(40, 30, 0), Vector3D(0, -30, 0), 0.25, 10); 
+
+		shots++;
+		if (shots > 10)
+		{
+			shots = 0;
+			_scenes->handleEvent(SceneEvents::Explode);
+		}
+		break;
+	}
+	case 'N':
+	{
+		if (_scenes->currentScene() != "P3" && _scenes->currentScene() != "Game")
+			break;
+
+		//Bala
+		PxVec3 cameraPos = camera.getTransform().p;
+		Vector3D camPos(cameraPos.x, cameraPos.y, cameraPos.z);
+		Vector3D dir(camera.getDir().x * 200, camera.getDir().y * 200, camera.getDir().z * 200);
+
+		_scenes->requestEntMan()->createProjectile(camPos, dir, Vector3D(0, -9.8, 0), 20, 10, 0.3, { 1.0, 1.0, 1.0, 1.0 });
+
+		shots++;
+		if (shots > 10)
+		{
+			shots = 0;
+			_scenes->handleEvent(SceneEvents::Explode);
+		}
 		break;
 	}
 	case 'M':
+	{
 		_scenes->handleEvent(SceneEvents::Explode);
 		break;
+	}
 	case '1':
 	{
 		_scenes->changeScene("P2");
@@ -282,6 +326,18 @@ void keyPress(unsigned char key, const Camera& camera)
 	{
 		_scenes->changeScene("P3");
 		GetCamera()->setPos(PxVec3(50.0f, 20.0f, 50.0f), PxVec3(0.0f, 0.0f, -0.7f));
+		break;
+	}
+	case '4':
+	{
+		_scenes->changeScene("Lobby");
+		GetCamera()->setPos(PxVec3(0.0f, 20.0f, 0.0f), PxVec3(0.0f, 0.0f, -0.7f));
+		break;
+	}
+	case '5':
+	{
+		_scenes->changeScene("Game");
+		GetCamera()->setPos(PxVec3(0.0f, 20.0f, 0.0f), PxVec3(0.0f, 0.0f, -0.7f));
 		break;
 	}
 	default:

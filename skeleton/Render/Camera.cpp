@@ -110,7 +110,7 @@ PxTransform Camera::getTransform() const
 void Camera::setPos(physx::PxVec3 newpos, physx::PxVec3 newDir)
 {
 	mEye = newpos;
-	mDir = newDir;
+	mDir = newDir.getNormalized();
 }
 
 PxVec3 Camera::getEye() const

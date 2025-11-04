@@ -19,7 +19,7 @@ public:
 	virtual void loadScene();
 	bool changeable() {	return change; }
 	std::string nextScene() { return next; }
-	void unloadScene();
+	virtual void unloadScene();
 
 	EntityManager* sceneEntManager() { return _entMan; }
 
