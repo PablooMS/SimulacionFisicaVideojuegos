@@ -62,21 +62,21 @@ void EntityManager::clearEnts()
 	}
 }
 
-void EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, double lifetime, float size, Vector4 color)
+Entity* EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, double lifetime, float size, Vector4 color)
 {
 	Particle* part = new Particle(pos, velo, acce, 0.95, gPhysx, 0, lifetime, size, color);
 	tiddies.push_back(part);
 	//part->setRender(true);
 }
 
-void EntityManager::createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size, Vector4 color)
+Entity* EntityManager::createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size, Vector4 color)
 {
 	Projectile* projectile = new Projectile(pos, velo, acce, 0.95, gPhysx, mass, lifetime, size, color);
 	tiddies.push_back(projectile);
 	//projectile->setRender(true);
 }
 
-void EntityManager::createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaus)
+Entity* EntityManager::createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaus)
 {
 	if (gaus) 
 	{ 
@@ -90,7 +90,7 @@ void EntityManager::createGenerator(Particle* mod, Initialization startval, Init
 	}
 }
 
-void EntityManager::createFireworks(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaussian, Initialization is, Initialization iv, int ttl)
+Entity* EntityManager::createFireworks(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaussian, Initialization is, Initialization iv, int ttl)
 {
 	FireworkLauncher* fGen = new FireworkLauncher(gPhysx, mod, startval, varval, am, t, is, iv, ttl);
 	tiddies.push_back(fGen);

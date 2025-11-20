@@ -312,13 +312,13 @@ void keyPress(unsigned char key, const Camera& camera)
 	}
 	case '1':
 	{
-		_scenes->changeScene("P2");
+		_scenes->changeScene("Lobby");
 		GetCamera()->setPos(PxVec3(50.0f, 20.0f, 200.0f), PxVec3(0.0f, 0.0f, -0.7f));
 		break;
 	}
 	case '2':
 	{
-		_scenes->changeScene("Grav");
+		_scenes->changeScene("Game");
 		GetCamera()->setPos(PxVec3(50.0f, 20.0f, 100.0f), PxVec3(0.0f, 0.0f, -0.7f));
 		break;
 	}
@@ -330,13 +330,13 @@ void keyPress(unsigned char key, const Camera& camera)
 	}
 	case '4':
 	{
-		_scenes->changeScene("Lobby");
+		_scenes->changeScene("P2");
 		GetCamera()->setPos(PxVec3(0.0f, 20.0f, 0.0f), PxVec3(0.0f, 0.0f, -0.7f));
 		break;
 	}
 	case '5':
 	{
-		_scenes->changeScene("Game");
+		_scenes->changeScene("Grav");
 		GetCamera()->setPos(PxVec3(0.0f, 20.0f, 0.0f), PxVec3(0.0f, 0.0f, -0.7f));
 		break;
 	}
