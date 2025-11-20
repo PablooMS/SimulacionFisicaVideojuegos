@@ -31,6 +31,8 @@
     <ClCompile Include="Explosive.cpp" />
     <ClCompile Include="LobbyScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="P4Scene.cpp" />
+    <ClCompile Include="Spring.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -65,6 +67,8 @@
     <ClInclude Include="LobbyScene.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="P4Scene.h" />
+    <ClInclude Include="Spring.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
