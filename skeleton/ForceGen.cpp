@@ -47,7 +47,7 @@ bool ForceGen::checkInside(Vector3 o)
 	else
 	{
 		return (o.x < trans->p.x + radius && o.x > trans->p.x - radius) &&
-			(o.y < trans->p.y + radius && o.y < trans->p.y - radius) &&
+			(o.y < trans->p.y + height && o.y < trans->p.y - height) &&
 			(o.z < trans->p.z + radius && o.z > trans->p.z - radius);
 	}
 }

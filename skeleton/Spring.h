@@ -1,18 +1,19 @@
 #pragma once
 #include "Entity.h"
+#include "ForceGen.h"
 
-class Spring : public Entity
+class Spring : public ForceGen
 {
 public:
-	Spring(Entity* e1, Vector3 e2, int length, int konstant);
-	Spring(Entity* e1, Entity* e2, int length, int konstant);
+	Spring(physx::PxPhysics* phsx, Entity* e1, Vector3 e2, float length, float konstant);
+	Spring(physx::PxPhysics* phsx, Entity* e1, Entity* e2, float length, float konstant);
 
-	virtual void update(double t) override;
+	virtual void update() override;
 
 private:
 	
-	int l;
-	int k;
+	float l;
+	float k;
 
 	bool twoEnd;
 	Entity* ending1;

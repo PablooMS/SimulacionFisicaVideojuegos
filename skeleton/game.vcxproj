@@ -263,6 +263,7 @@
     <ClCompile Include="Explosive.cpp" />
     <ClCompile Include="Firework.cpp" />
     <ClCompile Include="FireworkLauncher.cpp" />
+    <ClCompile Include="Float.cpp" />
     <ClCompile Include="ForceGen.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Gaussian.cpp" />
@@ -295,6 +296,7 @@
     <ClInclude Include="Explosive.h" />
     <ClInclude Include="Firework.h" />
     <ClInclude Include="FireworkLauncher.h" />
+    <ClInclude Include="Float.h" />
     <ClInclude Include="ForceGen.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Gaussian.h" />

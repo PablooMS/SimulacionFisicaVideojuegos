@@ -13,21 +13,30 @@ class ForceGen
 {
 public:
 	ForceGen(Vector3 f, physx::PxPhysics* phsx) 
-		: gPhysx(phsx), force(f), global(true), volume(SPHERE), radius(0), height(0) 
+		: gPhysx(phsx), force(f), global(true), specific(false), volume(SPHERE), radius(0), height(0)
 	{
 		trans = new physx::PxTransform({0, 0, 0});
 	};
 	ForceGen(Vector3 f, physx::PxPhysics* phsx, Vector3 po, shape s, float r, float h) 
-		: gPhysx(phsx), force(f), global(false), volume(s), radius(r), height(h) 
+		: gPhysx(phsx), force(f), global(false), specific(false), volume(s), radius(r), height(h)
 	{
 		trans = new physx::PxTransform(po);
+	};
+	//Constructor para fuerzas específicas que serán modificadas en updateTime
+	ForceGen(physx::PxPhysics* phsx)
+		: gPhysx(phsx), force({ 0, 0, 0 }), global(false), specific(true), volume(SPHERE), radius(0), height(0)
+	{
+		trans = new physx::PxTransform({0, 0, 0});
 	};
 	virtual ~ForceGen();
 
 	void updateTime(double t);
+	virtual void update() {};
 	void process(Entity* p);
 
 	virtual void handleEvent(ForceEvents evt);
+
+	bool isSpecific() { return specific; };
 
 protected:
 
@@ -39,6 +48,7 @@ protected:
 	Vector3 force;
 
 	bool global;
+	bool specific;
 
 	physx::PxTransform* trans;
 

@@ -55,6 +55,9 @@ void Scene::updateForces(double t)
 	for (forceIterator a = _forces.begin(); a != _forces.end(); ++a)
 	{
 		(*a)->updateTime(t);
-		_entMan->applyForce((*a), t);
+		if (!(*a)->isSpecific())
+			_entMan->applyForce((*a), t);
+		else
+			(*a)->update();
 	}
 }

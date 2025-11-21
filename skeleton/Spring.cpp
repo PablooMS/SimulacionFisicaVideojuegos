@@ -1,9 +1,7 @@
 #include "Spring.h"
 
-Spring::Spring(Entity* e1, Vector3 e2, int length, int konstant) : Entity({0, 0, 0}, {0, 0, 0})
+Spring::Spring(physx::PxPhysics* phsx, Entity* e1, Vector3 e2, float length, float konstant) : ForceGen(phsx)
 {
-	statc = true;
-
 	ending1 = e1;
 	
 	twoEnd = false;
@@ -14,10 +12,8 @@ Spring::Spring(Entity* e1, Vector3 e2, int length, int konstant) : Entity({0, 0,
 	k = konstant;
 }
 
-Spring::Spring(Entity* e1, Entity* e2, int length, int konstant) : Entity({ 0, 0, 0 }, { 0, 0, 0 })
+Spring::Spring(physx::PxPhysics* phsx, Entity* e1, Entity* e2, float length, float konstant) : ForceGen(phsx)
 {
-	statc = true;
-
 	ending1 = e1;
 
 	twoEnd = true;
@@ -27,7 +23,7 @@ Spring::Spring(Entity* e1, Entity* e2, int length, int konstant) : Entity({ 0, 0
 	k = konstant;
 }
 
-void Spring::update(double t)
+void Spring::update()
 {
 	Vector3 force;
 	float mag;
@@ -46,4 +42,5 @@ void Spring::update(double t)
 		ending1->applyForce(-k * (mag - l) * force);
 	}
 }
+
 

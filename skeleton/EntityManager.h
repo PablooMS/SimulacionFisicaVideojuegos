@@ -5,6 +5,8 @@
 #include "Vector3D.h"
 #include "Generator.h"
 #include "ForceGen.h"
+#include "Projectile.h"
+#include "FireworkLauncher.h"
 
 using entityIterator = std::list<Entity*>::iterator;
 
@@ -14,10 +16,10 @@ public:
 	EntityManager(physx::PxPhysics* physx);
 	~EntityManager();
 
-	Entity* createParticle(Vector3D pos, Vector3D velo, Vector3D acce, double lifetime, float size, Vector4 color);
-	Entity* createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size, Vector4 color);
-	Entity* createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaussian);
-	Entity* createFireworks(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaussian,
+	Particle* createParticle(Vector3D pos, Vector3D velo, Vector3D acce, double lifetime, float size, Vector4 color);
+	Projectile* createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size, Vector4 color);
+	Generator* createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaussian);
+	FireworkLauncher* createFireworks(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaussian,
 		Initialization is, Initialization iv, int ttl);
 
 	void update(double t);

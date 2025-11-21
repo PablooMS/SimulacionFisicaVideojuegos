@@ -8,19 +8,20 @@ void GScene::loadScene()
 	physx::PxMaterial* gMaterial = gPhysx->createMaterial(0.5f, 0.5f, 0.6f);
 
 	// Grav Spheres
-	/*
-	_entMan->createProjectile({ 20, 5, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, 0.1, 10, 5, { 0.8, 0.3, 1.0, 1.0 });
-	_entMan->createProjectile({ 50, 5, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, 0.2, 10, 5, { 0.8, 0.3, 1.0, 1.0 });
-	_entMan->createProjectile({ 80, 5, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, 0.33, 10, 5, { 0.8, 0.3, 1.0, 1.0 });
-	*/
+	_entMan->createProjectile({ 20, 20, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, 100, 10, 5, { 0.8, 0.3, 1.0, 1.0 });
+	_entMan->createProjectile({ 50, 20, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, 50, 10, 5, { 0.8, 0.3, 1.0, 1.0 });
+	_entMan->createProjectile({ 80, 20, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, 33, 10, 5, { 0.8, 0.3, 1.0, 1.0 });
+	
 
 	// Wind Spheres
+	/*
 	_entMan->createProjectile({ 40, 5, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, 1, 15, 5, { 0.8, 0.3, 1.0, 1.0 });
 	_entMan->createProjectile({ 40, 30, 0 }, { -30, 0, 0 }, { 0, 0, 0 }, 1, 15, 5, { 0.8, 0.3, 1.0, 1.0 });
 	_entMan->createProjectile({ 40, 55, 0 }, { -80, 0, 0 }, { 0, 0, 0 }, 1, 15, 5, { 0.8, 0.3, 1.0, 1.0 });
+	*/
 
 	//Gravedad
-	//_forces.push_back(new ForceGen({ 0, -100, 0 }));
+	_forces.push_back(new ForceGen({ 0, -1, 0 }, gPhysx));
 	 
 	// Viento Global
 	//_forces.push_back(new Wind({ 20, 0, 0 }, gPhysx, 0.5, 0));
@@ -46,10 +47,10 @@ void GScene::loadScene()
 	_entMan->createGenerator(f, str, vr, 20, 0.15, false);*/
 
 	//Explosion
-	_forces.push_back(new Explosive(gPhysx, { 50, 0, -30 }, 200, 0.25, 100));
+	/*_forces.push_back(new Explosive(gPhysx, {50, 0, -30}, 200, 0.25, 100));
 	Particle* f = new Particle({ 0,0,0 }, { 0,0,0 }, { 0,0,0 }, 0.95, gPhysx, 100, 5, 1, { 1, 0.3, 0.3, 1.0 });
 	f->setRender(false);
 	Initialization str = { {50,10,-30}, {0,-1,0}, 8 };
 	Initialization vr = { {20,0,20}, {0,0,0}, 1 };
-	_entMan->createGenerator(f, str, vr, 150, 1, true);
+	_entMan->createGenerator(f, str, vr, 150, 1, true);*/
 }

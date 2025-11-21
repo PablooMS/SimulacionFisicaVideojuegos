@@ -4,3 +4,4 @@
 #include "GScene.h";
 #include "LobbyScene.h"
 #include "GameScene.h"
+#include "P4Scene.h"
