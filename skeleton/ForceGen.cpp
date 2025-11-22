@@ -44,10 +44,15 @@ bool ForceGen::checkInside(Vector3 o)
 		return sqrt(pow(o.x - trans->p.x, 2) + pow(o.z - trans->p.z, 2)) < radius &&
 			(o.y < trans->p.y + height && o.y < trans->p.y - height);
 	}
-	else
+	else if(volume == CUBE)
 	{
 		return (o.x < trans->p.x + radius && o.x > trans->p.x - radius) &&
 			(o.y < trans->p.y + height && o.y < trans->p.y - height) &&
+			(o.z < trans->p.z + radius && o.z > trans->p.z - radius);
+	}
+	else
+	{
+		return (o.x < trans->p.x + radius && o.x > trans->p.x - radius) &&
 			(o.z < trans->p.z + radius && o.z > trans->p.z - radius);
 	}
 }

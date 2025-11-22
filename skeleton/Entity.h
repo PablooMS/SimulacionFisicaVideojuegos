@@ -3,6 +3,7 @@
 #include "RenderUtils.hpp"
 #include <list>
 
+enum shape { SPHERE, CYLINDER, CUBE, INF_TALL_CUBE };
 
 class Entity
 {
@@ -23,6 +24,9 @@ public:
 
 	Vector3 getPos() { return trans->p; }
 	Vector3 getVel() { return vel; }
+	virtual float getHeight() { return 0; };
+	virtual float getVolume() { return 0; };
+	virtual shape getShape() { return SPHERE; };
 
 
 	// -- SETTERS --

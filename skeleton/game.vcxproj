@@ -282,6 +282,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Spring.cpp" />
+    <ClCompile Include="SquarePart.cpp" />
     <ClCompile Include="Torbellino.cpp" />
     <ClCompile Include="Uniform.cpp" />
     <ClCompile Include="Vector3D.cpp" />
@@ -315,6 +316,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneResource.h" />
     <ClInclude Include="Spring.h" />
+    <ClInclude Include="SquarePart.h" />
     <ClInclude Include="Torbellino.h" />
     <ClInclude Include="Uniform.h" />
     <ClInclude Include="Vector3D.h" />

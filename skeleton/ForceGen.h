@@ -5,8 +5,6 @@
 #include "Particle.h"
 #include "Entity.h"
 
-enum shape {SPHERE, CYLINDER, CUBE};
-
 enum ForceEvents { Explosion };
 
 class ForceGen

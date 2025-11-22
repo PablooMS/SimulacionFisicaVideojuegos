@@ -34,6 +34,7 @@
     <ClCompile Include="P4Scene.cpp" />
     <ClCompile Include="Spring.cpp" />
     <ClCompile Include="Float.cpp" />
+    <ClCompile Include="SquarePart.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -71,6 +72,7 @@
     <ClInclude Include="P4Scene.h" />
     <ClInclude Include="Spring.h" />
     <ClInclude Include="Float.h" />
+    <ClInclude Include="SquarePart.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

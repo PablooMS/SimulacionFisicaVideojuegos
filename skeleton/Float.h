@@ -1,9 +1,30 @@
-#pragma once
+ #pragma once
 #include "ForceGen.h"
 
 class Float : public ForceGen
 {
 public:
-	Float(physx::PxPhysics* phsx, Vector3 po, float r) : ForceGen({ 0, 0, 0 }, gPhysx, po, CUBE, r, r) {};
+	Float(physx::PxPhysics* phsx, Vector3 po, float r, Vector4 color);
+
+	virtual ~Float() 
+	{
+		renderTop->release();
+		renderBot->release();
+	};
+
+protected:
+
+	void startUpRender();
+
+	virtual void applyForce(Entity* p) override;
+
+	float density;
+	float h0;
+
+	physx::PxTransform* transTop;
+	RenderItem* renderTop;
+	physx::PxTransform* transBot;
+	RenderItem* renderBot;
+	bool rendering;
 };
 
