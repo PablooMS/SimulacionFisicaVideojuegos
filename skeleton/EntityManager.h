@@ -7,6 +7,7 @@
 #include "ForceGen.h"
 #include "Projectile.h"
 #include "FireworkLauncher.h"
+#include "SquarePart.h"
 
 using entityIterator = std::list<Entity*>::iterator;
 
@@ -21,6 +22,7 @@ public:
 	Generator* createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaussian);
 	FireworkLauncher* createFireworks(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaussian,
 		Initialization is, Initialization iv, int ttl);
+	SquarePart* createCube(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size, float height, Vector4 color);
 
 	void update(double t);
 

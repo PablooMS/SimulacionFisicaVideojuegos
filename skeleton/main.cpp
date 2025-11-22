@@ -192,6 +192,9 @@ void initPhysics(bool interactive)
 	P4Scene* p4 = new P4Scene(gPhysics);
 	_scenes->registerScene(p4, "P4");
 
+	FloatScene* f = new FloatScene(gPhysics);
+	_scenes->registerScene(f, "Flo");
+
 	_scenes->changeScene("Lobby");
 
 }
@@ -347,6 +350,12 @@ void keyPress(unsigned char key, const Camera& camera)
 	{
 		_scenes->changeScene("P4");
 		GetCamera()->setPos(PxVec3(0.0f, 20.0f, 100.0f), PxVec3(0.0f, 0.0f, -0.7f));
+		break;
+	}
+	case '7':
+	{
+		_scenes->changeScene("Flo");
+		GetCamera()->setPos(PxVec3(0.0f, 0.0f, 100.0f), PxVec3(0.0f, -0.0f, -0.7f));
 		break;
 	}
 	default:

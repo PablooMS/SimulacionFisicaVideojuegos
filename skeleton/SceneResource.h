@@ -5,3 +5,4 @@
 #include "LobbyScene.h"
 #include "GameScene.h"
 #include "P4Scene.h"
+#include "FloatScene.h"

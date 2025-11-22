@@ -46,6 +46,11 @@ Particle::Particle(Particle* p)
 	registerRender();
 }
 
+Particle::Particle(Vector3D pos, Vector3D velo)
+	: Entity({ pos.getX(), pos.getY(), pos.getZ() }, { velo.getX(), velo.getY(), velo.getZ() })
+{
+}
+
 Particle::~Particle()
 {
 	//std::cout << "r: " << rendered << "\n";
@@ -85,6 +90,8 @@ void Particle::update(double t)
 		if (life > lifetime)
 			_toDestroy = true;
 	}
+
+	//std::cout << trans->p.y << std::endl;
 }
 
 void Particle::setPos(Vector3 p)

@@ -4,12 +4,12 @@
 class Float : public ForceGen
 {
 public:
-	Float(physx::PxPhysics* phsx, Vector3 po, float r, Vector4 color);
+	Float(physx::PxPhysics* phsx, Vector3 po, float r, float dense);
 
 	virtual ~Float() 
 	{
 		renderTop->release();
-		renderBot->release();
+		//renderBot->release();
 	};
 
 protected:
@@ -23,8 +23,8 @@ protected:
 
 	physx::PxTransform* transTop;
 	RenderItem* renderTop;
-	physx::PxTransform* transBot;
-	RenderItem* renderBot;
+	/*physx::PxTransform* transBot;
+	RenderItem* renderBot;*/
 	bool rendering;
 };
 

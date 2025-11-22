@@ -10,6 +10,7 @@ class Particle : public Entity
 public:
 	Particle(Vector3D pos, Vector3D velo, Vector3D acce, float dam, physx::PxPhysics* physx, double mass, double lifetime, float size, Vector4 color);
 	Particle(Particle* p);
+	Particle(Vector3D pos, Vector3D velo);
 	virtual ~Particle();
 
 	virtual void update(double t) override;

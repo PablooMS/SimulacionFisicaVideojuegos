@@ -62,7 +62,8 @@ void EntityManager::clearEnts()
 	}
 }
 
-Particle* EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, double lifetime, float size, Vector4 color)
+Particle* EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, double lifetime, float size, 
+	Vector4 color)
 {
 	Particle* part = new Particle(pos, velo, acce, 0.95, gPhysx, 0, lifetime, size, color);
 	tiddies.push_back(part);
@@ -70,7 +71,8 @@ Particle* EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D ac
 	return part;
 }
 
-Projectile* EntityManager::createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size, Vector4 color)
+Projectile* EntityManager::createProjectile(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, 
+	float size, Vector4 color)
 {
 	Projectile* projectile = new Projectile(pos, velo, acce, 0.95, gPhysx, mass, lifetime, size, color);
 	tiddies.push_back(projectile);
@@ -78,7 +80,8 @@ Projectile* EntityManager::createProjectile(Vector3D pos, Vector3D velo, Vector3
 	return projectile;
 }
 
-Generator* EntityManager::createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaus)
+Generator* EntityManager::createGenerator(Particle* mod, Initialization startval, Initialization varval, int am, 
+	double t, bool gaus)
 {
 	if (gaus) 
 	{ 
@@ -94,11 +97,20 @@ Generator* EntityManager::createGenerator(Particle* mod, Initialization startval
 	}
 }
 
-FireworkLauncher* EntityManager::createFireworks(Particle* mod, Initialization startval, Initialization varval, int am, double t, bool gaussian, Initialization is, Initialization iv, int ttl)
+FireworkLauncher* EntityManager::createFireworks(Particle* mod, Initialization startval, Initialization varval, 
+	int am, double t, bool gaussian, Initialization is, Initialization iv, int ttl)
 {
 	FireworkLauncher* fGen = new FireworkLauncher(gPhysx, mod, startval, varval, am, t, is, iv, ttl);
 	tiddies.push_back(fGen);
 	return fGen;
+}
+
+SquarePart* EntityManager::createCube(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, 
+	float size, float height, Vector4 color)
+{
+	SquarePart* sqp = new SquarePart(pos, velo, acce, 0.80, gPhysx, mass, lifetime, size, height, color);
+	tiddies.push_back(sqp);
+	return sqp;
 }
 
 

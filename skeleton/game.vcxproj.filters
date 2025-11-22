@@ -35,6 +35,7 @@
     <ClCompile Include="Spring.cpp" />
     <ClCompile Include="Float.cpp" />
     <ClCompile Include="SquarePart.cpp" />
+    <ClCompile Include="FloatScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -73,6 +74,7 @@
     <ClInclude Include="Spring.h" />
     <ClInclude Include="Float.h" />
     <ClInclude Include="SquarePart.h" />
+    <ClInclude Include="FloatScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
