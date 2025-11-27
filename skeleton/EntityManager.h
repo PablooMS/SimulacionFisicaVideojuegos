@@ -25,6 +25,8 @@ public:
 		Initialization is, Initialization iv, int ttl);
 	SquarePart* createCube(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size, float height, Vector4 color);
 
+
+
 	void update(double t);
 
 	void applyForce(ForceGen* fgen, double t);
@@ -34,6 +36,7 @@ public:
 private:
 	
 	physx::PxPhysics* gPhysx;
+	physx::PxScene* pxScene;
 	std::list<Entity*> tiddies;
 	std::list<SolidEnt*> solids;
 	std::list<entityIterator> toDelete;

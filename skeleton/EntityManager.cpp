@@ -60,6 +60,12 @@ void EntityManager::clearEnts()
 		delete tiddies.front();
 		tiddies.pop_front();
 	}
+	while (solids.size() > 0)
+	{
+		pxScene->removeActor(*solids.front()->getBod());
+		delete solids.front();
+		solids.pop_front();
+	}
 }
 
 Particle* EntityManager::createParticle(Vector3D pos, Vector3D velo, Vector3D acce, double lifetime, float size, 
