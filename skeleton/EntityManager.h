@@ -8,6 +8,7 @@
 #include "Projectile.h"
 #include "FireworkLauncher.h"
 #include "SquarePart.h"
+#include "SolidEnt.h"
 
 using entityIterator = std::list<Entity*>::iterator;
 
@@ -34,6 +35,7 @@ private:
 	
 	physx::PxPhysics* gPhysx;
 	std::list<Entity*> tiddies;
+	std::list<SolidEnt*> solids;
 	std::list<entityIterator> toDelete;
 };
 

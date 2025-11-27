@@ -36,6 +36,8 @@
     <ClCompile Include="Float.cpp" />
     <ClCompile Include="SquarePart.cpp" />
     <ClCompile Include="FloatScene.cpp" />
+    <ClCompile Include="P5Scene.cpp" />
+    <ClCompile Include="SolidEnt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -75,6 +77,8 @@
     <ClInclude Include="Float.h" />
     <ClInclude Include="SquarePart.h" />
     <ClInclude Include="FloatScene.h" />
+    <ClInclude Include="P5Scene.h" />
+    <ClInclude Include="SolidEnt.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

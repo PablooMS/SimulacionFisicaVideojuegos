@@ -14,6 +14,10 @@ public:
 		vel = velo;
 		trans = new physx::PxTransform(pos);
 	};
+	Entity(Vector3 pos) 
+	{
+		trans = new physx::PxTransform(pos);
+	};
 	virtual ~Entity() {};
 
 	virtual void update(double t);
@@ -23,7 +27,7 @@ public:
 	// -- GETTERS --
 
 	Vector3 getPos() { return trans->p; }
-	Vector3 getVel() { return vel; }
+	virtual Vector3 getVel() { return vel; }
 	virtual float getHeight() { return 0; };
 	virtual float getVolume() { return 0; };
 	virtual shape getShape() { return SPHERE; };

@@ -26,6 +26,7 @@ void Scene::loadScene()
 void Scene::unloadScene()
 {
 	_entMan->clearEnts();
+
 	while (!_forces.empty())
 	{
 		delete _forces.front();
