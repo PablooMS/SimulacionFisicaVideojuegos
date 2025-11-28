@@ -6,3 +6,4 @@
 #include "GameScene.h"
 #include "P4Scene.h"
 #include "FloatScene.h"
+#include "P5Scene.h"

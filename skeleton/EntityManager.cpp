@@ -126,23 +126,23 @@ SolidDyEnt* EntityManager::createDynamicSolid(physx::PxMaterial* m, Vector3 pos,
 	return srD;
 }
 
-SolidDyEnt* EntityManager::createDynamicSolid(physx::PxMaterial* m, Vector3 pos, float dense, int w, int h, int d, Vector4 color)
+SolidDyEnt* EntityManager::createDynamicSolid(physx::PxMaterial* m, Vector3 pos, float dense, float w, float h, float d, Vector4 color)
 {
 	SolidDyEnt* srD = new SolidDyEnt(pxScene, gPhysx, m, pos, dense, w, h, d, color);
 	solids.push_back(srD);
 	return srD;
 }
 
-SolidStEnt* EntityManager::createStaticSolid(physx::PxMaterial* m, Vector3 pos, float dense, float r, Vector4 color)
+SolidStEnt* EntityManager::createStaticSolid(physx::PxMaterial* m, Vector3 pos, float r, Vector4 color)
 {
-	SolidStEnt* stD = new SolidStEnt(pxScene, gPhysx, m, pos, dense, r, color);
+	SolidStEnt* stD = new SolidStEnt(pxScene, gPhysx, m, pos, r, color);
 	solids.push_back(stD);
 	return stD;
 }
 
-SolidStEnt* EntityManager::createStaticSolid(physx::PxMaterial* m, Vector3 pos, float dense, int w, int h, int d, Vector4 color)
+SolidStEnt* EntityManager::createStaticSolid(physx::PxMaterial* m, Vector3 pos, float w, float h, float d, Vector4 color)
 {
-	SolidStEnt* stD = new SolidStEnt(pxScene, gPhysx, m, pos, dense, w, h, d, color);
+	SolidStEnt* stD = new SolidStEnt(pxScene, gPhysx, m, pos, w, h, d, color);
 	solids.push_back(stD);
 	return stD;
 }

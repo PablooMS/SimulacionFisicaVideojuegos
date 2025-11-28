@@ -26,9 +26,9 @@ public:
 	SquarePart* createCube(Vector3D pos, Vector3D velo, Vector3D acce, double mass, double lifetime, float size, float height, Vector4 color);
 
 	SolidDyEnt* createDynamicSolid(physx::PxMaterial* m, Vector3 pos, float dense, float r, Vector4 color);
-	SolidDyEnt* createDynamicSolid(physx::PxMaterial* m, Vector3 pos, float dense, int w, int h, int d, Vector4 color);
-	SolidStEnt* createStaticSolid(physx::PxMaterial* m, Vector3 pos, float dense, float r, Vector4 color);
-	SolidStEnt* createStaticSolid(physx::PxMaterial* m, Vector3 pos, float dense, int w, int h, int d, Vector4 color);
+	SolidDyEnt* createDynamicSolid(physx::PxMaterial* m, Vector3 pos, float dense, float w, float h, float d, Vector4 color);
+	SolidStEnt* createStaticSolid(physx::PxMaterial* m, Vector3 pos, float r, Vector4 color);
+	SolidStEnt* createStaticSolid(physx::PxMaterial* m, Vector3 pos, float w, float h, float d, Vector4 color);
 
 	void update(double t);
 

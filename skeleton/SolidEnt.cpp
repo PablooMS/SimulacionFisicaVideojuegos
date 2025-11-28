@@ -22,7 +22,7 @@ SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat,
 }
 
 SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat, Vector3 pos,
-	float dense, int w, int h, int d, Vector4 color) : SolidEnt(physx, pos)
+	float dense, float w, float h, float d, Vector4 color) : SolidEnt(physx, pos)
 {
 	statc = false;
 	
@@ -57,7 +57,7 @@ SolidDyEnt::~SolidDyEnt()
 
 
 SolidStEnt::SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::PxMaterial* mat, Vector3 pos, 
-	float dense, float r, Vector4 color) : SolidEnt(physx, pos)
+	float r, Vector4 color) : SolidEnt(physx, pos)
 {
 	statc = true;
 
@@ -74,7 +74,7 @@ SolidStEnt::SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::Px
 }
 
 SolidStEnt::SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::PxMaterial* mat, Vector3 pos, 
-	float dense, int w, int h, int d, Vector4 color) : SolidEnt(physx, pos)
+	float w, float h, float d, Vector4 color) : SolidEnt(physx, pos)
 {
 	statc = true;
 
