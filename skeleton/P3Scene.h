@@ -4,7 +4,7 @@
 class P3Scene : public Scene
 {
 public:
-	P3Scene(physx::PxPhysics* physx) : Scene(physx) {}
+	P3Scene(physx::PxPhysics* physx, physx::PxScene* pxsc) : Scene(physx, pxsc) {}
 
 	virtual void loadScene() override;
 };

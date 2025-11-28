@@ -6,7 +6,7 @@
 #include "FireworkLauncher.h"
 #include <iostream>
 
-EntityManager::EntityManager(physx::PxPhysics* physx) : gPhysx(physx)
+EntityManager::EntityManager(physx::PxPhysics* physx, physx::PxScene* pxsc) : gPhysx(physx), pxScene(pxsc)
 {
 	
 }
@@ -117,6 +117,34 @@ SquarePart* EntityManager::createCube(Vector3D pos, Vector3D velo, Vector3D acce
 	SquarePart* sqp = new SquarePart(pos, velo, acce, 0.80, gPhysx, mass, lifetime, size, height, color);
 	tiddies.push_back(sqp);
 	return sqp;
+}
+
+SolidDyEnt* EntityManager::createDynamicSolid(physx::PxMaterial* m, Vector3 pos, float dense, float r, Vector4 color)
+{
+	SolidDyEnt* srD = new SolidDyEnt(pxScene, gPhysx, m, pos, dense, r, color);
+	solids.push_back(srD);
+	return srD;
+}
+
+SolidDyEnt* EntityManager::createDynamicSolid(physx::PxMaterial* m, Vector3 pos, float dense, int w, int h, int d, Vector4 color)
+{
+	SolidDyEnt* srD = new SolidDyEnt(pxScene, gPhysx, m, pos, dense, w, h, d, color);
+	solids.push_back(srD);
+	return srD;
+}
+
+SolidStEnt* EntityManager::createStaticSolid(physx::PxMaterial* m, Vector3 pos, float dense, float r, Vector4 color)
+{
+	SolidStEnt* stD = new SolidStEnt(pxScene, gPhysx, m, pos, dense, r, color);
+	solids.push_back(stD);
+	return stD;
+}
+
+SolidStEnt* EntityManager::createStaticSolid(physx::PxMaterial* m, Vector3 pos, float dense, int w, int h, int d, Vector4 color)
+{
+	SolidStEnt* stD = new SolidStEnt(pxScene, gPhysx, m, pos, dense, w, h, d, color);
+	solids.push_back(stD);
+	return stD;
 }
 
 

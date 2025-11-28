@@ -1,15 +1,17 @@
 #include "Scene.h"
 #include <iostream>
 
-Scene::Scene(physx::PxPhysics* physx) : gPhysx(physx)
+Scene::Scene(physx::PxPhysics* physx, physx::PxScene* pxsc) : gPhysx(physx), pxScene(pxsc)
 {
-	_entMan = new EntityManager(physx);
+	_entMan = new EntityManager(physx, pxsc);
 }
 
 Scene::~Scene()
 {
 	delete _entMan;
 	_entMan = nullptr;
+	pxScene->release();
+	pxScene = nullptr;
 }
 
 void Scene::update(double t)

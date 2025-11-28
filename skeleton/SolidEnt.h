@@ -7,9 +7,9 @@ class SolidEnt : public Entity
 {
 public:
 	SolidEnt(physx::PxPhysics* physx, Vector3 pos) : Entity(pos), gPhysx(physx) {};
-	virtual ~SolidEnt();
+	virtual ~SolidEnt() {};
 	
-	virtual physx::PxRigidActor* getBod() {};
+	virtual physx::PxRigidActor* getBod() { return nullptr; };
 
 protected:
 

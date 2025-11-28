@@ -5,7 +5,7 @@
 class GameScene : public Scene
 {
 public:
-	GameScene(physx::PxPhysics* physx) : Scene(physx) {}
+	GameScene(physx::PxPhysics* physx, physx::PxScene* pxsc) : Scene(physx, pxsc) {}
 
 	virtual void loadScene() override;
 	virtual void unloadScene() override;

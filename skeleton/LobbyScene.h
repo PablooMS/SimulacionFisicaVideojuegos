@@ -5,7 +5,7 @@
 class LobbyScene : public Scene
 {
 public:
-	LobbyScene(physx::PxPhysics* physx) : Scene(physx) {}
+	LobbyScene(physx::PxPhysics* physx, physx::PxScene* pxsc) : Scene(physx, pxsc) {}
 
 	virtual void loadScene() override;
 	virtual void unloadScene() override;

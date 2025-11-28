@@ -11,7 +11,7 @@ class Scene
 {
 public:
 
-	Scene(physx::PxPhysics* physx);
+	Scene(physx::PxPhysics* physx, physx::PxScene* pxsc);
 	~Scene();
 
 	void update(double t);
@@ -33,6 +33,7 @@ protected:
 	std::string next;
 
 	physx::PxPhysics* gPhysx;
+	physx::PxScene* pxScene;
 	EntityManager* _entMan;
 
 	std::list<ForceGen*> _forces;

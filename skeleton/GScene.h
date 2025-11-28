@@ -4,7 +4,7 @@
 class GScene : public Scene
 {
 public:
-	GScene(physx::PxPhysics* physx) : Scene(physx) {}
+	GScene(physx::PxPhysics* physx, physx::PxScene* pxsc) : Scene(physx, pxsc) {}
 
 	virtual void loadScene() override;
 };

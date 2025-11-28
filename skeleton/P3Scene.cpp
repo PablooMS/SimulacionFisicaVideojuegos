@@ -8,12 +8,12 @@ void P3Scene::loadScene()
 	physx::PxMaterial* gMaterial = gPhysx->createMaterial(0.5f, 0.5f, 0.6f);
 
 	//Suelo y mapa
-	physx::PxShape* suelo = gPhysx->createShape(physx::PxBoxGeometry(50, 1, 150), *gMaterial);
+	/*physx::PxShape* suelo = gPhysx->createShape(physx::PxBoxGeometry(50, 1, 150), *gMaterial);
 	Vector3D pos(50, -5, -75);
 	physx::PxTransform* floTrans = new physx::PxTransform(physx::PxVec3(pos.getX(), pos.getY(), pos.getZ()));
 	Vector4 color(0.5, 1.0, 0.0, 1.0);
 	RenderItem* rend = new RenderItem(suelo, floTrans, color);
-	RegisterRenderItem(rend);
+	RegisterRenderItem(rend);*/
 
 	Vector4 color2(0.8, 0.3, 1.0, 1.0);
 	/*_entMan->createParticle({20, 3, -10}, {0, 0, 0}, {0, 0, 0}, -1, 5, color2);

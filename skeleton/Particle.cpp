@@ -68,11 +68,6 @@ void Particle::update(double t)
 	//std::cout << "Forces:\nBefore:" << forces.x << " " << forces.y << " " << forces.z << "\n";
 	//std::cout << "inverse mass: " << mass << std::endl;
 
-	if (mass < 1000)
-		forces = forces * mass;
-	else
-		forces *= 1000;
-
 	//std::cout << "During:" << forces.x << " " << forces.y << " " << forces.z << "\n";
 
 	integrateSE(t);
@@ -130,15 +125,15 @@ void Particle::integrateE(double t)
 	trans->p.y += vel.y * t;
 	trans->p.z += vel.z * t;
 
-	vel = Vector3(vel.x + acc.getX() * t + forces.x * t, vel.y + acc.getY() * t + forces.y * t,
-		vel.z + acc.getZ() * t + forces.z * t) * pow(damp, t);
+	vel = Vector3(vel.x + acc.getX() * t + forces.x * t * mass, vel.y + acc.getY() * t + forces.y * t * mass,
+		vel.z + acc.getZ() * t + forces.z * t * mass) * pow(damp, t);
 }
 
 void Particle::integrateSE(double t)
 {
 	//std::cout << "before update:" << vel.getX() << " " << vel.getY() << " " << vel.getZ() << "\n";
-	vel = Vector3(vel.x + acc.getX() * t + forces.x * t, vel.y + acc.getY() * t + forces.y * t,
-		vel.z + acc.getZ() * t + forces.z * t) * pow(damp, t);
+	vel = Vector3(vel.x + acc.getX() * t + forces.x * t * mass, vel.y + acc.getY() * t + forces.y * t * mass,
+		vel.z + acc.getZ() * t + forces.z * t * mass) * pow(damp, t);
 	//std::cout << "after update:" << vel.getX() << " " << vel.getY() << " " << vel.getZ() << "\n";
 
 	trans->p.x += vel.x * t;

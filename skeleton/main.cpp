@@ -46,6 +46,7 @@ int shots = 0;
 // Initialize physics engine
 void initPhysics(bool interactive)
 {
+
 	PX_UNUSED(interactive);
 
 	gFoundation = PxCreateFoundation(PX_FOUNDATION_VERSION, gAllocator, gErrorCallback);
@@ -98,7 +99,7 @@ void initPhysics(bool interactive)
 	RegisterRenderItem(rend3); */
 
 	//ENTITY MANAGER
-	entMan = new EntityManager(gPhysics);
+	//entMan = new EntityManager(gPhysics, gScene);
 
 	//PRACTICA 1.1
 	//entMan->createParticle(Vector3D(), Vector3D(10, 10, 10), Vector3D());
@@ -174,29 +175,28 @@ void initPhysics(bool interactive)
 	//SCENE MANAGER
 	_scenes = new SceneManager();
 
-	P2Scene* es = new P2Scene(gPhysics);
+	P2Scene* es = new P2Scene(gPhysics, gScene);
 	_scenes->registerScene(es, "P2");		// Escena practica 2
 
-	GScene* g = new GScene(gPhysics);
+	GScene* g = new GScene(gPhysics, gScene);
 	_scenes->registerScene(g, "Grav");		// Escena practica 3 pt 1 (gravedad)
 
-	P3Scene* sc = new P3Scene(gPhysics);
+	P3Scene* sc = new P3Scene(gPhysics, gScene);
 	_scenes->registerScene(sc, "P3");		// Escena práctica 3 pt 2
 
-	LobbyScene* l = new LobbyScene(gPhysics);
+	LobbyScene* l = new LobbyScene(gPhysics, gScene);
 	_scenes->registerScene(l, "Lobby");
 
-	GameScene* game = new GameScene(gPhysics);
+	GameScene* game = new GameScene(gPhysics, gScene);
 	_scenes->registerScene(game, "Game");
 
-	P4Scene* p4 = new P4Scene(gPhysics);
+	P4Scene* p4 = new P4Scene(gPhysics, gScene);
 	_scenes->registerScene(p4, "P4");
 
-	FloatScene* f = new FloatScene(gPhysics);
+	FloatScene* f = new FloatScene(gPhysics, gScene);
 	_scenes->registerScene(f, "Flo");
 
 	_scenes->changeScene("Lobby");
-
 }
 
 
@@ -210,7 +210,7 @@ void stepPhysics(bool interactive, double t)
 	gScene->simulate(t);
 	gScene->fetchResults(true);
 
-	entMan->update(t);
+	//entMan->update(t);
 	_scenes->update(t);
 }
 
