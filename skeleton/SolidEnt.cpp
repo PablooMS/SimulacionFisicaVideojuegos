@@ -3,13 +3,16 @@
 using namespace physx;
 
 SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat, Vector3 pos,
-	float dense, float r, Vector4 color) : SolidEnt(physx, pos)
+	float dens, float r, Vector4 col) 
+	: SolidEnt(physx, pos), dense(dens), mMat(mat), color(col)
 {
 	statc = false;
+	gScene = scene;
 	
 	mBod = physx->createRigidDynamic(*trans);
 
 	PxShape* google = gPhysx->createShape(PxSphereGeometry(r), *mat);
+	dim = Vector3(r, 0, 0);
 
 	mBod->attachShape(*google); 
 
@@ -19,16 +22,21 @@ SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat,
 
 	render = new RenderItem(google, mBod, color);
 	rendered = true;
+
+	s = SPHERE;
 }
 
 SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat, Vector3 pos,
-	float dense, float w, float h, float d, Vector4 color) : SolidEnt(physx, pos)
+	float dens, float w, float h, float d, Vector4 col) 
+	: SolidEnt(physx, pos), dense(dens), mMat(mat), color(col)
 {
 	statc = false;
+	gScene = scene;
 	
 	mBod = physx->createRigidDynamic(*trans);
 
 	PxShape* google = gPhysx->createShape(PxBoxGeometry(w, h, d), *mat);
+	dim = Vector3(w, h, d);
 
 	mBod->attachShape(*google);
 
@@ -37,6 +45,40 @@ SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat,
 	scene->addActor(*mBod);
 
 	render = new RenderItem(google, mBod, color);
+	rendered = true;
+
+	s = CUBE;
+}
+
+SolidDyEnt::SolidDyEnt(SolidDyEnt* o)
+	: SolidEnt(o->gPhysx, o->trans->p)
+{
+	statc = false;
+	s = o->s;
+	gScene = o->gScene;
+	mMat = o->mMat;
+	dense = o->dense;
+	dim = o->dim;
+	color = o->color;
+	lifetime = o->lifetime;
+
+	mBod = gPhysx->createRigidDynamic(*o->trans);
+
+	PxShape* gog;
+
+	if (s == SPHERE)
+		gog = gPhysx->createShape(PxSphereGeometry(dim.x), *mMat);
+
+	else
+		gog = gPhysx->createShape(PxBoxGeometry(dim.x, dim.y, dim.z), *mMat);
+
+	mBod->attachShape(*gog);
+
+	PxRigidBodyExt::updateMassAndInertia(*mBod, dense);
+
+	gScene->addActor(*mBod);
+
+	render = new RenderItem(gog, mBod, color);
 	rendered = true;
 }
 
@@ -52,6 +94,26 @@ SolidDyEnt::~SolidDyEnt()
 	render = nullptr;
 }
 
+void SolidDyEnt::setPos(Vector3 p)
+{
+	trans->p = p;
+}
+
+void SolidDyEnt::setLifetime(double t)
+{
+	lifetime = t;
+}
+
+void SolidDyEnt::update(double t)
+{
+	if (lifetime != -1)
+	{
+		life += t;
+
+		if (life > lifetime)
+			_toDestroy = true;
+	}
+}
 
 /// /////////////
 
@@ -71,6 +133,8 @@ SolidStEnt::SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::Px
 
 	render = new RenderItem(google, mBod, color);
 	rendered = true;
+
+	s = SPHERE;
 }
 
 SolidStEnt::SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::PxMaterial* mat, Vector3 pos, 
@@ -88,6 +152,8 @@ SolidStEnt::SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::Px
 
 	render = new RenderItem(google, mBod, color);
 	rendered = true;
+
+	s = CUBE;
 }
 
 SolidStEnt::~SolidStEnt()

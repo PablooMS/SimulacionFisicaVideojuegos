@@ -1,5 +1,6 @@
 #include "Generator.h"
 #include <iostream>
+#include "SolGen.h"
 
 Generator::Generator(physx::PxPhysics* physx, Particle* mod, Initialization startval, Initialization varval, int amoun, double t) 
 	: gPhysx(physx), model(mod), start(startval), var(varval), ammount(amoun), time(t), toNext(t)

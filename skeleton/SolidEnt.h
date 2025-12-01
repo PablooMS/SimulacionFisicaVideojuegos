@@ -14,7 +14,7 @@ public:
 protected:
 
 	physx::PxPhysics* gPhysx;
-
+	shape s;
 };
 
 class SolidDyEnt : public SolidEnt
@@ -24,14 +24,29 @@ public:
 		Vector3 pos, float dense, float r, Vector4 color);				//Esfera
 	SolidDyEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::PxMaterial* mat,
 		Vector3 pos, float dense, float w, float h, float d, Vector4 color);	//Cubo
+	SolidDyEnt(SolidDyEnt* o);
 	virtual ~SolidDyEnt();
 
 	virtual physx::PxRigidActor* getBod() override { return mBod; }
 
+	void setPos(Vector3 p);
+	void setLifetime(double t);
+
+	virtual void update(double t) override;
+
 private:
 
-	physx::PxRigidBody* mBod;
+	physx::PxScene* gScene;
 
+	physx::PxRigidBody* mBod;
+	physx::PxMaterial* mMat;
+
+	float dense;
+	Vector3 dim;
+	Vector4 color;
+
+	double lifetime;
+	double life = 0;
 };
 
 class SolidStEnt : public SolidEnt

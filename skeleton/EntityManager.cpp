@@ -147,4 +147,11 @@ SolidStEnt* EntityManager::createStaticSolid(physx::PxMaterial* m, Vector3 pos, 
 	return stD;
 }
 
+SolGen* EntityManager::createSolidGenerator(SolidDyEnt* mod, SolidInit startval, SolidInit varval, double t)
+{
+	SolGen* sGen = new SolGen(gPhysx, mod, startval, varval, t);
+	tiddies.push_back(sGen);
+	return sGen;
+}
+
 
