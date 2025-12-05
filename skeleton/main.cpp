@@ -364,7 +364,7 @@ void keyPress(unsigned char key, const Camera& camera)
 	case '8':
 	{
 		_scenes->changeScene("P5a1");
-		GetCamera()->setPos(PxVec3(100.0f, 50.0f, 100.0f), PxVec3(-0.5f, -0.1f, -0.5f));
+		GetCamera()->setPos(PxVec3(40.0f, 20.0f, 40.0f), PxVec3(-0.5f, -0.1f, -0.5f));
 		break;
 	}
 	default:
