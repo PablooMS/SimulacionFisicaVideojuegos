@@ -1,4 +1,5 @@
 #include "SolidEnt.h"
+#include <iostream>
 
 using namespace physx;
 
@@ -50,8 +51,8 @@ SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat,
 	s = CUBE;
 }
 
-SolidDyEnt::SolidDyEnt(SolidDyEnt* o)
-	: SolidEnt(o->gPhysx, o->trans->p)
+SolidDyEnt::SolidDyEnt(SolidDyEnt* o, Vector3 pos)
+	: SolidEnt(o->gPhysx, pos)
 {
 	statc = false;
 	s = o->s;
@@ -62,7 +63,7 @@ SolidDyEnt::SolidDyEnt(SolidDyEnt* o)
 	color = o->color;
 	lifetime = o->lifetime;
 
-	mBod = gPhysx->createRigidDynamic(*o->trans);
+	mBod = gPhysx->createRigidDynamic(*trans);
 
 	PxShape* gog;
 
@@ -96,6 +97,7 @@ SolidDyEnt::~SolidDyEnt()
 
 void SolidDyEnt::setPos(Vector3 p)
 {
+	//std::cout << p.x << " " << p.y << " " << p.z << "\n";
 	trans->p = p;
 }
 

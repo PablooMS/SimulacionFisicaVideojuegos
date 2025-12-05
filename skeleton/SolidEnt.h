@@ -24,7 +24,7 @@ public:
 		Vector3 pos, float dense, float r, Vector4 color);				//Esfera
 	SolidDyEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::PxMaterial* mat,
 		Vector3 pos, float dense, float w, float h, float d, Vector4 color);	//Cubo
-	SolidDyEnt(SolidDyEnt* o);
+	SolidDyEnt(SolidDyEnt* o, Vector3 pos);
 	virtual ~SolidDyEnt();
 
 	virtual physx::PxRigidActor* getBod() override { return mBod; }

@@ -23,11 +23,10 @@ SolGen::~SolGen()
 
 void SolGen::generateSolid()
 {
-	SolidDyEnt* aux = new SolidDyEnt(model);
-
 	SolidInit values = randomize(start, var);
 
-	aux->setPos(values.P);
+	SolidDyEnt* aux = new SolidDyEnt(model, values.P);
+
 	aux->setLifetime(values.T);
 
 	ticle.push_back(aux);
@@ -71,6 +70,8 @@ SolidInit SolGen::randomize(SolidInit s, SolidInit v)
 
 	result.P = s.P + Vector3(_u(_mtseed) * v.P.x, _u(_mtseed) * v.P.y, _u(_mtseed) * v.P.z);
 	result.T = s.T + _u(_mtseed) * v.T;
+
+	return result;
 }
 
 void SolGen::spawnTime()
