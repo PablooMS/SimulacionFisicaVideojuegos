@@ -53,5 +53,6 @@ private:
 	std::list<Entity*> tiddies;
 	std::list<SolidEnt*> solids;
 	std::list<entityIterator> toDelete;
+	std::list<SoldIter> toDeleteSol;
 };
 

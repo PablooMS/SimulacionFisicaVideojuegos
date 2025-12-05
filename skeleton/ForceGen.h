@@ -4,6 +4,7 @@
 #include "core.hpp"
 #include "Particle.h"
 #include "Entity.h"
+#include "SolidEnt.h"
 
 enum ForceEvents { Explosion };
 
@@ -31,6 +32,7 @@ public:
 	void updateTime(double t);
 	virtual void update() {};
 	void process(Entity* p);
+	void process(SolidEnt* se);
 
 	virtual void handleEvent(ForceEvents evt);
 
@@ -40,6 +42,7 @@ protected:
 
 	bool checkInside(Vector3 o);
 	virtual void applyForce(Entity* p);
+	virtual void applySolForce(SolidEnt* se);
 
 	physx::PxPhysics* gPhysx;
 

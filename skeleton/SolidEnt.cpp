@@ -117,6 +117,11 @@ void SolidDyEnt::update(double t)
 	}
 }
 
+void SolidDyEnt::applySolForce(Vector3 f)
+{
+	mBod->addForce(f);
+}
+
 /// /////////////
 
 

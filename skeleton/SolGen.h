@@ -2,7 +2,7 @@
 #include "Entity.h"
 #include "SolidEnt.h"
 
-using SoldIter = std::list<Entity*>::iterator;
+using SoldIter = std::list<SolidEnt*>::iterator;
 
 struct SolidInit
 {
@@ -10,7 +10,7 @@ struct SolidInit
 	double T;
 };
 
-class SolGen : public Entity
+class SolGen : public SolidEnt
 {
 public:
 
@@ -21,23 +21,23 @@ public:
 
 	virtual void update(double t) override;
 
-	std::list<Entity*>& generatorEntities() override { return ticle; }
+	virtual std::list<SolidEnt*>& generatorSolids() override { return ticle; }
 
 private:
 
 	SolidDyEnt* model;
-	std::list<Entity*> ticle;
+	std::list<SolidEnt*> ticle;
 	std::list<SoldIter> toDelete;
 
 	SolidInit start;
 	SolidInit var;
 
-	virtual SolidInit randomize(SolidInit s, SolidInit v);
+	SolidInit randomize(SolidInit s, SolidInit v);
 
 	double time;
 	double toNext;
 
-	virtual void spawnTime();
+	void spawnTime();
 
 	physx::PxPhysics* gPhysx;
 };

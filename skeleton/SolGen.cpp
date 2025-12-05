@@ -2,7 +2,7 @@
 #include <random>
 
 SolGen::SolGen(physx::PxPhysics* physx, SolidDyEnt* mod, SolidInit startval, SolidInit varval, double t)
-	: gPhysx(physx), model(mod), start(startval), var(varval), time(t), toNext(t)
+	: SolidEnt(physx, { 0, 0, 0 }), model(mod), start(startval), var(varval), time(t), toNext(t)
 {
 	statc = false;
 	gen = true;

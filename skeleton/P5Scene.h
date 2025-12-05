@@ -14,5 +14,6 @@ private:
 
 	SolidDyEnt* model;
 	SolidDyEnt* model2;
+	SolidDyEnt* model3;
 };
 

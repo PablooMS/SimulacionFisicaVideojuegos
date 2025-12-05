@@ -11,6 +11,10 @@ public:
 	
 	virtual physx::PxRigidActor* getBod() { return nullptr; };
 
+	virtual std::list<SolidEnt*>& generatorSolids() { return std::list<SolidEnt*>(1); }
+
+	virtual void applySolForce(Vector3 f) {};
+
 protected:
 
 	physx::PxPhysics* gPhysx;
@@ -33,6 +37,8 @@ public:
 	void setLifetime(double t);
 
 	virtual void update(double t) override;
+
+	virtual void applySolForce(Vector3 f) override;
 
 private:
 

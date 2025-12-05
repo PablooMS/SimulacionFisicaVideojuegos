@@ -25,16 +25,26 @@ void P5A1Scene::loadScene()
 	_entMan->createDynamicSolid(gMat, { 10, 30, 10 }, 1000, 10, 5, 20, { 1, 1, 0.7, 1 });
 	_entMan->createDynamicSolid(gMat, { 10, 40, 20 }, 1000, 3, 2, 30, { 1, 1, 0.7, 1 });
 
-	model = new SolidDyEnt(pxScene, gPhysx, gMat, { -100, -100, -100 }, 1000, 2, { 0.8, 1, 0.2, 1.0 });
+	/*model = new SolidDyEnt(pxScene, gPhysx, gMat, {-100, -100, -100}, 10, 2, {0.8, 1, 0.2, 1.0});
 	model->setRender(false);
 	SolidInit sval = { {30, 40, 50}, 15 };
 	SolidInit vval = { { 3, 3, 3}, 2 };
 	_entMan->createSolidGenerator(model, sval, vval, 1);
 
 	PxMaterial* bouncyMat = gPhysx->createMaterial(0.6f, 0.6f, 1.0f);
-	model2 = new SolidDyEnt(pxScene, gPhysx, bouncyMat, { -100, -100, -100 }, 1000, 2, { 0.8, 1, 0.2, 1.0 });
+	model2 = new SolidDyEnt(pxScene, gPhysx, bouncyMat, { -100, -100, -100 }, 10, 2, { 0.8, 1, 0.2, 1.0 });
 	model2->setRender(false);
 	SolidInit sval2 = { {50, 40, 30}, 15 };
 	SolidInit vval2 = { { 3, 3, 3}, 2 };
-	_entMan->createSolidGenerator(model2, sval2, vval2, 1);
+	_entMan->createSolidGenerator(model2, sval2, vval2, 1);*/
+
+	_forces.push_back(new ForceGen({ 0, 0, 400 }, gPhysx, {-50, 0, 0}, CUBE, 50.0, 50));
+	//_forces.push_back(new ForceGen({ 0, 0, 1000 }, gPhysx));
+
+	PxMaterial* iceMat = gPhysx->createMaterial(0.05f, 0.05f, 0.2f);
+	model3 = new SolidDyEnt(pxScene, gPhysx, iceMat, { -100, -100, -100 }, 1000, 2, 2, 2, { 0.7, 0.7, 1.0, 1.0 });
+	model3->setRender(false);
+	SolidInit sval3 = { {-50, 5, 0}, 20 };
+	SolidInit vval3 = { { 10, 3, 10}, 0 };
+	_entMan->createSolidGenerator(model3, sval3, vval3, 2);
 }

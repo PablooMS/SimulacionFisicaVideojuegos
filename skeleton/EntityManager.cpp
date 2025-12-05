@@ -19,7 +19,7 @@ EntityManager::~EntityManager()
 void EntityManager::update(double t) 
 {
 	//std::cout << "entities: " << tiddies.size() << std::endl;
-	int n = 0;
+	//int n = 0;
 	for (entityIterator a = tiddies.begin(); a != tiddies.end(); ++a) 
 	{
 		(*a)->update(t);
@@ -28,7 +28,17 @@ void EntityManager::update(double t)
 		if ((*a)->toDestroy())
 			toDelete.push_back(a);
 
-		n++;
+		//n++;
+	}
+	for (SoldIter b = solids.begin(); b != solids.end(); ++b) 
+	{
+		(*b)->update(t);
+		//std::cout << n << std::endl;
+
+		if ((*b)->toDestroy())
+			toDeleteSol.push_back(b);
+
+		//n++;
 	}
 
 	for (auto a : toDelete) 
@@ -36,8 +46,14 @@ void EntityManager::update(double t)
 		(*a)->setRender(false);
 		tiddies.erase(a);
 	}
+	for (auto b : toDeleteSol) 
+	{
+		//(*b)->setRender(false);
+		solids.erase(b);
+	}
 
 	toDelete.clear();
+	toDeleteSol.clear();
 }
 
 void EntityManager::applyForce(ForceGen* fgen, double t)
@@ -49,6 +65,13 @@ void EntityManager::applyForce(ForceGen* fgen, double t)
 		//std::cout << n << ": static: " << (*a)->staticEnt() << std::endl;
 		if (!(*a)->staticEnt())
 			fgen->process((*a));
+		//n++;
+	}
+
+	for (SoldIter b = solids.begin(); b != solids.end(); b++)
+	{
+		if (!(*b)->staticEnt())
+			fgen->process((*b));
 		n++;
 	}
 }
@@ -150,7 +173,7 @@ SolidStEnt* EntityManager::createStaticSolid(physx::PxMaterial* m, Vector3 pos, 
 SolGen* EntityManager::createSolidGenerator(SolidDyEnt* mod, SolidInit startval, SolidInit varval, double t)
 {
 	SolGen* sGen = new SolGen(gPhysx, mod, startval, varval, t);
-	tiddies.push_back(sGen);
+	solids.push_back(sGen);
 	return sGen;
 }
 
