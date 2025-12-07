@@ -270,6 +270,7 @@
     <ClCompile Include="Gaussian.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="GScene.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="LobbyScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="P2Scene.cpp" />
@@ -308,6 +309,7 @@
     <ClInclude Include="Gaussian.h" />
     <ClInclude Include="Generator.h" />
     <ClInclude Include="GScene.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="LobbyScene.h" />
     <ClInclude Include="P2Scene.h" />
     <ClInclude Include="P3Scene.h" />

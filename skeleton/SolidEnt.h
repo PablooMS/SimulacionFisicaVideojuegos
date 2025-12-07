@@ -9,7 +9,7 @@ public:
 	SolidEnt(physx::PxPhysics* physx, Vector3 pos) : Entity(pos), gPhysx(physx) {};
 	virtual ~SolidEnt() {};
 	
-	virtual physx::PxRigidActor* getBod() { return nullptr; };
+	virtual physx::PxRigidBody* getBod() { return nullptr; };
 
 	virtual std::list<SolidEnt*>& generatorSolids() { return std::list<SolidEnt*>(1); }
 
@@ -31,7 +31,7 @@ public:
 	SolidDyEnt(SolidDyEnt* o, Vector3 pos);
 	virtual ~SolidDyEnt();
 
-	virtual physx::PxRigidActor* getBod() override { return mBod; }
+	virtual physx::PxRigidBody* getBod() override { return mBod; }
 
 	void setPos(Vector3 p);
 	void setLifetime(double t);
@@ -64,7 +64,7 @@ public:
 		Vector3 pos, float w, float h, float d, Vector4 color);	//Cubo
 	virtual ~SolidStEnt();
 
-	virtual physx::PxRigidActor* getBod() override { return mBod; }
+	virtual physx::PxRigidActor* getAct() { return mBod; }
 
 private:
 

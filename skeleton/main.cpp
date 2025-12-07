@@ -316,7 +316,20 @@ void keyPress(unsigned char key, const Camera& camera)
 	}
 	case 'M':
 	{
+		if (_scenes->currentScene() != "P3" && _scenes->currentScene() != "Game")
+			break;
+
 		_scenes->handleEvent(SceneEvents::Explode);
+		break;
+	}
+	case 'A':
+	{
+		GetCamera()->shiftPos({ 10, 0, 0 });
+		break;
+	}
+	case 'D':
+	{
+		GetCamera()->shiftPos({ -10, 0, 0 });
 		break;
 	}
 	case '1':

@@ -34,3 +34,14 @@ void Explosive::applyForce(Entity* p)
 
 	p->applyForce(forc);
 }
+
+void Explosive::applySolForce(SolidEnt* se)
+{
+	if (!exploding || time > 4 * timeC)
+		return;
+
+	Vector3 dif = se->getPos() - trans->p;
+	Vector3 forc = (intensity / pow(dif.magnitude(), 2)) * dif * pow(M_E, -(time / timeC));
+
+	se->applySolForce(forc * 1000);
+}

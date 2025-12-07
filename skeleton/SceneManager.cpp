@@ -1,4 +1,5 @@
 #include "SceneManager.h"
+#include <iostream>
 
 SceneManager::SceneManager()
 {
@@ -29,6 +30,9 @@ void SceneManager::changeScene(std::string next)
 void SceneManager::update(double t)
 {
 	current->update(t);
+
+	if (current != nullptr && current->changeable())
+		changeScene(current->nextScene());
 }
 
 void SceneManager::handleEvent(SceneEvents evt)

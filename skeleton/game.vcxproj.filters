@@ -39,6 +39,7 @@
     <ClCompile Include="P5Scene.cpp" />
     <ClCompile Include="SolidEnt.cpp" />
     <ClCompile Include="SolGen.cpp" />
+    <ClCompile Include="Level.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -81,6 +82,7 @@
     <ClInclude Include="P5Scene.h" />
     <ClInclude Include="SolidEnt.h" />
     <ClInclude Include="SolGen.h" />
+    <ClInclude Include="Level.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

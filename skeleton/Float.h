@@ -17,6 +17,7 @@ protected:
 	void startUpRender();
 
 	virtual void applyForce(Entity* p) override;
+	virtual void applySolForce(SolidEnt* p) override;
 
 	float density;
 	float h0;

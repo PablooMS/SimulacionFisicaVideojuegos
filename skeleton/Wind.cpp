@@ -47,3 +47,15 @@ void Wind::applyForce(Entity* p)
 
 	p->applyForce(force);
 }
+
+void Wind::applySolForce(SolidEnt* se)
+{
+	Vector3 dif = speed - se->getBod()->getLinearVelocity();
+
+	if (turb == 0)
+		force = roz * dif;
+	else
+		force = roz * dif + turb * dif.magnitude() * dif;
+
+	se->applySolForce(force * 1000);
+}

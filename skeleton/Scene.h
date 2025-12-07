@@ -14,7 +14,7 @@ public:
 	Scene(physx::PxPhysics* physx, physx::PxScene* pxsc);
 	~Scene();
 
-	void update(double t);
+	virtual void update(double t);
 
 	virtual void loadScene();
 	bool changeable() {	return change; }
@@ -29,7 +29,7 @@ protected:
 
 	void updateForces(double t);
 
-	bool change;
+	bool change = false;
 	std::string next;
 
 	physx::PxPhysics* gPhysx;

@@ -14,6 +14,7 @@ public:
 protected:
 
 	virtual void applyForce(Entity* p) override;
+	virtual void applySolForce(SolidEnt* p) override;
 
 	float K;
 

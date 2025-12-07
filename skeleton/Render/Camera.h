@@ -49,13 +49,17 @@ public:
 	physx::PxVec3		getDir()	const;
 	physx::PxTransform	getTransform() const;
 
-	void setPos(physx::PxVec3 newpos, physx::PxVec3 newDir);
+	void setPos(physx::PxVec3 newpos, physx::PxVec3 newDir); 
+	void shiftPos(physx::PxVec3 s);
+	void setLocked(bool l) { locked = l; }
 
 private:
 	physx::PxVec3	mEye;
 	physx::PxVec3	mDir;
 	int				mMouseX;
 	int				mMouseY;
+
+	bool locked = false;
 };
 
 

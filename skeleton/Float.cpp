@@ -47,3 +47,21 @@ void Float::applyForce(Entity* e)
 
 	e->applyForce(forc);
 }
+
+void Float::applySolForce(SolidEnt* se)
+{
+	float h = se->getPos().y;
+	float eH = se->getHeight();
+
+	float immersed;
+	if (h - h0 > eH * 0.5)
+		immersed = 0.0;
+	else if (h0 - h > eH * 0.5)
+		immersed = 1.0;
+	else
+		immersed = (h0 - h) / eH + 0.5;
+
+	Vector3 forc(0, density * se->getVolume() * immersed * 9.8, 0);
+
+	se->applyForce(forc);
+}

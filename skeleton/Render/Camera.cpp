@@ -59,8 +59,11 @@ bool Camera::handleKey(unsigned char key, int x, int y, float speed)
 	PX_UNUSED(x);
 	PX_UNUSED(y);
 
+	if (locked)
+		return false;
+
 	PxVec3 viewY = mDir.cross(PxVec3(0,1,0)).getNormalized();
-	switch(toupper(key))
+	switch (toupper(key))
 	{
 	case 'W':	mEye += mDir*2.0f*speed;		break;
 	case 'S':	mEye -= mDir*2.0f*speed;		break;
@@ -111,6 +114,11 @@ void Camera::setPos(physx::PxVec3 newpos, physx::PxVec3 newDir)
 {
 	mEye = newpos;
 	mDir = newDir.getNormalized();
+}
+
+void Camera::shiftPos(physx::PxVec3 s)
+{
+	mEye = mEye + s;
 }
 
 PxVec3 Camera::getEye() const

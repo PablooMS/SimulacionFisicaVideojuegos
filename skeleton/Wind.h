@@ -18,6 +18,7 @@ protected:
 	void startUpRender();
 
 	virtual void applyForce(Entity* p) override;
+	virtual void applySolForce(SolidEnt* p) override;
 
 	Vector3 speed;
 	float roz;

@@ -14,6 +14,7 @@ public:
 private:
 
 	virtual void applyForce(Entity* p) override;
+	virtual void applySolForce(SolidEnt* p) override;
 
 	double timeC;
 	float intensity;
