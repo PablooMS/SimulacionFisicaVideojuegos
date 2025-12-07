@@ -40,6 +40,7 @@
     <ClCompile Include="SolidEnt.cpp" />
     <ClCompile Include="SolGen.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="GameSolids.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -83,6 +84,7 @@
     <ClInclude Include="SolidEnt.h" />
     <ClInclude Include="SolGen.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="GameSolids.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

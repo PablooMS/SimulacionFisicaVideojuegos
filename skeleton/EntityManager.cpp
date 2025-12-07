@@ -177,4 +177,25 @@ SolGen* EntityManager::createSolidGenerator(SolidDyEnt* mod, SolidInit startval,
 	return sGen;
 }
 
+Enemy* EntityManager::createEnemy(Vector3 pos, float dense, float r, int* cont)
+{
+	Enemy* em = new Enemy(pxScene, gPhysx, pos, dense, r, cont);
+	solids.push_back(em);
+	return em;
+}
+
+Barrel* EntityManager::createBarrel(Vector3 pos, float dense, float h, Explosive* ex)
+{
+	Barrel* bar = new Barrel(pxScene, gPhysx, pos, dense, h * 0.75, h, h * 0.75, ex);
+	solids.push_back(bar);
+	return bar;
+}
+
+Bullet* EntityManager::createBullet(Vector3 pos, float lifetime, float dense, float r)
+{
+	Bullet* bul = new Bullet(pxScene, gPhysx, pos, lifetime, dense, r);
+	solids.push_back(bul);
+	return bul;
+}
+
 

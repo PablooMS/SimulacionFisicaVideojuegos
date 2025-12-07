@@ -267,6 +267,7 @@
     <ClCompile Include="FloatScene.cpp" />
     <ClCompile Include="ForceGen.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GameSolids.cpp" />
     <ClCompile Include="Gaussian.cpp" />
     <ClCompile Include="Generator.cpp" />
     <ClCompile Include="GScene.cpp" />
@@ -306,6 +307,7 @@
     <ClInclude Include="FloatScene.h" />
     <ClInclude Include="ForceGen.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GameSolids.h" />
     <ClInclude Include="Gaussian.h" />
     <ClInclude Include="Generator.h" />
     <ClInclude Include="GScene.h" />

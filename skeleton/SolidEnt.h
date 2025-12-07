@@ -40,7 +40,7 @@ public:
 
 	virtual void applySolForce(Vector3 f) override;
 
-private:
+protected:
 
 	physx::PxScene* gScene;
 

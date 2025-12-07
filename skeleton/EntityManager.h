@@ -10,6 +10,8 @@
 #include "SquarePart.h"
 #include "SolidEnt.h"
 #include "SolGen.h"
+#include "GameSolids.h"
+#include "Explosive.h"
 
 using entityIterator = std::list<Entity*>::iterator;
 
@@ -39,6 +41,10 @@ public:
 	//Generadores
 	SolGen* createSolidGenerator(SolidDyEnt* mod, SolidInit startval, SolidInit varval, double t);
 
+	//Juego
+	Enemy* createEnemy(Vector3 pos, float dense, float r, int* cont);
+	Barrel* createBarrel(Vector3 pos, float dense, float h, Explosive* ex);
+	Bullet* createBullet(Vector3 pos, float lifetime, float dense, float r);
 
 	void update(double t);
 
