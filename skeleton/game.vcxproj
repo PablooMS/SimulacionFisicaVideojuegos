@@ -266,6 +266,7 @@
     <ClCompile Include="Float.cpp" />
     <ClCompile Include="FloatScene.cpp" />
     <ClCompile Include="ForceGen.cpp" />
+    <ClCompile Include="GameCollisions.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GameSolids.cpp" />
     <ClCompile Include="Gaussian.cpp" />
@@ -296,6 +297,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="callbacks.hpp" />
+    <ClInclude Include="CollisionLayers.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="core.hpp" />
     <ClInclude Include="Entity.h" />
@@ -306,6 +308,7 @@
     <ClInclude Include="Float.h" />
     <ClInclude Include="FloatScene.h" />
     <ClInclude Include="ForceGen.h" />
+    <ClInclude Include="GameCollisions.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameSolids.h" />
     <ClInclude Include="Gaussian.h" />

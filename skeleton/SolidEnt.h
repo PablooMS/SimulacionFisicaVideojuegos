@@ -18,6 +18,7 @@ public:
 protected:
 
 	physx::PxPhysics* gPhysx;
+	physx::PxShape* form;
 	shape s;
 };
 

@@ -12,16 +12,16 @@ SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat,
 	
 	mBod = physx->createRigidDynamic(*trans);
 
-	PxShape* google = gPhysx->createShape(PxSphereGeometry(r), *mat);
+	form = gPhysx->createShape(PxSphereGeometry(r), *mat);
 	dim = Vector3(r, 0, 0);
 
-	mBod->attachShape(*google); 
+	mBod->attachShape(*form); 
 
 	PxRigidBodyExt::updateMassAndInertia(*mBod, dense);
 
 	scene->addActor(*mBod);
 
-	render = new RenderItem(google, mBod, color);
+	render = new RenderItem(form, mBod, color);
 	rendered = true;
 
 	s = SPHERE;
@@ -36,16 +36,16 @@ SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat,
 	
 	mBod = physx->createRigidDynamic(*trans);
 
-	PxShape* google = gPhysx->createShape(PxBoxGeometry(w, h, d), *mat);
+	form = gPhysx->createShape(PxBoxGeometry(w, h, d), *mat);
 	dim = Vector3(w, h, d);
 
-	mBod->attachShape(*google);
+	mBod->attachShape(*form);
 
 	PxRigidBodyExt::updateMassAndInertia(*mBod, dense);
 
 	scene->addActor(*mBod);
 
-	render = new RenderItem(google, mBod, color);
+	render = new RenderItem(form, mBod, color);
 	rendered = true;
 
 	s = CUBE;
@@ -132,13 +132,13 @@ SolidStEnt::SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::Px
 
 	mBod = physx->createRigidStatic(*trans);
 
-	PxShape* google = gPhysx->createShape(PxSphereGeometry(r), *mat);
+	form = gPhysx->createShape(PxSphereGeometry(r), *mat);
 
-	mBod->attachShape(*google);
+	mBod->attachShape(*form);
 
 	scene->addActor(*mBod);
 
-	render = new RenderItem(google, mBod, color);
+	render = new RenderItem(form, mBod, color);
 	rendered = true;
 
 	s = SPHERE;
@@ -151,13 +151,13 @@ SolidStEnt::SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::Px
 
 	mBod = physx->createRigidStatic(*trans);
 
-	PxShape* google = gPhysx->createShape(PxBoxGeometry(w, h, d), *mat);
+	form = gPhysx->createShape(PxBoxGeometry(w, h, d), *mat);
 
-	mBod->attachShape(*google);
+	mBod->attachShape(*form);
 
 	scene->addActor(*mBod);
 
-	render = new RenderItem(google, mBod, color);
+	render = new RenderItem(form, mBod, color);
 	rendered = true;
 
 	s = CUBE;

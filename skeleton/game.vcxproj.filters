@@ -41,6 +41,7 @@
     <ClCompile Include="SolGen.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="GameSolids.cpp" />
+    <ClCompile Include="GameCollisions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -85,6 +86,8 @@
     <ClInclude Include="SolGen.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="GameSolids.h" />
+    <ClInclude Include="GameCollisions.h" />
+    <ClInclude Include="CollisionLayers.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

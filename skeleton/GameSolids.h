@@ -1,6 +1,7 @@
 #pragma once
 #include "SolidEnt.h"
 #include "Explosive.h"
+#include "CollisionLayers.h"
 
 class Enemy : public SolidDyEnt
 {
