@@ -1,6 +1,13 @@
 #include "ShootingComponent.h"
+#include <iostream>
 
 using namespace physx;
+
+ShootingComponent::~ShootingComponent()
+{
+	delete ex;
+	ex = nullptr;
+}
 
 void ShootingComponent::update(double t)
 {
@@ -10,7 +17,8 @@ void ShootingComponent::update(double t)
 
 void ShootingComponent::shoot()
 {
-	if (ti >= 0)
+
+	if (ti > 0)
 		return;
 
 	Vector3 camPos = cam->getTransform().p;

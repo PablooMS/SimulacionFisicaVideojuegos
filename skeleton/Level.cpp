@@ -1,13 +1,14 @@
 #include "Level.h"
+#include <iostream>
 
 void Level::loadScene()
 {
 	cam->setLocked(true);
 
-	gun = new Explosive(gPhysx, { 0, 0, 0 }, 1, 0.2, 1000);
+	gun = new Explosive(gPhysx, { 0, 0, 0 }, 3, 0.2, 7000);
 	_forces.push_back(gun);
 
-	mSho = new ShootingComponent(gun, cam, 10, 9000, 0.1, 0.5);
+	mSho = new ShootingComponent(_entMan, gun, cam, 10, 9000, 0.8, 0.5);
 }
 
 void Level::update(double t)

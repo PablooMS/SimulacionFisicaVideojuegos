@@ -10,7 +10,7 @@ Scene::~Scene()
 {
 	delete _entMan;
 	_entMan = nullptr;
-	pxScene->release();
+	//pxScene->release();
 	pxScene = nullptr;
 }
 

@@ -33,6 +33,7 @@ public:
 	virtual ~SolidDyEnt();
 
 	virtual physx::PxRigidBody* getBod() override { return mBod; }
+	virtual Vector3 getPos() override { return mBod->getGlobalPose().p; }
 
 	void setPos(Vector3 p);
 	void setLifetime(double t);

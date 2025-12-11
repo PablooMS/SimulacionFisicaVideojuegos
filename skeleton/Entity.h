@@ -26,7 +26,7 @@ public:
 
 	// -- GETTERS --
 
-	Vector3 getPos() { return trans->p; }
+	virtual Vector3 getPos() { return trans->p; }
 	virtual Vector3 getVel() { return vel; }
 	virtual float getHeight() { return 0; };
 	virtual float getVolume() { return 0; };

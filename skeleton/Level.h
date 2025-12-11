@@ -10,7 +10,7 @@ public:
 	{
 		next = nex;
 	}
-	~Level();
+	~Level() { unloadScene(); };
 
 	virtual void loadScene() override;
 

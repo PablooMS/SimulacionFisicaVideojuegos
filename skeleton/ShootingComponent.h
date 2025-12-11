@@ -7,8 +7,8 @@ class ShootingComponent
 {
 public:
 
-	ShootingComponent(Explosive* explo, Camera* camr, float life, float den, float ra, int cool) 
-		: ex(explo), cam(camr), lifetime(life), dense(den), r(ra), ti(0), maxT(cool) {}
+	ShootingComponent(EntityManager* e, Explosive* explo, Camera* camr, float life, float den, float ra, float cool) 
+		: entMan(e), ex(explo), cam(camr), lifetime(life), dense(den), r(ra), ti(0), maxT(cool) {}
 	~ShootingComponent();
 
 	void update(double t);
@@ -18,8 +18,8 @@ public:
 private:
 
 	//Cooldown
-	int ti;
-	int maxT;
+	float ti;
+	float maxT;
 
 	//Para crear la bala
 	float lifetime;
