@@ -12,6 +12,12 @@ Enemy::Enemy(physx::PxScene* scene, physx::PxPhysics* physx, Vector3 pos, float 
 	mBod->userData = this;
 }
 
+void Enemy::die()
+{
+	*en_cont -= 1;
+	_toDestroy = true;
+}
+
 Barrel::Barrel(physx::PxScene* scene, physx::PxPhysics* physx, Vector3 pos, 
 	float dense, float w, float h, float d, Explosive* exp)
 	: SolidDyEnt(scene, physx, gPhysx->createMaterial(0.8f, 0.8f, 0.3f), pos, dense, w, h, d, { 1, 0, 0, 1 }),
@@ -23,6 +29,12 @@ Barrel::Barrel(physx::PxScene* scene, physx::PxPhysics* physx, Vector3 pos,
 	form->setSimulationFilterData(barrelFilter);
 
 	mBod->userData = this;
+}
+
+void Barrel::boom()
+{
+	ex->explode();
+	_toDestroy = true;
 }
 
 Bullet::Bullet(physx::PxScene* scene, physx::PxPhysics* physx, Vector3 pos, float life, float dense, float r)

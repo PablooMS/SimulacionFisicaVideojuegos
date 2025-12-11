@@ -13,6 +13,8 @@ public:
 
 private:
 
+	void die();
+
 	int* en_cont;
 
 };
@@ -27,6 +29,8 @@ public:
 	~Barrel() { ex = nullptr; }
 
 private:
+
+	void boom();
 
 	Explosive* ex;
 };

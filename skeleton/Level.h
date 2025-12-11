@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "ShootingComponent.h"
 
 class Level : public Scene
 {
@@ -15,6 +16,8 @@ public:
 
 	virtual void update(double t) override;
 
+	virtual void handleEvent(SceneEvents evt) override;
+
 protected:
 
 	virtual void unloadScene() override;
@@ -24,5 +27,7 @@ protected:
 	int enem;
 
 	Camera* cam;
+	Explosive* gun;
+	ShootingComponent* mSho;
 };
 

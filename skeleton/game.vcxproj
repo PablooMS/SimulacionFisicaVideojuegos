@@ -286,6 +286,7 @@
     <ClCompile Include="Render\Render.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ShootingComponent.cpp" />
     <ClCompile Include="SolGen.cpp" />
     <ClCompile Include="SolidEnt.cpp" />
     <ClCompile Include="Spring.cpp" />
@@ -328,6 +329,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneResource.h" />
+    <ClInclude Include="ShootingComponent.h" />
     <ClInclude Include="SolGen.h" />
     <ClInclude Include="SolidEnt.h" />
     <ClInclude Include="Spring.h" />

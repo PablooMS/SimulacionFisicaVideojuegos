@@ -5,7 +5,7 @@
 
 using forceIterator = std::list<ForceGen*>::iterator;
 
-enum SceneEvents { Explode };
+enum SceneEvents { Explode, Shoot };
 
 class Scene
 {
@@ -23,7 +23,7 @@ public:
 
 	EntityManager* sceneEntManager() { return _entMan; }
 
-	void handleEvent(SceneEvents evt);
+	virtual void handleEvent(SceneEvents evt);
 
 protected:
 

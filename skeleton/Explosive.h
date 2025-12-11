@@ -8,6 +8,7 @@ public:
 	virtual ~Explosive() {};
 
 	void explode();
+	void setPosition(Vector3 pos);
 
 	virtual void handleEvent(ForceEvents evt) override;
 

@@ -11,6 +11,11 @@ void Explosive::explode()
 	//std::cout << "AAAAAAAA\n";
 }
 
+void Explosive::setPosition(Vector3 pos)
+{
+	trans->p = pos;
+}
+
 void Explosive::handleEvent(ForceEvents evt)
 {
 	//std::cout << "readytoGo\n";
