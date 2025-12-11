@@ -27,6 +27,7 @@ void GameCollisions::onContact(PxContactPairHeader const& pairHeader, PxContactP
             Enemy* enemy = reinterpret_cast<Enemy*>(enemyActor->userData);
 
             //MATA AL ENEMIGO Y BÁÑATE EN SU SANGRE
+            enemy->die();
         }
 
         if ((fa.word0 & LAYER_BULLET) != 0 && (fb.word0 & LAYER_BARREL) != 0 ||
@@ -42,6 +43,7 @@ void GameCollisions::onContact(PxContactPairHeader const& pairHeader, PxContactP
             Barrel* barrel = reinterpret_cast<Barrel*>(barrelActor->userData);
 
             //EXPLOSION
+            barrel->boom();
         }
     }  
 }

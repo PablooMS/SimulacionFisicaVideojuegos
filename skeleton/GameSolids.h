@@ -11,9 +11,9 @@ public:
 		Vector3 pos, float dense, float r, int* cont);
 	~Enemy() { en_cont = nullptr; };
 
-private:
-
 	void die();
+
+private:
 
 	int* en_cont;
 
@@ -28,9 +28,9 @@ public:
 		Explosive* exp);
 	~Barrel() { ex = nullptr; }
 
-private:
-
 	void boom();
+
+private:
 
 	Explosive* ex;
 };

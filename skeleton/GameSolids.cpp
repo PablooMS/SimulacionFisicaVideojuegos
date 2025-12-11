@@ -33,6 +33,7 @@ Barrel::Barrel(physx::PxScene* scene, physx::PxPhysics* physx, Vector3 pos,
 
 void Barrel::boom()
 {
+	ex->setPosition(trans->p);
 	ex->explode();
 	_toDestroy = true;
 }
