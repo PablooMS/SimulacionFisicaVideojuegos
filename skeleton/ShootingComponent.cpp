@@ -5,7 +5,6 @@ using namespace physx;
 
 ShootingComponent::~ShootingComponent()
 {
-	delete ex;
 	ex = nullptr;
 }
 

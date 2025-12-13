@@ -108,7 +108,7 @@ void SolidDyEnt::setLifetime(double t)
 
 void SolidDyEnt::update(double t)
 {
-	if (lifetime != -1)
+	if (lifetime > 0)
 	{
 		life += t;
 

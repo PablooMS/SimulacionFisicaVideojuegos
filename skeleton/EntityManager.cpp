@@ -49,6 +49,7 @@ void EntityManager::update(double t)
 	for (auto b : toDeleteSol) 
 	{
 		//(*b)->setRender(false);
+		delete* b;
 		solids.erase(b);
 	}
 
@@ -83,9 +84,13 @@ void EntityManager::clearEnts()
 		delete tiddies.front();
 		tiddies.pop_front();
 	}
-	while (solids.size() > 0)
+	while (!solids.empty())
 	{
-		pxScene->removeActor(*solids.front()->getBod());
+		auto ac = solids.front()->getAct();
+
+		if(ac != nullptr)
+			pxScene->removeActor(*ac);
+
 		delete solids.front();
 		solids.pop_front();
 	}
