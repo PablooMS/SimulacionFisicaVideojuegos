@@ -45,6 +45,7 @@ public:
 	Enemy* createEnemy(Vector3 pos, float dense, float r, int* cont);
 	Barrel* createBarrel(Vector3 pos, float dense, float h, Explosive* ex);
 	Bullet* createBullet(Vector3 pos, float lifetime, float dense, float r);
+	SolidStEnt* createFloor(physx::PxMaterial* m, Vector3 pos, float r, Vector4 color);
 
 	void update(double t);
 

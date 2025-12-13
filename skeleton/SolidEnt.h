@@ -65,9 +65,11 @@ class SolidStEnt : public SolidEnt
 {
 public:
 	SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::PxMaterial* mat,
-		Vector3 pos, float r, Vector4 color);				//Esfera
+		Vector3 pos, float r, Vector4 color,
+		physx::PxFilterData filter = physx::PxFilterData());				//Esfera
 	SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::PxMaterial* mat,
-		Vector3 pos, float w, float h, float d, Vector4 color);	//Cubo
+		Vector3 pos, float w, float h, float d, Vector4 color,
+		physx::PxFilterData filter = physx::PxFilterData());				//Cubo
 	virtual ~SolidStEnt();
 
 	virtual physx::PxRigidActor* getAct() override { return mBod; }

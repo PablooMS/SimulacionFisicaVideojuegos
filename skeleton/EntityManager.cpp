@@ -203,4 +203,15 @@ Bullet* EntityManager::createBullet(Vector3 pos, float lifetime, float dense, fl
 	return bul;
 }
 
+SolidStEnt* EntityManager::createFloor(physx::PxMaterial* m, Vector3 pos, float r, Vector4 color)
+{
+	physx::PxFilterData floorFilter;
+	floorFilter.word0 = LAYER_FLOOR;
+	floorFilter.word1 = LAYER_DEFAULT | LAYER_ENEMY | LAYER_BULLET | LAYER_BARREL;
+	
+	SolidStEnt* flo = new SolidStEnt(pxScene, gPhysx, m, pos, r, 1, r, color, floorFilter);
+	solids.push_back(flo);
+	return flo;
+}
+
 

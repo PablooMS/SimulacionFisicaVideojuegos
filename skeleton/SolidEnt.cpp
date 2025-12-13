@@ -131,13 +131,14 @@ void SolidDyEnt::applySolForce(Vector3 f)
 
 
 SolidStEnt::SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::PxMaterial* mat, Vector3 pos, 
-	float r, Vector4 color) : SolidEnt(physx, pos)
+	float r, Vector4 color, physx::PxFilterData filter) : SolidEnt(physx, pos)
 {
 	statc = true;
 
 	mBod = physx->createRigidStatic(*trans);
 
 	form = gPhysx->createShape(PxSphereGeometry(r), *mat);
+	form->setSimulationFilterData(filter);
 
 	mBod->attachShape(*form);
 
@@ -150,13 +151,14 @@ SolidStEnt::SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::Px
 }
 
 SolidStEnt::SolidStEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::PxMaterial* mat, Vector3 pos, 
-	float w, float h, float d, Vector4 color) : SolidEnt(physx, pos)
+	float w, float h, float d, Vector4 color, physx::PxFilterData filter) : SolidEnt(physx, pos)
 {
 	statc = true;
 
 	mBod = physx->createRigidStatic(*trans);
 
 	form = gPhysx->createShape(PxBoxGeometry(w, h, d), *mat);
+	form->setSimulationFilterData(filter);
 
 	mBod->attachShape(*form);
 
