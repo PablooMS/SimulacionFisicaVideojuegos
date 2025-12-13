@@ -17,4 +17,7 @@ void Level1::loadScene()
 	_entMan->createDynamicSolid(gMat, { 4, 8, 8 }, 1000, 8, 2, 2, { 1, 1, 0.7, 1 });
 	_entMan->createDynamicSolid(gMat, { 4, 12, 4 }, 1000, 4, 2, 8, { 1, 1, 0.7, 1 });
 	_entMan->createDynamicSolid(gMat, { 4, 16, 8 }, 1000, 1.2, 0.8, 12, { 1, 1, 0.7, 1 });
+	_entMan->createEnemy({ 20, 0, 0 }, 1000, 1.2, &enem);
+
+	enem = 1;
 }

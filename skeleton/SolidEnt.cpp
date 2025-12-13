@@ -4,7 +4,7 @@
 using namespace physx;
 
 SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat, Vector3 pos,
-	float dens, float r, Vector4 col) 
+	float dens, float r, Vector4 col, physx::PxFilterData filter)
 	: SolidEnt(physx, pos), dense(dens), mMat(mat), color(col)
 {
 	statc = false;
@@ -14,6 +14,9 @@ SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat,
 
 	form = gPhysx->createShape(PxSphereGeometry(r), *mat);
 	dim = Vector3(r, 0, 0);
+
+	//Añadir filtors
+	form->setSimulationFilterData(filter);
 
 	mBod->attachShape(*form); 
 
@@ -28,7 +31,7 @@ SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat,
 }
 
 SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat, Vector3 pos,
-	float dens, float w, float h, float d, Vector4 col) 
+	float dens, float w, float h, float d, Vector4 col, physx::PxFilterData filter)
 	: SolidEnt(physx, pos), dense(dens), mMat(mat), color(col)
 {
 	statc = false;
@@ -38,6 +41,8 @@ SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat,
 
 	form = gPhysx->createShape(PxBoxGeometry(w, h, d), *mat);
 	dim = Vector3(w, h, d);
+
+	form->setSimulationFilterData(filter);
 
 	mBod->attachShape(*form);
 

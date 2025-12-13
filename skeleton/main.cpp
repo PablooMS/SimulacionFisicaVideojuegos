@@ -13,6 +13,7 @@
 #include "SceneManager.h";
 #include "Projectile.h";
 #include "SceneResource.h"
+#include "GameCollisions.h"
 
 #include <iostream>
 
@@ -36,6 +37,8 @@ PxPvd*                  gPvd        = NULL;
 PxDefaultCpuDispatcher*	gDispatcher = NULL;
 PxScene*				gScene      = NULL;
 ContactReportCallback gContactReportCallback;
+
+GameCollisions* gGameCallback;
 
 EntityManager* entMan;
 SceneManager* _scenes;
@@ -171,6 +174,11 @@ void initPhysics(bool interactive)
 	Initialization iv = { {0,0,0}, {10,5,10}, 1 };
 	entMan->createFireworks(fw, stfw, vfw, 3, 5, true, ist, iv, 3);*/
 #pragma endregion
+
+	//Registrando el callback para las colisiones
+	
+	gGameCallback = new GameCollisions();
+	gScene->setSimulationEventCallback(gGameCallback);
 	
 	//SCENE MANAGER
 	_scenes = new SceneManager();

@@ -27,9 +27,11 @@ class SolidDyEnt : public SolidEnt
 {
 public:
 	SolidDyEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::PxMaterial* mat,
-		Vector3 pos, float dense, float r, Vector4 color);				//Esfera
+		Vector3 pos, float dense, float r, Vector4 color, 
+		physx::PxFilterData filter = physx::PxFilterData());				//Esfera
 	SolidDyEnt(physx::PxScene* scene, physx::PxPhysics* physx, physx::PxMaterial* mat,
-		Vector3 pos, float dense, float w, float h, float d, Vector4 color);	//Cubo
+		Vector3 pos, float dense, float w, float h, float d, Vector4 color, 
+		physx::PxFilterData filter = physx::PxFilterData());				//Cubo
 	SolidDyEnt(SolidDyEnt* o, Vector3 pos);
 	virtual ~SolidDyEnt();
 

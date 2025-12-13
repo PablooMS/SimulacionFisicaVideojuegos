@@ -1,4 +1,5 @@
 #include "GameCollisions.h"
+#include <iostream>
 
 void GameCollisions::onContact(PxContactPairHeader const& pairHeader, PxContactPair const* pairs, PxU32 nbPairs)
 {

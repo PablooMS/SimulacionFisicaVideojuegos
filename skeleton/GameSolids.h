@@ -15,6 +15,8 @@ public:
 
 private:
 
+	physx::PxFilterData filterData();
+
 	int* en_cont;
 
 };
@@ -32,6 +34,8 @@ public:
 
 private:
 
+	physx::PxFilterData filterData();
+
 	Explosive* ex;
 };
 
@@ -44,6 +48,7 @@ public:
 
 private:
 
+	physx::PxFilterData filterData();
 
 };
 
