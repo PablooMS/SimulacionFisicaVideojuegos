@@ -8,3 +8,4 @@
 #include "FloatScene.h"
 #include "P5Scene.h"
 #include "Level1.h"
+#include "Level2.h"

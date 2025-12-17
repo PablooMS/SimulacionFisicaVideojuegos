@@ -207,8 +207,11 @@ void initPhysics(bool interactive)
 	P5A1Scene* p5a1 = new P5A1Scene(gPhysics, gScene);
 	_scenes->registerScene(p5a1, "P5a1");
 
-	Level1* l1 = new Level1(gPhysics, gScene, GetCamera(), "Lobby");
+	Level1* l1 = new Level1(gPhysics, gScene, GetCamera(), "L2");
 	_scenes->registerScene(l1, "L1");
+
+	Level2* l2 = new Level2(gPhysics, gScene, GetCamera(), "Lobby");
+	_scenes->registerScene(l2, "L2");
 
 	_scenes->changeScene("Lobby");
 }
@@ -337,7 +340,7 @@ void keyPress(unsigned char key, const Camera& camera)
 	{
 		std::string free = _scenes->currentScene();
 
-		if (free != "L1")
+		if (free != "L1" && free != "L2")
 			break;
 
 		_scenes->handleEvent(SceneEvents::Shoot);
@@ -346,12 +349,14 @@ void keyPress(unsigned char key, const Camera& camera)
 	}
 	case 'A':
 	{
-		GetCamera()->shiftPos({ -1, 0, 0 });
+		if(GetCamera()->getTransform().p.x > -20)
+			GetCamera()->shiftPos({ -1, 0, 0 });
 		break;
 	}
 	case 'D':
 	{
-		GetCamera()->shiftPos({ 1, 0, 0 });
+		if (GetCamera()->getTransform().p.x < 20)
+			GetCamera()->shiftPos({ 1, 0, 0 });
 		break;
 	}
 	case '1':
@@ -404,7 +409,7 @@ void keyPress(unsigned char key, const Camera& camera)
 	}
 	case '9':
 	{
-		_scenes->changeScene("L1");
+		_scenes->changeScene("L2");
 		GetCamera()->setPos(PxVec3(0.0f, 4.0f, 30.0f), PxVec3(0.0f, -0.0f, -0.5f));
 		break;
 	}

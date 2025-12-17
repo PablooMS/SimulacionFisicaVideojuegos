@@ -44,6 +44,7 @@
     <ClCompile Include="GameCollisions.cpp" />
     <ClCompile Include="ShootingComponent.cpp" />
     <ClCompile Include="Level1.cpp" />
+    <ClCompile Include="Level2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="CollisionLayers.h" />
     <ClInclude Include="ShootingComponent.h" />
     <ClInclude Include="Level1.h" />
+    <ClInclude Include="Level2.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

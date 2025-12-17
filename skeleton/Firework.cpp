@@ -3,7 +3,7 @@
 Firework::~Firework() 
 {
 	setRender(false);
-	render->release();
+	//render->release();
 	render = nullptr;
 }
 

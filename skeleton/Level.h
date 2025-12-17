@@ -20,11 +20,14 @@ public:
 
 protected:
 
+	void fireworks();
+
 	virtual void unloadScene() override;
 
-	bool checkDone() { return enem = 0; }
+	bool checkDone() { return enem == 0; }
 
 	int enem;
+	float time = 7;
 
 	Camera* cam;
 	Explosive* gun;

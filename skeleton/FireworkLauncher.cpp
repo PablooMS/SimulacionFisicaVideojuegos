@@ -3,10 +3,11 @@
 
 FireworkLauncher::~FireworkLauncher()
 {
-	std::cout << firs.size() << "\n";
+	//std::cout << firs.size() << "\n";
 	while (firs.size() > 0)
 	{
-		std::cout << firs.size() << "\n";
+		//std::cout << firs.size() << "\n";
+		delete (*firs.begin());
 		firs.erase(firs.begin());
 	}
 }

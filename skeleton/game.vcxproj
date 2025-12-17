@@ -274,6 +274,7 @@
     <ClCompile Include="GScene.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Level1.cpp" />
+    <ClCompile Include="Level2.cpp" />
     <ClCompile Include="LobbyScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="P2Scene.cpp" />
@@ -318,6 +319,7 @@
     <ClInclude Include="GScene.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Level1.h" />
+    <ClInclude Include="Level2.h" />
     <ClInclude Include="LobbyScene.h" />
     <ClInclude Include="P2Scene.h" />
     <ClInclude Include="P3Scene.h" />
