@@ -140,7 +140,7 @@ void SolidDyEnt::update(double t)
 void SolidDyEnt::applySolForce(Vector3 f)
 {
 	mBod->addForce(f);
-	std::cout << f.y / mBod->getMass() << "\n\n";
+	//std::cout << f.y / mBod->getMass() << "\n\n";
 }
 
 /// /////////////
