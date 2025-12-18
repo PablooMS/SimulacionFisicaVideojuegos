@@ -13,12 +13,12 @@ void Level2::loadScene()
 	_entMan->createFloor(gMat, { 0, -1, 0 }, 100, { 0.7, 1, 0.5, 1 });
 	_entMan->createFloor(gMat, { 0, -100, 0 }, 500, { 0.7, 1, 0.5, 1 }); //Suelo de emergencia
 
-	//Rain
-	Particle* r = new Particle({ 0,0,0 }, { 0,0,0 }, { 0,-10,0 }, 0.95, gPhysx, 0, 10, 0.2, { 0.1, 0.1, 0.6, 1.0 });
+	//Lluvia
+	/*Particle* r = new Particle({0,0,0}, {0,0,0}, {0,-10,0}, 0.95, gPhysx, 0, 10, 0.2, {0.1, 0.1, 0.6, 1.0});
 	r->setRender(false);
 	Initialization str = { {0,200,0}, {5,-100,0}, 10 };
 	Initialization vr = { {100,0,100}, {1,0,1}, 0 };
-	_entMan->createGenerator(r, str, vr, 10, 0.05, false);
+	_entMan->createGenerator(r, str, vr, 10, 0.05, false);*/
 
 	//Fuerzas
 	_forces.push_back(new Wind({-100, 5, 100}, gPhysx, 0.8, 0.1, {20, 5, -10}, SPHERE, 15, 10, true));
@@ -49,6 +49,6 @@ void Level2::loadScene()
 	_entMan->createDynamicSolid(gMat, { 0, 8, 2 }, 800, 0.5, 0.5, 6, { 1, 1, 0.7, 1 });
 
 	//Enemigos
-	_entMan->createEnemy({ 0, 10, 0 }, 1000, 1.2, &enem);
+	_entMan->createEnemy({ 0, 10, 0 }, 800, 1.2, &enem);
 	enem = 1;
 }

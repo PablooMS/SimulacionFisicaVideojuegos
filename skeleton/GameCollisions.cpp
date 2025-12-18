@@ -27,7 +27,7 @@ void GameCollisions::onContact(PxContactPairHeader const& pairHeader, PxContactP
 
             Enemy* enemy = reinterpret_cast<Enemy*>(enemyActor->userData);
 
-            //MATA AL ENEMIGO Y BÁÑATE EN SU SANGRE
+            //MATA AL ENEMIGO
             enemy->die();
         }
 

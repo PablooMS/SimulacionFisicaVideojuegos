@@ -210,8 +210,11 @@ void initPhysics(bool interactive)
 	Level1* l1 = new Level1(gPhysics, gScene, GetCamera(), "L2");
 	_scenes->registerScene(l1, "L1");
 
-	Level2* l2 = new Level2(gPhysics, gScene, GetCamera(), "Lobby");
+	Level2* l2 = new Level2(gPhysics, gScene, GetCamera(), "L3");
 	_scenes->registerScene(l2, "L2");
+	
+	Level3* l3 = new Level3(gPhysics, gScene, GetCamera(), "Lobby");
+	_scenes->registerScene(l3, "L3");
 
 	_scenes->changeScene("Lobby");
 }
@@ -340,7 +343,7 @@ void keyPress(unsigned char key, const Camera& camera)
 	{
 		std::string free = _scenes->currentScene();
 
-		if (free != "L1" && free != "L2")
+		if (free != "L1" && free != "L2" && free != "L3")
 			break;
 
 		_scenes->handleEvent(SceneEvents::Shoot);
@@ -409,7 +412,7 @@ void keyPress(unsigned char key, const Camera& camera)
 	}
 	case '9':
 	{
-		_scenes->changeScene("L2");
+		_scenes->changeScene("L1");
 		GetCamera()->setPos(PxVec3(0.0f, 4.0f, 30.0f), PxVec3(0.0f, -0.0f, -0.5f));
 		break;
 	}

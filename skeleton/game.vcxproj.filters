@@ -45,6 +45,7 @@
     <ClCompile Include="ShootingComponent.cpp" />
     <ClCompile Include="Level1.cpp" />
     <ClCompile Include="Level2.cpp" />
+    <ClCompile Include="Level3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -94,6 +95,7 @@
     <ClInclude Include="ShootingComponent.h" />
     <ClInclude Include="Level1.h" />
     <ClInclude Include="Level2.h" />
+    <ClInclude Include="Level3.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

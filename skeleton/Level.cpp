@@ -9,6 +9,9 @@ void Level::loadScene()
 	_forces.push_back(gun);
 
 	mSho = new ShootingComponent(_entMan, gun, cam, 10, 9000, 0.7, 0.5);
+
+	change = false;
+	time = TIME;
 }
 
 void Level::update(double t)

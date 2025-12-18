@@ -1,4 +1,5 @@
 #include "GameSolids.h"
+#include <iostream>
 
 Enemy::Enemy(physx::PxScene* scene, physx::PxPhysics* physx, Vector3 pos, float dense, float r, int* cont)
 	: SolidDyEnt(scene, physx, physx->createMaterial(0.5f, 0.5f, 0.8f), pos, dense, r, {0, 1, 0, 1}, filterData()),

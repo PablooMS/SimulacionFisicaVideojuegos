@@ -2,6 +2,8 @@
 #include "Scene.h"
 #include "ShootingComponent.h"
 
+const float TIME = 7;
+
 class Level : public Scene
 {
 public:
@@ -27,7 +29,7 @@ protected:
 	bool checkDone() { return enem == 0; }
 
 	int enem;
-	float time = 7;
+	float time = TIME;
 
 	Camera* cam;
 	Explosive* gun;

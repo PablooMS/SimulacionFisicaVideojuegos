@@ -1,6 +1,10 @@
 #include "SolidEnt.h"
 #include <iostream>
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+#include <math.h>
+
 using namespace physx;
 
 SolidDyEnt::SolidDyEnt(physx::PxScene* scene, PxPhysics* physx, PxMaterial* mat, Vector3 pos,
@@ -100,6 +104,17 @@ SolidDyEnt::~SolidDyEnt()
 	render = nullptr;
 }
 
+float SolidDyEnt::getVolume()
+{
+	if (s == SPHERE)
+		return dim.x * dim.x * M_PI;
+
+	if (s == CUBE)
+		return 8 * dim.x * dim.y * dim.z;
+
+	return dim.x * dim.x * dim.x;
+}
+
 void SolidDyEnt::setPos(Vector3 p)
 {
 	//std::cout << p.x << " " << p.y << " " << p.z << "\n";
@@ -125,6 +140,7 @@ void SolidDyEnt::update(double t)
 void SolidDyEnt::applySolForce(Vector3 f)
 {
 	mBod->addForce(f);
+	std::cout << f.y / mBod->getMass() << "\n\n";
 }
 
 /// /////////////

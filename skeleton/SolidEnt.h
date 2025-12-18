@@ -11,6 +11,8 @@ public:
 	
 	virtual physx::PxRigidBody* getBod() { return nullptr; };
 	virtual physx::PxRigidActor* getAct() { return nullptr; };
+	virtual float getHeight() override { return 0; };
+	virtual float getVolume() override { return 0; };
 
 	virtual std::list<SolidEnt*>& generatorSolids() { return std::list<SolidEnt*>(1); }
 
@@ -38,6 +40,8 @@ public:
 	virtual physx::PxRigidBody* getBod() override { return mBod; }
 	virtual physx::PxRigidActor* getAct() override { return mBod; }
 	virtual Vector3 getPos() override { return mBod->getGlobalPose().p; }
+	virtual float getHeight() override { return dim.y; };
+	virtual float getVolume() override;
 
 	void setPos(Vector3 p);
 	void setLifetime(double t);
