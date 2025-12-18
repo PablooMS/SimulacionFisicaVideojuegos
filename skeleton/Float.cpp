@@ -61,13 +61,7 @@ void Float::applySolForce(SolidEnt* se)
 	else
 		immersed = (h0 - h) / eH + 0.5;
 
-	std::cout << immersed << "\n";
-
 	Vector3 forc(0, density * se->getVolume() * immersed * 9.8, 0);
-
-	std::cout << se->getVolume() << "\n";
-
-	std::cout << forc.y << "\n";
 
 	se->applySolForce(forc * 0.95);
 }
